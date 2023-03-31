@@ -21,7 +21,7 @@ class Commentaire
 
     #[ORM\ManyToOne(inversedBy: 'Commentaire')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?Users $user = null;
     
 
     #[ORM\ManyToOne(inversedBy: 'Commentaire')]

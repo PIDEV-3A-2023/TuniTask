@@ -38,7 +38,7 @@ class Role
 
     #[ORM\ManyToOne(inversedBy: 'Role')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $idUser = null;
+    private ?Users $idUser = null;
 
     public function getIdRole(): ?int
     {

@@ -30,7 +30,7 @@ class Offre
 
     #[ORM\ManyToOne(inversedBy: 'Offre')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?Users $user = null;
 
     public function getIdoffre(): ?int
     {

@@ -28,7 +28,7 @@ class Rate
 
     #[ORM\ManyToOne(inversedBy: 'Rate')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?Users $user = null;
     
 
     public function getIdrate(): ?int

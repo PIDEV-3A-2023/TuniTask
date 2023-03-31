@@ -6,6 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UsersRepository;
 
+
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 class Users
 {
@@ -29,14 +30,14 @@ class Users
     #[ORM\Column(length: 50)]
     private ?string $lastName= null;
     
-
+   
 
     #[ORM\Column]
     private ?DateTime $dateOfBirth= null;
 
     
     #[ORM\Column]
-    private ?DateTime $createdAt= CURRENT_TIMESTAMP;
+    private ?DateTime $createdAt= null;
     
 
    
