@@ -32,12 +32,7 @@ class Users
     
    
 
-    #[ORM\Column]
-    private ?DateTime $dateOfBirth= null;
-
     
-    #[ORM\Column]
-    private ?DateTime $createdAt= null;
     
 
    
@@ -55,6 +50,13 @@ class Users
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getPassword(): ?string
@@ -105,29 +107,7 @@ class Users
         return $this;
     }
 
-    public function getDateOfBirth(): ?\DateTimeInterface
-    {
-        return $this->dateOfBirth;
-    }
-
-    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
-    {
-        $this->dateOfBirth = $dateOfBirth;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
+   
 
     public function isStatut(): ?bool
     {
@@ -164,6 +144,6 @@ class Users
 
         return $this;
     }
-
+    
 
 }

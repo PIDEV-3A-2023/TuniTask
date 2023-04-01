@@ -1,12 +1,14 @@
 <?php
-// /src/Repository/MyEntityRepository.php
+
 namespace App\Repository;
 
 use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * @extends ServiceEntityRepository<Users>
+ *
  * @method Users|null find($id, $lockMode = null, $lockVersion = null)
  * @method Users|null findOneBy(array $criteria, array $orderBy = null)
  * @method Users[]    findAll()
@@ -18,6 +20,7 @@ class UsersRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Users::class);
     }
+
     public function save(Users $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -26,6 +29,7 @@ class UsersRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
     public function remove(Users $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -35,5 +39,28 @@ class UsersRepository extends ServiceEntityRepository
         }
     }
 
-  
+#//    /**
+//     * @return Users[] Returns an array of Users objects
+//     */
+//    public function findByExampleField($value): array
+//    {
+//        return $this->createQueryBuilder('c')
+//            ->andWhere('c.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('c.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
+#//    public function findOneBySomeField($value): ?Users
+#//    {
+#//        return $this->createQueryBuilder('c')
+//            ->andWhere('c.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
 }

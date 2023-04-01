@@ -1,0 +1,20 @@
+<h1>La liste des Offres </h1>
+<table border=1>
+    <tr>
+        <th>titre</th>
+        <th>Nom</th>
+        <th>salaire</th>
+        <th>nom</th>
+        <th>prenom</th>
+    </tr>
+    {%for k in result %}
+    <tr>
+        <td>{{k.titre}}</td>
+        <td>{{k.description}}</td>
+         <td>{{k.salaireh}}</td>
+         <td>{{k.firstName}}</td>
+         <td>{{k.lastName}}</td>
+    </tr>
+    {%endfor%}
+
+</table>

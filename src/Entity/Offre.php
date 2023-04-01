@@ -84,6 +84,6 @@ class Offre
 
         return $this;
     }
-
+    
 
 }
