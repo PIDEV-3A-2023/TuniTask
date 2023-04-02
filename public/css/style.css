@@ -1,5 +1,39 @@
 /********** Template CSS **********/
 .aa{background-color:#2b3453 ;}
+/********** Anes **********/
+.my-form-class{padding-left: 300px;}
+.i {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+  }
+  
+  /* Style pour les labels */
+  .l {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  /* Style pour les boutons */
+  .b {
+    padding: 10px 20px;
+    margin-left: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: #786ac6;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Style pour les boutons au survol */
+  .b:hover {
+    background-color: #524986;
+  }
+  /********** Anes **********/
 :root {
     --primary: #786ac6;
     --secondary: #555555;

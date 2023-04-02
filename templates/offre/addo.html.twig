@@ -1,5 +1,41 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <h1>Ajout Offre </h1>
-{{form(f)}}
+{{form_start(f,{'attr': {'class': 'my-form-class'}}) }}
+<table>
+
+<tr>
+
+<td> {{ form_label(f.titre,"Titre")  }} 
+ </td>
+<td>  {{ form_widget(f.titre) }} 
+</td>  
+<td> {{ form_errors(f.titre) }} 
+</td>
+</tr>
+
+<tr>
+<td>  {{ form_label(f.salaireh,"Salaire") }} 
+</td> 
+<td> {{ form_widget(f.salaireh)}} 
+ </td> 
+<td>  {{ form_errors(f.salaireh) }} 
+</td> 
+</tr>
+
+<tr>
+<td>  {{ form_label(f.description,"Description") }} 
+</td> 
+<td> {{ form_widget(f.description)}} 
+ </td> 
+<td>  {{ form_errors(f.description) }} 
+</td> 
+</tr>
+
+
+
+</table>
+
+ {{ form_widget(f.submit)}} 
+{{form_end(f)}}
 {% endblock %}
