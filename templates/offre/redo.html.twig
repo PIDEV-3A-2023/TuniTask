@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>La liste des Offres</h1>
+    <div class="card-deck">
+        {% for k in result %}
+            <div class="card mb-4">
+                <img src="{{ k.srcimage }}" class="card-img-top" alt="Image utilisateur">
+                <div class="card-body">
+                    <h5 class="card-title">{{ k.titre }}</h5>
+                    <p class="card-text">Description :{{ k.description }}</p>
+                    <p class="card-text">Salaire : {{ k.salaireh }}dt/h</p>
+                    <p class="card-text">Posté par {{ k.firstName }} {{ k.lastName }}</p>
+                </div>
+             
+            </div>
+        {% endfor %}
+    </div>
+    </form>
+                    
+                    <form action="{{path('app_readou') }}">
+                        <button class="b">Voir mes offres</button>
+                    </form>
+{% endblock %}

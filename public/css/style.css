@@ -2,6 +2,58 @@
 .aa{background-color:#2b3453 ;}
 /********** Anes **********/
 .my-form-class{padding-left: 300px;}
+#h1{padding-left: 36px;}
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 150px;
+  }
+  
+  .card {
+    margin-bottom: 15px;
+  }
+  
+  .card-img-top {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+  }
+  .card-body {
+    flex: 1 1 auto;
+  }
+  .b-danger{
+    padding: 10px 20px;
+    margin-left: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ef6a6a;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .b-danger:hover {
+    background-color: #fb0000;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+  
+  .card-text {
+    margin-bottom: 1rem;
+  }
+  
+  .card-footer {
+    font-size: 0.875rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid rgba(0,0,0,.125);
+    padding: 0.75rem 1.25rem;
+  }
 .i {
     padding: 10px;
     border: none;
@@ -16,7 +68,24 @@
     margin-bottom: 10px;
     font-size: 18px;
   }
+  .bb {
+    padding: 10px 20px;
+    margin-left: 250px;
+    border: none;
+    border-radius: 5px;
+    background-color: #786ac6;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .parent-container {
+    display: flex;
+    justify-content: center;
+  }
   
+  .bb:hover {
+    background-color: #524986;
+  }
   /* Style pour les boutons */
   .b {
     padding: 10px 20px;

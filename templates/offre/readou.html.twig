@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>La liste des Offres</h1>
+    <div class="card-deck">
+        {% for k in result %}
+            <div class="card mb-4">
+                <img src="{{ k.srcimage }}" class="card-img-top" alt="Image utilisateur">
+                <div class="card-body">
+                    <h5 class="card-title">{{ k.titre }}</h5>
+                    <p class="card-text">Description :{{ k.description }}</p>
+                    <p class="card-text">Salaire : {{ k.salaireh }}dt/h</p>
+                    <p class="card-text">Posté par {{ k.firstName }} {{ k.lastName }}</p>
+                </div>
+                <div class="card-footer">
+                    <form action="{{path('app_edito',{'id':k.idoffre}) }}">
+                        <button class="b">Modifier</button>
+                    </form>
+                    <form action="{{path('app_deleteo',{'id':k.idoffre}) }}">
+                        <button class="b-danger">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+                </div>
+                </form>
+                                <div class="parent-container">
+            <form action="{{path('app_addo') }}">
+                <button class="b">Ajouter</button>
+            </form>
+                            
+            <form action="{{path('app_reado') }}">
+                <button class="bb">Voir tous les offres</button>
+            </form>
+            </div>
+{% endblock %}
+
+
