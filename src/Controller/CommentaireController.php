@@ -64,10 +64,12 @@ class CommentaireController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
         // Ajout des informations de l'offre et de l'utilisateur courant
+        
         $Commentaire->setCommentaire($form->get('commentaire')->getData());
         
         // Ajout de l'Commentaire dans la base de données
         $entityManager->persist($Commentaire);
+        
         $entityManager->flush();
         return $this->redirectToRoute('app_readoc');}
         return $this->renderForm("Commentaire/addc.html.twig",array("f"=>$form));

@@ -24,8 +24,8 @@ class Commentaire
     private ?Users $user = null;
     
 
-    #[ORM\ManyToOne(inversedBy: 'Commentaire')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\Offre')]
+    #[ORM\JoinColumn(referencedColumnName: "idoffre",name: "offre_id")]
     private ?offre $offre = null;
     
 
