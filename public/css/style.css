@@ -47,6 +47,7 @@
   .card-text {
     margin-bottom: 1rem;
   }
+
   
   .card-footer {
     font-size: 0.875rem;
@@ -78,10 +79,13 @@
     font-size: 16px;
     cursor: pointer;
   }
+  #ppp{color: #000000;}
+  
   .parent-container {
     display: flex;
     justify-content: center;
   }
+  
   
   .bb:hover {
     background-color: #524986;

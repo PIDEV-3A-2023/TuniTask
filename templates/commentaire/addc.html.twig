@@ -1,5 +1,32 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+ <h1 id="h1">L' Offre</h1>
+    <div class="card-deck">
+            <div class="card mb-4">
+                <img src="{{asset(l.user.srcimage)  }}" class="card-img-top" alt="Image utilisateur">
+                <div class="card-body">
+                    <h5 class="card-title">{{ l.titre }}</h5>
+                    <p class="card-text">Description :{{ l.description }}</p>
+                    <p class="card-text">Salaire : {{ l.salaireh }}dt/h</p>
+                    <p class="card-text">Posté par {{ l.user.firstName }} {{ l.user.lastName }}</p>
+                </div>
+               
+            </div>
+    </div>
+   <h1 id="h1">Commentaires</h1>
+    <div class="card-deck ">
+        {% for comment in result %}
+            <div class="card">
+                <img src="{{asset(comment.srcimage)  }}" class="card-img-top" alt="Image utilisateur">
+                <p>Commentaire: {{ comment.commentaire }}</p>
+                <p>Posté par {{ comment.firstName }} {{ comment.lastName }}</p>
+                {% if comment.modifier_url is defined %}            
+                <a href="{{ comment.modifier_url }}">Modifier</a>        
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>             
+
 <h1 id="h1">Ajout Commentaire </h1>
 {{form_start(f,{'attr': {'class': 'my-form-class'}}) }}
 <table>
@@ -17,4 +44,25 @@
 <form action="{{path('app_readoc') }}">
                         <button class="b-danger">Annuler</button>
                     </form>
+ {% if ff is defined %}   
+{% if modifierClicked %}
+    <h1 id="h1">Modifier  Commentaire </h1>
+{{form_start(ff,{'attr': {'class': 'my-form-class'}}) }}
+<table>
+<tr>
+<td> {{ form_label(ff.commentaire,"Commentaire")  }} 
+ </td>
+<td>  {{ form_widget(ff.commentaire) }} 
+</td>  
+<td> {{ form_errors(ff.commentaire) }} 
+</td>
+</tr>
+</table>
+ {{ form_widget(ff.submit)}} 
+{{form_end(f)}}
+<form action="{{path('app_addc') }}">
+                        <button class="b-danger">Annuler</button>
+                    </form>
+{% endif %}
+{% endif %}
 {% endblock %}
