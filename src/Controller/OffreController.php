@@ -110,7 +110,7 @@ class OffreController extends AbstractController
                 $offre->setSalaireh($form->get('salaireh')->getData());
                 // Mise à jour de l'offre dans la base de données
                 $entityManager->flush();
-                return $this->redirectToRoute('app_reado');
+                return $this->redirectToRoute('app_readou');
             }
             return $this->renderForm("Offre/edito.html.twig",array("f"=>$form));
         }

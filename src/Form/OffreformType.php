@@ -29,7 +29,9 @@ class OffreformType extends AbstractType
             'constraints' => [
                 new Assert\NotBlank(['message' => 'Le salaire ne peut pas être vide.']),
                 new Assert\Type(['type' => 'numeric', 'message' => 'Le salaire doit être numérique.']),
-            ],
+    ],
+    'invalid_message' => 'Le salaire doit être numérique.'
+        
         ])
         ->add('description', TextareaType::class, [
             'label' => false,
@@ -42,6 +44,7 @@ class OffreformType extends AbstractType
             'label' => 'ajouter',
             'attr' => ['class' => 'b'],
         ]);
+       
         
     }
 

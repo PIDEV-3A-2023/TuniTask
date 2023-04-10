@@ -1,11 +1,10 @@
 {% extends 'base2.html.twig' %}
 {% block body %}
+<div class="content-body">
 <h1 id="h1">Modifier Offre </h1>
-{{form_start(f,{'attr': {'class': 'my-form-class'}}) }}
+{{form_start(f,{'attr': {'class': 'my-form-class', 'novalidate': 'novalidate'}}) }}
 <table>
-
 <tr>
-
 <td> {{ form_label(f.titre,"Titre")  }} 
  </td>
 <td>  {{ form_widget(f.titre) }} 
@@ -31,11 +30,11 @@
 <td>  {{ form_errors(f.description) }} 
 </td> 
 </tr>
-
-
-
 </table>
-
  {{ form_widget(f.submit)}} 
 {{form_end(f)}}
+<form action="{{path('app_readou') }}">
+                        <button class="b-danger">Annuler</button>
+                    </form>
+                    </div>
 {% endblock %}
