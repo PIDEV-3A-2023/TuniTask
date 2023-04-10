@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base2.html.twig' %}
 {% block body %}
+<div class="content-body">
 <h1 id="h1">Ajout Offre </h1>
-{{form_start(f,{'attr': {'class': 'my-form-class'}}) }}
+{{form_start(f,{'attr': {'class': 'my-form-class', 'novalidate': 'novalidate'}}) }}
 <table>
 <tr>
 <td> {{ form_label(f.titre,"Titre")  }} 
@@ -20,6 +21,7 @@
 <td>  {{ form_errors(f.salaireh) }} 
 </td> 
 </tr>
+
 <tr>
 <td>  {{ form_label(f.description,"Description") }} 
 </td> 
@@ -34,4 +36,5 @@
 <form action="{{path('app_readou') }}">
                         <button class="b-danger">Annuler</button>
                     </form>
+                    </div>
 {% endblock %}
