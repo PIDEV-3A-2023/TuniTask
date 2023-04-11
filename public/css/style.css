@@ -2,7 +2,8 @@
 .aa{background-color:#2b3453 ;}
 /********** Anes **********/
 .my-form-class{padding-left: 300px;}
-#h1{padding-left: 36px;}
+.my-form-classs{padding-left: 130px;}
+#h1{padding-left: 570px;}
 .card-deck {
     display: flex;
     flex-wrap: wrap;
@@ -105,6 +106,60 @@
   /* Style pour les boutons au survol */
   .b:hover {
     background-color: #524986;
+  }
+  .cardd-deck {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cardd {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .cardd-img {
+    display: block;
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cardd p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .cardd a {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  .cardd a:hover {
+    background-color: #555;
+    color: #fff;
+  }
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* ajustez la marge en fonction de vos besoins */
+  }
+  
+  .button-group a {
+    margin: 0 10px; /* ajustez la marge entre les boutons en fonction de vos besoins */
   }
   /********** Anes **********/
 :root {

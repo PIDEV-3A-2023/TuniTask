@@ -58,11 +58,15 @@ class CommentaireController extends AbstractController
             ->getQuery()
             ->getResult();
             $modifierClicked=false;
+            $deleteClicked=false;
             foreach ($result as &$commentaire) {
                 if ($commentaire['id'] === $userId) { 
                     $commentaire['modifier_url'] = $this->generateUrl('app_editc', 
                     ['id' => $commentaire['idcommentaire'], 'offreId' => $id,'result' => $result]);
                     $modifierClicked=true;
+                    $commentaire['delete_url'] = $this->generateUrl('app_deletec', 
+                    ['id' => $commentaire['idcommentaire'], 'offreId' => $id,'result' => $result]);
+                    $deleteClicked=true;
                 }}
             
         // Création d'une nouvelle commentaire
@@ -88,7 +92,7 @@ class CommentaireController extends AbstractController
         $entityManager->flush();
         return $this->redirectToRoute('app_addc', ['id' => $id]);}
         return $this->renderForm("Commentaire/addc.html.twig",array("f"=>$form,"l"=>$currentOffre,'result' => $result,
-        'modifierClicked'=> $modifierClicked));
+        'modifierClicked'=> $modifierClicked,'deleteClicked'=>$deleteClicked));
     }
   
     #[Route('/editc/{id}/{offreId}', name: 'app_editc')]
@@ -117,4 +121,24 @@ class CommentaireController extends AbstractController
         return $this->renderForm("Commentaire/modc.html.twig", array("ff"=>$form, "l"=>$currentOffre
         ));
     }
+    #[Route('/deletec/{id}', name: 'app_deletec')]
+            public function deleteCommentaire($id): Response
+            {
+                $entityManager = $this->getDoctrine()->getManager();
+
+                // Recherche de l'Commentaire à supprimer
+                $CommentaireRepository = $entityManager->getRepository(Commentaire::class);
+                $Commentaire = $CommentaireRepository->find($id);
+
+                // Vérification que l'Commentaires existe
+                if (!$Commentaire) {
+                    throw $this->createNotFoundException('Aucune Commentaire trouvée pour cet ID : '.$id);
+                }
+
+                // Suppression de l'Commentaire
+                $entityManager->remove($Commentaire);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_readoc');
+            }
 }
