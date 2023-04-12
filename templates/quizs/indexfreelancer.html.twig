@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <head>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        </head>
+
+        <h1 style="color: #333; font-size: 32px; margin-bottom: 30px; text-align: center;">Liste des Quizs</h1>
+        <table class="quiz-table" style="border-collapse: collapse; width: 100%; max-width: 800px; margin: 0 auto; background-color: #fff; border: 1px solid #ddd; border-radius: 10px; overflow: hidden;">
+            <thead>
+            <tr>
+
+                <th style="background-color: #333; color: #fff; padding: 10px; text-align: left;">Title</th>
+                <th style="background-color: #333; color: #fff; padding: 10px; text-align: left;">Description</th>
+                <th style="background-color: #333; color: #fff; padding: 10px; text-align: left;">Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for quiz in quizs %}
+                <tr style="background-color: {{ loop.index is even ? '#f2f2f2' : '' }};">
+
+                    <td style="padding: 10px; text-align: left;">{{ quiz.quizTitle }}</td>
+                    <td style="padding: 10px; text-align: left;">{{ quiz.quizDescription }}</td>
+                    <td style="padding: 10px; text-align: left;">{{ quiz.score }}</td>
+                    <td style="padding: 10px; text-align: left;">
+                        <a href="{{ path('app_quizs_open', {'id': quiz.idQuiz}) }}" style="display: inline-block; padding: 8px 16px; background-color: #6a0995; color: #fff; border-radius: 4px; text-decoration: none;">Open</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    {% endblock %}
+

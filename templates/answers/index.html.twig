@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{#{% block stylesheets %}#}
+{#    <style>#}
+{#        h1 , h2{#}
+{#            color: #333;#}
+{#            font-size: 32px;#}
+{#            margin-bottom: 30px;#}
+{#            text-align: center;#}
+{#        }#}
+
+{#        table {#}
+{#            border-collapse: collapse;#}
+{#            width: 100%;#}
+{#            max-width: 800px;#}
+{#            margin: 0 auto;#}
+{#            background-color: #fff;#}
+{#            border: 1px solid #ddd;#}
+{#            border-radius: 10px;#}
+{#            overflow: hidden;#}
+{#        }#}
+
+{#        th, td {#}
+{#            padding: 10px;#}
+{#            text-align: left;#}
+{#        }#}
+
+{#        th {#}
+{#            background-color: #333;#}
+{#            color: #fff;#}
+{#        }#}
+
+{#        tr:nth-child(even) {#}
+{#            background-color: #f2f2f2;#}
+{#        }#}
+
+{#        tr:hover {#}
+{#            background-color: #ddd;#}
+{#        }#}
+
+{#        .add-quiz-btn {#}
+{#            display: block;#}
+{#            margin: 20px auto 0;#}
+{#            text-align: center;#}
+{#        }#}
+
+{#        .add-quiz-btn a {#}
+{#            display: inline-block;#}
+{#            padding: 12px 24px;#}
+{#            background-color: #6a0995;#}
+{#            color: #fff;#}
+{#            border-radius: 4px;#}
+{#            text-decoration: none;#}
+{#        }#}
+
+{#        .add-quiz-btn a:hover {#}
+{#            background-color: #4e067c;#}
+{#        }#}
+{#        a.edit-btn,#}
+{#        a.delete-btn {#}
+{#            display: inline-block;#}
+{#            padding: 8px 16px;#}
+{#            background-color: #6a0995;#}
+{#            color: #fff;#}
+{#            border-radius: 4px;#}
+{#            text-decoration: none;#}
+{#        }#}
+
+{#    </style>#}
+{#{% endblock %}#}
+
+{% block body %}
+    <div style="display:flex;align-items: center;justify-content: center;flex-direction: column">
+        <h1 style="text-align: center;margin-bottom: 30px;">Quiz: {{ quiz.quizTitle }}</h1>
+        <h2 style="text-align: center;margin-bottom: 30px;">{{ question.questionText }}</h2>
+
+        <table style="border-collapse: collapse;width: 100%;max-width: 800px;margin: 0 auto;">
+            <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: left;">Answer</th>
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Is It Correct?</th>
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Edit</th>
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for answer in answers %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 12px;border: 1px solid #ddd;">{{ answer.answer }}</td>
+                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;">{{ answer.isCorrect ? 'Yes' : 'No' }}</td>
+{#                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;"><a href="#" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold;">Check Answer</a></td>#}
+
+                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;"><a href="{{ path('app_answers_edit', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion, 'answerId': answer.idAnswer}) }}" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold;">Edit</a></td>
+                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;"><a href="{{ path('app_answers_delete', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion, 'answerId': answer.idAnswer}) }}" style="display: inline-block; padding: 10px 20px; background-color: #ff0000; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold;">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <a href="{{ path('app_question_answers_add', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}"  style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Add answer</a>
+            <a href="{{ path('app_questions', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}"  style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Back to question</a>
+        </div>
+    </div>
+{% endblock %}
+

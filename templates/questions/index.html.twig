@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="font-size: 32px; font-weight: bold; margin-bottom: 24px; display: flex;justify-content: center; align-items: center;">Quiz:  {{ quiz.quizTitle | upper }}</h1>
+
+    <table style="border-collapse: collapse; width: 100%;">
+        <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="border: 1px solid #ddd; padding: 8px;" colspan="4">Question</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ question.questionText }}</td>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    <a href="{{ path('app_question_answers', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}" style="display: inline-block; background-color: #6a0995; color: #fff; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px;">Answer Question</a>
+
+                </td>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    <a href="{{ path('app_questions_edit', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}" style="display: inline-block; background-color: #6a0995; color: #fff; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px;">Edit</a>
+                </td>
+                <td style="text-align: center; border: 1px solid #ddd; padding: 8px;">
+                    <a href="{{ path('app_questions_delete', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}" style="display: inline-block; background-color: #f44336; color: white; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px;">Delete</a>
+
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-top: 24px; text-align: center;">
+        <a href="{{ path('app_questions_add', {'quizId': quiz.idQuiz}) }}" style="display: inline-block; background-color: #6a0995; color: #fff; padding: 8px 16px; text-align: center; text-decoration: none; border-radius: 4px;">Add Question</a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base2.html.twig' %}
+{% block stylesheets %}
+    <style>
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h1>Add a New Question</h1>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_label(form.questionText) }}
+    {{ form_widget(form.questionText) }}
+    <button type="submit">Save</button>
+    {{ form_end(form) }}
+    <a href="{{ path('app_questions', {'quizId': quiz.getIdQuiz()}) }}">Back to Questions</a>
+</div>
+    {% endblock %}

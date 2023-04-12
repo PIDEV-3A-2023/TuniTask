@@ -1,0 +1,64 @@
+{% extends 'base2.html.twig' %}
+{#{% block stylesheets %}#}
+{#<style>#}
+{#    h1 {#}
+{#        color: #333;#}
+{#        font-size: 32px;#}
+{#        margin-bottom: 30px;#}
+{#        text-align: center;#}
+{#    }#}
+
+{#    form {#}
+{#        max-width: 600px;#}
+{#        margin: 0 auto;#}
+{#        background-color: #fff;#}
+{#        border: 1px solid #ddd;#}
+{#        border-radius: 10px;#}
+{#        padding: 20px;#}
+{#    }#}
+
+{#    label {#}
+{#        display: block;#}
+{#        margin-bottom: 10px;#}
+{#    }#}
+
+{#    input[type="text"], textarea {#}
+{#        width: 100%;#}
+{#        padding: 10px;#}
+{#        border: 1px solid #ddd;#}
+{#        border-radius: 5px;#}
+{#        margin-bottom: 20px;#}
+{#        font-size: 16px;#}
+{#    }#}
+
+{#    .error-message {#}
+{#        color: red;#}
+{#        margin-top: 10px;#}
+{#    }#}
+{#</style>#}
+{#{% endblock %}#}
+
+
+{% block body %}
+<div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h1>Edit Quiz</h1>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'myForm', 'style': 'max-width: 600px; margin: 0 auto; background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 20px;'}}) }}
+    <div cstyle="margin-bottom: 20px;">
+        {{ form_label(form.quizTitle) }}
+        {{ form_widget(form.quizTitle, {'attr': {'style': 'width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'}}) }}
+        {{ form_errors(form.quizTitle) }}
+    </div>
+    <div style="margin-bottom: 20px;">
+        {{ form_label(form.quizDescription) }}
+        {{ form_widget(form.quizDescription, {'attr': {'style': 'width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'}}) }}
+        {{ form_errors(form.quizDescription) }}
+    </div>
+    <div style="margin-bottom: 20px;">
+        {{ form_label(form.score) }}
+        {{ form_widget(form.score, {'attr': {'style': 'width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'}}) }}
+        {{ form_errors(form.score) }}
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

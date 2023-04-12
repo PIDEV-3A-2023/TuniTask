@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <head>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </head>
+    <div style="display:flex;align-items: center;justify-content: center;flex-direction: column">
+        <h1 style="text-align: center;margin-bottom: 30px;">Quiz: {{ quiz.quizTitle }}</h1>
+        <h2 style="text-align: center;margin-bottom: 30px;">{{ question.questionText }}</h2>
+
+        <form id="quizForm" method="POST">
+
+        <table style="border-collapse: collapse;width: 100%;max-width: 800px;margin: 0 auto;">
+                <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="padding: 12px;border: 1px solid #ddd;text-align: left;">Answer</th>
+                    <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Is It Correct?</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for answer in answers %}
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 12px;border: 1px solid #ddd;">{{ answer.answer }}</td>
+                        <td style="padding: 12px;border: 1px solid #ddd;text-align: center;">
+                            <input type="checkbox" name="answers[]" value="{{ answer.idAnswer }}" />
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+
+                    <button type="submit"  style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Check answer</button>
+                <a href="{{ path('app_questions', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}" style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Back to question</a>
+            </div>
+        </form>
+
+    </div>
+
+
+{% endblock %}
