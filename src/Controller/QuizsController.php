@@ -7,6 +7,7 @@ use App\Form\QuizsType;
 use App\Repository\QuestionsRepository;
 use App\Repository\QuizsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -56,6 +57,8 @@ class QuizsController extends AbstractController
         ]);
     }
 
+
+
     #[Route('/freequizs', name: 'free_quizs')]
     public function view2(QuizsRepository $quizsRepository): Response
     {
@@ -66,7 +69,7 @@ class QuizsController extends AbstractController
         ]);
     }
     #[Route('/quizs/add', name: 'app_quizs_new')]
-    public function new(Request $request ,QuizsRepository $quizsRepository): Response
+    public function new(Request $request ,FlashyNotifier $flashy,QuizsRepository $quizsRepository): Response
     {
         $quiz = new Quizs();
         $form = $this->createForm(QuizsType::class, $quiz);
@@ -82,7 +85,7 @@ class QuizsController extends AbstractController
             }
             $this->entityManager->persist($quiz);
             $this->entityManager->flush();
-
+$flashy->success('Quiz is added successfully!', 'http://your-awesome-link.com');
             // Add flash message here
             $this->addFlash('success', 'Quiz has been added successfully!');
 

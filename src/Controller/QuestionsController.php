@@ -12,6 +12,7 @@ use App\Repository\QuestionsRepository;
 use App\Repository\QuizsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,7 +44,7 @@ class QuestionsController extends AbstractController
 
 
     #[Route('/questions/{quizId}/add', name: 'app_questions_add')]
-    public function addQuestion(Request $request, EntityManagerInterface $entityManager, int $quizId): Response
+    public function addQuestion(Request $request,FlashyNotifier $flashy, EntityManagerInterface $entityManager, int $quizId): Response
     {
 
         $quiz = $entityManager->getRepository(Quizs::class)->find($quizId);
@@ -61,7 +62,7 @@ class QuestionsController extends AbstractController
             $entityManager->persist($question);
             $entityManager->flush();
             $this->addFlash('success', 'Question has been added successfully!');
-
+$flashy->success('Question has been added successfully!', 'http://your-awesome-link.com');
             return $this->redirectToRoute('app_questions', ['quizId' => $quiz->getIdQuiz()]);
         }
 
@@ -120,7 +121,7 @@ class QuestionsController extends AbstractController
 
         $answers = $answersRepository->findBy(['idQuestion' => $question]);
 
-        return $this->render('answers/indexfreelancer.html.twig', [
+        return $this->render('answers/index.html.twig', [
             'quiz' => $quiz,
             'question' => $question,
             'answers' => $answers,
@@ -133,7 +134,7 @@ class QuestionsController extends AbstractController
 
 
     #[Route('/questions/{quizId}/question/{questionId}/answers/add', name: 'app_question_answers_add')]
-    public function addAnswer(Request $request, EntityManagerInterface $entityManager, int $quizId, int $questionId): Response
+    public function addAnswer(Request $request,FlashyNotifier $flashy, EntityManagerInterface $entityManager, int $quizId, int $questionId): Response
     {
         $quiz = $entityManager->getRepository(Quizs::class)->find($quizId);
         if (!$quiz) {
@@ -156,7 +157,7 @@ class QuestionsController extends AbstractController
             $entityManager->persist($answer);
             $entityManager->flush();
             $this->addFlash('success', 'An answer has been added successfully!');
-
+$flashy->success('An answer has been added successfully!', 'http://your-awesome-link.com');
             return $this->redirectToRoute('app_question_answers', ['quizId' => $quizId, 'questionId' => $questionId]);
         }
 

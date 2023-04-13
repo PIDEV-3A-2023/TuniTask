@@ -29,19 +29,7 @@
             </table>
 
             <div style="display: flex; justify-content: center; margin-top: 20px;">
-                <button type="submit" onclick="event.preventDefault(); var total = 0;
-                        var checkboxes = document.getElementsByName('answers[]');
-                        var correctAnswers = 0;
-                        for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i].checked) {
-                        total += 1;
-                        if (checkboxes[i].value === '1') {
-                        correctAnswers += 1;
-                        }
-                        }
-                        }
-                        if (correctAnswers === total && total !== 0) {
-                        notifier.notify('browser', 'success', 'Correct!', 'You got it right!');
+                <button type="submit" onclick="event.preventDefault(); var total = 0; var checkboxes = document.getElementsByName('answers[]'); var correctAnswers = 0; for (var i = 0; i < checkboxes.length; i++) {if (checkboxes[i].checked) {total += 1; if (checkboxes[i].value === '1') { correctAnswers += 1; }}} if (correctAnswers === total && total !== 0) {swal({title: 'Correct!',text: 'You got it right!',icon: 'success',button: 'Next'}).then(function() {
                         $.ajax({
                         url: '{{ path('update_quiz_score', {'quizId': quiz.idQuiz}) }}',
                         type: 'POST',
@@ -50,10 +38,8 @@
                         window.location.href = '{{ path('app_questions', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}';
                         }
                         });
-                        } else {
-                        notifier.notify('browser', 'error', 'Oops!', 'Sorry, that\'s not quite right. Try again!');
-                        }
-                        " style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Check answer</button>
+                        });} else {swal('Oops!', 'Sorry, that\'s not quite right. Try again!', 'error');}" style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Check answer</button>
+
                 <a href="{{ path('app_questions', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}" style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Next</a>
             </div>
         </form>
