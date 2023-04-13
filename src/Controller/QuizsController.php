@@ -10,9 +10,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class QuizsController extends AbstractController
 {
@@ -22,8 +24,24 @@ class QuizsController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
-    
-#[Route('/', name: 'index')]
+    /**
+     * @Route("/quiz/{quizId}/update-score", name="update_quiz_score", methods={"POST"})
+     */
+    public function updateQuizScore(Request $request, $quizId)
+    {
+        $entityManager = $this->entityManager;
+        $quiz = $entityManager->getRepository(Quizs::class)->find($quizId);
+        if (!$quiz) {
+            throw $this->createNotFoundException('Quiz not found');
+        }
+        $score = $request->request->get('score');
+        $quiz->setScore($quiz->getScore() + $score);
+        $entityManager->persist($quiz);
+        $entityManager->flush();
+        return new JsonResponse(['success' => true]);
+    }
+
+    #[Route('/', name: 'index')]
     public function index(): Response
     {
         return $this->render('base2.html.twig');
@@ -37,6 +55,7 @@ class QuizsController extends AbstractController
             'quizs' => $quizs,
         ]);
     }
+
     #[Route('/freequizs', name: 'free_quizs')]
     public function view2(QuizsRepository $quizsRepository): Response
     {
@@ -64,13 +83,18 @@ class QuizsController extends AbstractController
             $this->entityManager->persist($quiz);
             $this->entityManager->flush();
 
+            // Add flash message here
+            $this->addFlash('success', 'Quiz has been added successfully!');
+
             return $this->redirectToRoute('list_quizs');
+
         }
 
         return $this->render('quizs/add.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
 
     #[Route('/quizs/{id}/open', name: 'app_quizs_open')]
     public function open(Quizs $quiz, QuestionsRepository $questionsRepository): Response

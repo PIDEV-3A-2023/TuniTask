@@ -71,6 +71,9 @@
 
 {% block body %}
     <div style="display:flex;align-items: center;justify-content: center;flex-direction: column">
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">{{ flashMessage }}</div>
+        {% endfor %}
         <h1 style="text-align: center;margin-bottom: 30px;">Quiz: {{ quiz.quizTitle }}</h1>
         <h2 style="text-align: center;margin-bottom: 30px;">{{ question.questionText }}</h2>
 

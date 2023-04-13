@@ -4,8 +4,11 @@
         <head>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </head>
-
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">{{ flashMessage }}</div>
+        {% endfor %}
     <h1 style="color: #333; font-size: 32px; margin-bottom: 30px; text-align: center;">Liste des Quizs</h1>
+
     <table class="quiz-table" style="border-collapse: collapse; width: 100%;">
         <thead>
         <tr style="background-color: #f2f2f2;">

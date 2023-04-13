@@ -60,6 +60,7 @@ class QuestionsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($question);
             $entityManager->flush();
+            $this->addFlash('success', 'Question has been added successfully!');
 
             return $this->redirectToRoute('app_questions', ['quizId' => $quiz->getIdQuiz()]);
         }
@@ -119,7 +120,7 @@ class QuestionsController extends AbstractController
 
         $answers = $answersRepository->findBy(['idQuestion' => $question]);
 
-        return $this->render('answers/index.html.twig', [
+        return $this->render('answers/indexfreelancer.html.twig', [
             'quiz' => $quiz,
             'question' => $question,
             'answers' => $answers,
@@ -154,6 +155,7 @@ class QuestionsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($answer);
             $entityManager->flush();
+            $this->addFlash('success', 'An answer has been added successfully!');
 
             return $this->redirectToRoute('app_question_answers', ['quizId' => $quizId, 'questionId' => $questionId]);
         }
