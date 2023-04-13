@@ -1,0 +1,46 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+<div style="text-align:center;">
+<h1 style="font-size:2em;">Mes Demandes</h1>
+<table style="width:100%; border-collapse: collapse;">
+<thead>
+<tr style="background-color:#f2f2f2; color:#333; font-weight:bold; text-align:center;">
+<th style="border: 1px solid #ddd; padding: 12px;">Id</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Prénom</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Nom</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Titre</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Description</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Salaire</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Délai</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Langage</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for i in d %}
+<tr style="text-align:center;">
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.id }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.firstName }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.lastName }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.titre }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.description }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.salaire }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.delai }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.langage }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">
+<form action="{{ path('app_deleteD', {'id': i.id}) }}" method="post" style="display:inline;">
+<button type="submit" style="background-color:#f44336; color:#fff; padding:6px 12px; border:none; border-radius:3px; cursor:pointer;">Supprimer</button>
+</form>
+<form action="{{ path('app_updateD', {'id': i.id}) }}" method="get" style="display:inline;">
+<button type="submit" style="background-color:#4CAF50; color:#fff; padding:6px 12px; border:none; border-radius:3px; cursor:pointer; margin-left:6px;">Modifier</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+    <br>
+    <a href="{{ path('app_addD') }}" class="button" style="color: blue;">Ajouter Demande</a>
+{% endblock %}
+

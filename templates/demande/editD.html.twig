@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Modifier une demande </h1>
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/addform.css') }}">
+{% endblock %}
+{{form_start(f,{'attr': {'novalidate': 'novalidate'}}) }}
+<table>
+<tr>
+<td> {{ form_label(f.titre,"Titre")  }} 
+ </td>
+<td>  {{ form_widget(f.titre) }} 
+</td>  
+<td> {{ form_errors(f.titre) }} 
+</td>
+</tr>
+
+<tr>
+<td>  {{ form_label(f.description,"Description") }} 
+</td> 
+<td> {{ form_widget(f.description)}} 
+ </td> 
+<td>  {{ form_errors(f.description) }} 
+</td> 
+</tr>
+<tr>
+<td>  {{ form_label(f.salaire,"Salaire") }} 
+</td> 
+<td> {{ form_widget(f.salaire)}} 
+ </td> 
+<td>  {{ form_errors(f.salaire) }} 
+</td> 
+</tr>
+<tr>
+<td>  {{ form_label(f.delai,"Delai") }} 
+</td> 
+<td> {{ form_widget(f.delai)}} 
+ </td> 
+<td>  {{ form_errors(f.delai) }} 
+</td> 
+</tr>
+<tr>
+<td>  {{ form_label(f.langage,"Langage") }} 
+</td> 
+<td> {{ form_widget(f.langage)}} 
+ </td> 
+<td>  {{ form_errors(f.langage) }} 
+</td> 
+</tr>
+</table>
+ {{ form_widget(f.save)}} 
+{{form_end(f)}}
+{% endblock %}
