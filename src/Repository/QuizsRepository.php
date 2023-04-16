@@ -20,6 +20,23 @@ class QuizsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Quizs::class);
     }
+    /**
+     * Finds quizs by title.
+     *
+     * @param string $title The title to search for
+     * @return Quizs[] The matching quizs
+     */
+    public function findByTitle(string $title): array
+    {
+        $qb = $this->createQueryBuilder('q');
+
+        if ($title) {
+            $qb->andWhere('LOWER(q.quizTitle) LIKE :title')
+                ->setParameter('title', '%' . strtolower($title) . '%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 
     public function save(Quizs $entity, bool $flush = false): void
     {

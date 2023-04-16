@@ -25,6 +25,7 @@ class QuizsController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
+
     /**
      * @Route("/quiz/{quizId}/update-score", name="update_quiz_score", methods={"POST"})
      */
@@ -43,9 +44,14 @@ class QuizsController extends AbstractController
     }
 
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(Request $request, QuizsRepository $quizsRepository): Response
     {
-        return $this->render('base2.html.twig');
+        $term = $request->query->get('searchInput');
+        $quizs = $quizsRepository->findByTitle($term);
+
+        return $this->render('quizs/index.html.twig', [
+            'quizs' => $quizs,
+        ]);
     }
     #[Route('/quizs', name: 'list_quizs')]
     public function view(QuizsRepository $quizsRepository): Response
