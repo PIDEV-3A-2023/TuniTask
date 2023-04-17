@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Offre;
 use App\Entity\Users;
 use App\Entity\Commentaire;
+use App\Entity\Rate;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\OffreRepository;
 use App\Repository\CommentaireRepository;
@@ -36,7 +37,7 @@ class CommentaireController extends AbstractController
         $result = $entityManager->getRepository(Offre::class)
             ->createQueryBuilder('t')
             ->leftJoin(Users::class, 't2', 'WITH', 't2.id = t.user')
-            ->select('t.idoffre,t.description, t.titre, t.salaireh, t2.firstName, t2.lastName,t2.srcimage')
+            ->select('t.idoffre,t.description,t.rating, t.titre, t.salaireh, t2.firstName, t2.lastName,t2.srcimage')
             ->getQuery()
             ->getResult();
 

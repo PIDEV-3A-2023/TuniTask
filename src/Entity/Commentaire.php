@@ -8,6 +8,8 @@ use App\Entity\Offre;
 use App\Entity\Users;
 use App\Repository\CommentaireRepository;
 
+
+
 #[ORM\Entity(repositoryClass: CommentaireRepository::class)]
 class Commentaire
 {
@@ -18,6 +20,9 @@ class Commentaire
 
     #[ORM\Column(length: 2000)]
     private ?string $commentaire= null;
+
+    
+   
 
     #[ORM\ManyToOne(inversedBy: 'Commentaire')]
     #[ORM\JoinColumn(nullable: false)]

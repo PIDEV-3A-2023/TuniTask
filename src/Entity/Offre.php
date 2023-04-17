@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
 use App\Entity\Users;
 use App\Repository\OffreRepository;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 #[ORM\Entity(repositoryClass: OffreRepository::class)]
@@ -24,7 +25,9 @@ class Offre
     #[ORM\Column(length: 50)]
     private ?string $titre= null;
     
-
+    #[ORM\Column(type:"integer")]
+    #[Gedmo\Rating]
+    private $rating;
     
     #[ORM\Column]
     private ?float $salaireh= null;
