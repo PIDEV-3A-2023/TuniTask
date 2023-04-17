@@ -35,6 +35,9 @@
             "./migrations/.gitignore"
         ]
     },
+    "gregwar/captcha-bundle": {
+        "version": "v1.0.0"
+    },
     "mercuryseries/flashy-bundle": {
         "version": "v5.1.0"
     },

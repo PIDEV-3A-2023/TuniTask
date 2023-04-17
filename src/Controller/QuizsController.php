@@ -7,6 +7,8 @@ use App\Form\QuizsType;
 use App\Repository\QuestionsRepository;
 use App\Repository\QuizsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,6 +26,29 @@ class QuizsController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+    }
+    #[Route('/quizs/{id}/pdf', name: 'app_quizs_pdf')]
+    public function pdf(Quizs $quiz): Response
+    {
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options);
+        $html = $this->renderView('quizs/pdf.html.twig', [
+            'quiz' => $quiz,
+
+        ]);
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $response = new Response($dompdf->output());
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-Disposition', 'inline; filename="quiz.pdf"');
+
+        return $response;
     }
 
     /**
@@ -44,23 +69,24 @@ class QuizsController extends AbstractController
     }
 
     #[Route('/', name: 'index')]
-    public function index(Request $request, QuizsRepository $quizsRepository): Response
+    public function index(): Response
     {
-        $term = $request->query->get('searchInput');
-        $quizs = $quizsRepository->findByTitle($term);
-
-        return $this->render('quizs/index.html.twig', [
-            'quizs' => $quizs,
-        ]);
+        return $this->render('base2.html.twig');
     }
-    #[Route('/quizs', name: 'list_quizs')]
-    public function view(QuizsRepository $quizsRepository): Response
-    {
-        $quizs = $quizsRepository->findAll();
 
-        return $this->render('quizs/index.html.twig', [
-            'quizs' => $quizs,
-        ]);
+    #[Route('/quizs', name: 'list_quizs')]
+    public function view(QuizsRepository $quizsRepository,Request $request): Response
+    {
+     $term = $request->query->get('searchInput');
+        if ($term === null) {
+            $quizs = $quizsRepository->findAll();
+        } else {
+    $quizs = $quizsRepository->findByTitle($term);
+}
+
+return $this->render('quizs/indexfreelancer.html.twig', [
+    'quizs' => $quizs,
+]);
     }
 
 

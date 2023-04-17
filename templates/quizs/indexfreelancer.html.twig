@@ -6,6 +6,22 @@
         </head>
 
         <h1 style="color: #333; font-size: 32px; margin-bottom: 30px; text-align: center;">Liste des Quizs</h1>
+        <div style="color: #333; font-size: 20px; margin-bottom: 10px; text-align: center;">
+            <label for="searchInput">Search Quiz</label>
+            <input type="text" id="searchInput" name="searchInput" oninput="
+    const searchValue = event.target.value.trim().toLowerCase();
+    const rows = document.querySelectorAll('.quiz-table tbody tr');
+    rows.forEach(function(row) {
+        const title = row.querySelector('td:nth-child(1)').textContent.trim().toLowerCase();
+        if (title.includes(searchValue)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+">
+
+        </div>
         <table class="quiz-table" style="border-collapse: collapse; width: 100%; max-width: 800px; margin: 0 auto; background-color: #fff; border: 1px solid #ddd; border-radius: 10px; overflow: hidden;">
             <thead>
             <tr>
@@ -25,7 +41,9 @@
                     <td style="padding: 10px; text-align: left;">
                         <a href="{{ path('app_quizs_open', {'id': quiz.idQuiz}) }}" style="display: inline-block; padding: 8px 16px; background-color: #6a0995; color: #fff; border-radius: 4px; text-decoration: none;">Open</a>
                     </td>
-
+                    <td style="padding: 10px; text-align: left;">
+                        <a href="{{ path('app_quizs_pdf', {'id': quiz.idQuiz}) }}" style="display: inline-block; padding: 8px 16px; background-color: #6a0995; color: #fff; border-radius: 4px; text-decoration: none;">Certificate</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate of Completion</title>
+
+    <style>
+        /* Add CSS styles to make the certificate look more professional */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        .certificate {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="certificate">
+
+    <h1>Certificate of Completion <img src="/public/img/logo.png" height="60"></h1>
+    <p>Congratulations! You have completed the {{ quiz.quizTitle }} quiz with a score of {{ quiz.score }}.</p>
+</div>
+</body>
+</html>
