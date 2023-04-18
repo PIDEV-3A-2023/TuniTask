@@ -25,7 +25,7 @@ class Offre
     #[ORM\Column(length: 50)]
     private ?string $titre= null;
     
-    #[ORM\Column(type:"integer")]
+    #[ORM\Column(type:"float")]
     #[Gedmo\Rating]
     private $rating;
     
@@ -35,6 +35,9 @@ class Offre
     #[ORM\ManyToOne(inversedBy: 'Offre')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $user = null;
+
+    #[ORM\Column]
+    private ?int $count = 1;
 
     public function getIdoffre(): ?int
     {
@@ -87,6 +90,28 @@ class Offre
         $this->user = $user;
 
         return $this;
+    }
+
+    public function getCount(): ?int
+    {
+        return $this->count;
+    }
+
+    public function setCount(int $count): self
+    {
+        $this->count = $count;
+
+        return $this;
+    }
+    public function setRating(float $rating): void
+    {
+        $this->rating = $rating;
+    }
+
+    
+    public function getRating(): float
+    {
+        return $this->rating;
     }
     
 

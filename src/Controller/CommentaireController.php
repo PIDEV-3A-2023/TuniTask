@@ -17,10 +17,12 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Form\CommentaireaddType;
 use App\Form\CommentaireeditType;
+use App\Form\RatingType;
 
 
 class CommentaireController extends AbstractController
 {
+    
     #[Route('/commentaire', name: 'app_commentaire')]
     public function index(): Response
     {
@@ -40,7 +42,7 @@ class CommentaireController extends AbstractController
             ->select('t.idoffre,t.description,t.rating, t.titre, t.salaireh, t2.firstName, t2.lastName,t2.srcimage')
             ->getQuery()
             ->getResult();
-
+            
         return $this->render('commentaire/redo.html.twig', [
             'result' => $result,
         ]);
@@ -142,4 +144,34 @@ class CommentaireController extends AbstractController
 
                 return $this->redirectToRoute('app_readoc');
             }
+
+            #[Route('/addR/{id}', name: 'app_addR')]
+    public function addRating(Request $request, $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $idoffre = $id;
+        $OffreRepository = $entityManager->getRepository(Offre::class);
+        $currentOffre = $OffreRepository->find($idoffre);
+        $count=$currentOffre->getCount();
+        $Rati=$currentOffre->getRating();
+        $result = $entityManager->getRepository(Offre::class)
+            ->createQueryBuilder('t')
+            ->leftJoin(Users::class, 't4', 'WITH', 't4.id = t.user')
+            ->select('t.idoffre,t.description,t.rating, t.titre, t.salaireh, t4.firstName, t4.lastName,t4.srcimage')
+            ->getQuery()
+            ->getResult();
+        $form = $this->createForm(RatingType::class);
+        $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $ratingg = $form->getData()['rating'];
+        $currentOffre->setRating($Rati+$ratingg);
+        $currentOffre->setCount($count+1);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_readoc');}
+        return $this->render("commentaire/redo.html.twig", [
+            "fff" => $form->createView(),
+            "result" => $result,
+        ]);
+    }   
 }
