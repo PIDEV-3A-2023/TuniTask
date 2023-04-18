@@ -77,6 +77,7 @@ class QuizsController extends AbstractController
     #[Route('/quizs', name: 'list_quizs')]
     public function view(QuizsRepository $quizsRepository,Request $request): Response
     {
+
      $term = $request->query->get('searchInput');
         if ($term === null) {
             $quizs = $quizsRepository->findAll();
@@ -86,6 +87,7 @@ class QuizsController extends AbstractController
 
 return $this->render('quizs/indexfreelancer.html.twig', [
     'quizs' => $quizs,
+
 ]);
     }
 
@@ -136,7 +138,7 @@ $flashy->success('Quiz is added successfully!', 'http://your-awesome-link.com');
         {
             $questions = $questionsRepository->findBy(['idQuiz' => $quiz]);
 
-            return $this->render('questions/index.html.twig', [
+            return $this->render('questions/indexfreelancer.html.twig', [
                 'quiz' => $quiz,
                 'questions' => $questions,
             ]);

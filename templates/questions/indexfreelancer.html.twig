@@ -2,6 +2,8 @@
 
 {% block body %}
     <h1 style="font-size: 32px; font-weight: bold; margin-bottom: 24px; display: flex;justify-content: center; align-items: center;">Quiz:  {{ quiz.quizTitle | upper }}</h1>
+   {%  block num %} <p style="text-align: center;">Number of Questions: {{ questions|length }}</p>
+{% endblock %}
 
     <table style="border-collapse: collapse; width: 100%;">
         <thead>
