@@ -1,0 +1,32 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}Events
+{% endblock %}
+{% block content %}
+<div style="display: block;">
+            <div style="display: flex; width: 100%; margin-top: 40px;" class="fadeInUp" data-wow-delay="0.1s">
+		{% for e in event %}
+                <div style="margin: 0 auto; width: 20%; height: 500px;" class="project-item mb-5">
+                    <div class="position-relative">
+                        <img style="height: 240px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ e.image) }}" alt="">
+                    </div>
+                    <div style="height: 180px;" class="p-4">
+                        <a class="d-block h5" href="">{{ e.nom }}</a>
+                        <h5>Lieu:
+							{{ e.lieu }}</h5>
+						<h5>Date:
+							{{ e.date|date('d-m-Y') }}
+						</h5>
+						<h5>Places restantes:
+							{{ e.nbrPlace }}
+						</h5>
+                    </div>
+                <div style="position: relative;" class="ms-auto d-none d-lg-block">
+                    <a style="margin: 10px auto; width: 200px; display: block;" href="{{ path('app_reservation_send', {'id': e.id}) }}" class="btn btn-primary rounded-pill py-2 px-3">Réserver</a>
+                </div>
+                </div>
+
+		{% endfor %}
+	</div>
+        <a style="margin-left: 80px;" href="{{ path('app_reservation_index') }}">My Event Reservations</a>
+        </div>
+{% endblock   %}

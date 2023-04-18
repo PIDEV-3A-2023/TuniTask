@@ -1,0 +1,70 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reservations
+{% endblock %}
+
+{% block content %}
+	<div class="col">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">List Reservations</h4>
+				{# <a href="{{ path('admin_reservation_new') }}" class="badge badge-success">Add</a> #}
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Nombre de places réservées</th>
+								<th>Event</th>
+								<th>User</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for reservation in reservations %}
+								<tr>
+									<td>{{ reservation.date ? reservation.date|date('d-m-Y H:i:s') : '' }}</td>
+									<td>{{ reservation.nbRes }}</td>
+									<td>
+										<ul>
+											<li>
+												Nom:
+												{{ reservation.event.nom }}
+											</li>
+											<li>
+												Date:
+												{{ reservation.event.date ? reservation.event.date|date('d-m-Y H:i:s') : '' }}
+											</li>
+											<li>
+												Lieu:
+												{{ reservation.event.lieu }}
+											</li>
+											<li>
+												Capacité:
+												{{ reservation.event.nbrPlace }}
+											</li>
+										</ul>
+									</td>
+									<td>{{ reservation.user.firstName }}
+										{{ reservation.user.lastName }}
+										|
+										{{ reservation.user.email }}</td>
+									<td>
+										<a type="button" href="{{ path('admin_reservation_show', {'id': reservation.id}) }}" class="badge badge-info">Show</a>
+										{# <a href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}">edit</a> #}
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="4">no records found</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

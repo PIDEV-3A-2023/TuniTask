@@ -1,0 +1,48 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}Events{% endblock %}
+{% block content %}
+    <body>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">List Event</h4>
+                <a href="{{ path('newEvent') }}" class="badge badge-success">Add</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Nombre de place</th>
+                            <th>Lieu</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        {% for a in event %}
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="round-img">
+                                    <a href="#"><img width="35" src="{{ asset('/uploads/'~a.image) }}" alt=""></a>
+                                </div>
+                            </td>
+                            <td>  {{ a.nom }}</td>
+                            <td><span>  {{ a.nbrPlace }}</span></td>
+                            <td><span>  {{ a.lieu }}</span></td>
+                            <td><span>  {{ a.date |date('d-m-Y') }}</span></td>
+                            <td><a type="button" href="{{ path('updateEvent', {'id': a.id}) }}" class="badge badge-warning">Update</a></td>
+                            <td><a type="button" href="{{ path('deleteEvent', {'id': a.id}) }}" class="badge badge-danger">Delete</a></td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

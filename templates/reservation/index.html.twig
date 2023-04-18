@@ -1,0 +1,56 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Reservation index
+{% endblock %}
+
+{% block content %}
+	<div style="margin: 50px;">
+		<h1>My Reservations</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Nombre de places réservées</th>
+					<th>Event</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for reservation in reservations %}
+					<tr>
+						<td>{{ reservation.date ? reservation.date|date('d-m-Y H:i:s') : '' }}</td>
+						<td>{{ reservation.nbRes }}</td>
+						<td>
+							<ul>
+								<li>
+									Nom: {{ reservation.event.nom }}
+								</li>
+								<li>
+									Date: {{ reservation.event.date ? reservation.event.date|date('d-m-Y H:i:s') : '' }}
+								</li>
+								<li>
+									Lieu: {{ reservation.event.lieu }}
+								</li>
+								<li>
+									Capacité: {{ reservation.event.nbrPlace }}
+								</li>
+							</ul>
+						</td>
+						<td>
+							<a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+							<a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">update</a>
+							{{ include('reservation/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('eventList') }}">Book another Event</a>
+	</div>
+{% endblock %}
