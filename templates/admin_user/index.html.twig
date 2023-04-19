@@ -1,0 +1,26 @@
+{% extends 'base2.html.twig'%}
+{% block body %}
+ 
+    <div class="row">
+    <div class="col-lg-10"></div>
+       {% for user in users %}
+       <div class="col-lg-2">
+       {{ user.id }}
+       <div class="card" style="width: 14rem;">
+       {% set img="http://localhost/img/"~ user.srcimage %}
+       <img src="{{asset("http://localhost/img/"~ user.srcimage)}}"class="card-img-top" alt="...">
+      <div class="card-body">
+      <h5 class="card-title">{{user.FirstName}}</h5>
+      <p class="card-text">{{user.email}}</p>
+       <p class="card-text">{% if user.statut == true  %} Activate  {% else %}  Blocked {% endif %}</p>
+       
+      <a href="{{path('app_Block',{'id':user.id}) }}" class="btn btn-primary">{% if user.statut == true  %} Block {% else %} Enable {% endif %}</a>
+        
+      </div>
+      </div> 
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}
