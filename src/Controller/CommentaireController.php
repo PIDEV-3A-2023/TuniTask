@@ -31,7 +31,7 @@ class CommentaireController extends AbstractController
         ]);
     }
     #[Route('/readoc', name: 'app_readoc')]
-    public function readoffre(): Response
+    public function readoffre(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -44,7 +44,7 @@ class CommentaireController extends AbstractController
             ->getResult();
             
         return $this->render('commentaire/redo.html.twig', [
-            'result' => $result,
+            'result' => $result
         ]);
     }
     #[Route('/addc/{id}', name: 'app_addc')]
@@ -154,24 +154,15 @@ class CommentaireController extends AbstractController
         $currentOffre = $OffreRepository->find($idoffre);
         $count=$currentOffre->getCount();
         $Rati=$currentOffre->getRating();
-        $result = $entityManager->getRepository(Offre::class)
-            ->createQueryBuilder('t')
-            ->leftJoin(Users::class, 't4', 'WITH', 't4.id = t.user')
-            ->select('t.idoffre,t.description,t.rating, t.titre, t.salaireh, t4.firstName, t4.lastName,t4.srcimage')
-            ->getQuery()
-            ->getResult();
         $form = $this->createForm(RatingType::class);
         $form->handleRequest($request);
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        $ratingg = $form->getData()['rating'];
+        if ($form->isSubmitted() && $form->isValid()) {
+        $ratingg = $form->get('rating')->getData();
         $currentOffre->setRating($Rati+$ratingg);
         $currentOffre->setCount($count+1);
         $entityManager->flush();
         return $this->redirectToRoute('app_readoc');}
-        return $this->render("commentaire/redo.html.twig", [
-            "fff" => $form->createView(),
-            "result" => $result,
-        ]);
-    }   
+        return $this->renderForm("Commentaire/addr.html.twig",array("fff"=>$form));}
+    
+
 }

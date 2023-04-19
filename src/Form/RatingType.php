@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class RatingType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('rating', ChoiceType::class, [
@@ -20,8 +20,8 @@ class RatingType extends AbstractType
                         '★★★★' => 4,
                         '★★★★★' => 5,
                     ],
-                'expanded' => true,
-                'multiple' => false,
+                
+                
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer',
@@ -29,7 +29,7 @@ class RatingType extends AbstractType
             ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => null,
