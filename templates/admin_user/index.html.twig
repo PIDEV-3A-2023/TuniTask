@@ -1,7 +1,8 @@
 {% extends 'base2.html.twig'%}
 {% block body %}
- 
     <div class="row">
+    
+ <br>
     <div class="col-lg-10"></div>
        {% for user in users %}
        <div class="col-lg-2">
@@ -17,10 +18,20 @@
       <a href="{{path('app_Block',{'id':user.id}) }}" class="btn btn-primary">{% if user.statut == true  %} Block {% else %} Enable {% endif %}</a>
         
       </div>
-      </div> 
+      </div>
+      
 </div>
 
 {% endfor %}
+
 </div>
+
+&nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp<center><h1>{{ knp_pagination_render(users) }}</h1></center> 
 </div>
+
 {% endblock %}

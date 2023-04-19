@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
 class AdminUserController extends AbstractController
 {
     #[Route('/admin/user', name: 'app_admin_user')]
@@ -17,10 +19,15 @@ class AdminUserController extends AbstractController
         ]);
     }
             #[Route('/Admin', name: 'app_admin')]
-    public function list(UsersRepository $UsersRepository): Response
+    public function list(UsersRepository $UsersRepository,PaginatorInterface $paginator,Request $req): Response
     {
         //$repository = $entityManager->getRepository(Role::class);
-        $users = $UsersRepository->findAll();
+        $user = $UsersRepository->findAll();
+         $users = $paginator->paginate(
+            $user, /* query NOT result */
+            $req->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
         return $this->render("admin_user/index.html.twig",[
             'users'=>$users
         ]);
