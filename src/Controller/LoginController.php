@@ -30,6 +30,8 @@ class LoginController extends AbstractController
             
           if(  $form->isSubmitted()     )
           {
+            dump("ok");
+            /*
             
            
         
@@ -56,7 +58,7 @@ class LoginController extends AbstractController
         else{
         return $this->renderForm('login/index.html.twig', [
             'form' => $form,"test" => true
-        ]);}}
+        ]);}*/}
 
 
         return $this->renderForm('login/index.html.twig', [
