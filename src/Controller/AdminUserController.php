@@ -9,6 +9,7 @@ use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 class AdminUserController extends AbstractController
 {
     #[Route('/admin/user', name: 'app_admin_user')]
@@ -19,9 +20,10 @@ class AdminUserController extends AbstractController
         ]);
     }
             #[Route('/Admin', name: 'app_admin')]
-    public function list(UsersRepository $UsersRepository,PaginatorInterface $paginator,Request $req): Response
+    public function list(UsersRepository $UsersRepository,PaginatorInterface $paginator,Request $req,FlashyNotifier $flashy): Response
     {
         //$repository = $entityManager->getRepository(Role::class);
+      $flashy->primary('Thanks for signing up!', 'http://your-awesome-link.com');
         $user = $UsersRepository->findAll();
          $users = $paginator->paginate(
             $user, /* query NOT result */
@@ -33,7 +35,7 @@ class AdminUserController extends AbstractController
         ]);
     }
               #[Route('/Block{id}', name: 'app_Block')]
-    public function Block($id,UsersRepository $UsersRepository,EntityManagerInterface $entityManager): Response
+    public function Block($id,UsersRepository $UsersRepository,EntityManagerInterface $entityManager,PaginatorInterface $paginator,Request $req,FlashyNotifier $flashy): Response
     {
         //$repository = $entityManager->getRepository(Role::class);
         //$r=$this->getDoctrine()->getRepository(Users::class);
@@ -53,9 +55,17 @@ class AdminUserController extends AbstractController
     ->setParameter('userId', $id);
 
     $numUpdated = $query->execute();
-    $users = $UsersRepository->findAll();
+    /* //$repository = $entityManager->getRepository(Role::class);
+        $user = $UsersRepository->findAll();
+         $users = $paginator->paginate(
+            $user, /* query NOT result */
+           // $req->query->getInt('page', 1)/*page number*/,
+            //5/*limit per page*/
+        /*);
         return $this->render("admin_user/index.html.twig",[
             'users'=>$users
-        ]);
+        ]);*/
+        
+        return $this->redirectToRoute('app_admin');
     }
 }

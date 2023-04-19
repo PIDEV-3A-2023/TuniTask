@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('admin/vendor/owl-carousel/css/owl.theme.default.min.css')}}">
     <link href="{{asset('admin/vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/style1.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -195,9 +196,12 @@
     <script src="{{asset('admin/vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
     <script src="{{asset('admin/vendor/jquery.counterup/jquery.counterup.min.js')}}"></script>
 
-
+       <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
     <script src="{{asset('admin/js/dashboard/dashboard-1.js')}}"></script>
     {% endblock %}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 </body>
 
 </html>
