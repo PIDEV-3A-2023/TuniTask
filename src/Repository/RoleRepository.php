@@ -40,7 +40,7 @@ class RoleRepository extends ServiceEntityRepository
     }
 
     
-     public function SelectById($value): String
+   /*  public function SelectById($value): String
     {
          $qb = $this->createQueryBuilder('u');
         $qb->select('r.role_name')
@@ -50,7 +50,7 @@ class RoleRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getSingleScalarResult();
        ;
-    }
+    }*/
 
 //    public function findOneBySomeField($value): ?Club
 //    {

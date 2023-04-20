@@ -1,6 +1,7 @@
 
 
 {% block body %}
+
 <div class="container-fuild">
     
      <div class="row"></div>
@@ -40,16 +41,24 @@
               
               
              {% if test != null %}
-              {% if test == true  %}
+              {% if test == 'banned'  %}
+               <div class="alert alert-danger" role="alert">
+               You have been banned !
+               
+              
+               </div>
+               
+               {% else  %}
                <div class="alert alert-danger" role="alert">
                
-               Vérifiez vos Login ou vos Password
+               Vérifiez vos Login ou vos Password !
               
                </div>
                {% endif %}
+               {% endif %}
              
               
-              {% endif %}
+            
                        
            <center> <button type="submit" class="btn btn-primary">S'authentifier</button></center>
             

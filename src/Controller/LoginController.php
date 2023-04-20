@@ -12,6 +12,7 @@ use App\Repository\RoleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 class LoginController extends AbstractController
 {
 
@@ -22,7 +23,7 @@ class LoginController extends AbstractController
         $this->passwordHasher = $passwordHasher;
     }
     #[Route('/login', name: 'app_login')]
-    public function index(Request $request,UsersRepository $UsersRepository,RoleRepository $r): Response
+    public function index(Request $request,UsersRepository $UsersRepository,RoleRepository $r,FlashyNotifier $flashy): Response
     {
          $login = new Login();
         
@@ -32,41 +33,39 @@ class LoginController extends AbstractController
             
           if(  $form->isSubmitted()     )
           {
-            dump("ok");
-            /*
-            
-           
-        
-           $email_user=$UsersRepository->findOneBy(['email' => $login->getEmail()]);
-            dump($email_user);
-            dump($r->SelectById($email_user->getId()));
-          $password_user=$UsersRepository->findOneBy(['password' => $this->passwordHasher->hashPassword($login->getPassword())]);
-           
-          
-        
-        if ($email_user &&  $password_user)
-        {
-            if($r->SelectById($email_user->getId())=="Freelancer")
-           { return $this->renderForm('FreelancerA.html.twig', [
-            'form' => $form,"test" => true
-        ]) ;}
-        else {
-            dump("ah ya baba");
-        }
-
-
-
-        }
-        else{
-        return $this->renderForm('login/index.html.twig', [
-            'form' => $form,"test" => true
-        ]);}*/}
-
-
-        return $this->renderForm('login/index.html.twig', [
-            'form' => $form, "test" => null
+              $email_user=$UsersRepository->findOneBy(['email' => $login->getEmail()]);
+              //dump($email_user);
+              //dump($UsersRepository->findOneBy(['id' => $email_user->getId()]));
+              $password_user=$UsersRepository->findOneBy(['password' => $this->passwordHasher->hashPassword($login->getPassword())]);
+              if ($email_user &&  $password_user)
+                 {
+                    
+                    if($email_user->isStatut()==false)
+                    {  //$flashy->error('You are banned!', '');
+                      return $this->renderForm('login/index.html.twig', [
+            'form' => $form, "test" => 'banned'
         ]);
-    }
+                    }
+                    else
+                   {$role=$r->findOneBy(['idUser'=>$email_user]);
+                   
+                   if($role->getRoleName()=="Freelancer")
+                   { return $this->renderForm('FreelancerA.html.twig', [
+                   'form' => $form,"test" => null
+                   ]) ;}
+                   else  {
+                      if($role->getRoleName()=="Admin")
+                   { /*return $this->renderForm('admin_user/index.html.twig', [
+                   'form' => $form,"test" => null
+                   ]) ;*/
+                     return $this->redirectToRoute('app_admin');
+                }}
+                   }
+
+       
+    }} return $this->renderForm('login/index.html.twig', [
+            'form' => $form, "test" => null
+        ]);}
      /**
      * Link to this controller to start the "connect" process
      *

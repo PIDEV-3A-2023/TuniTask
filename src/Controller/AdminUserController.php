@@ -10,8 +10,19 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use MercurySeries\FlashyBundle\FlashyNotifier;
+use Symfony\Component\HttpFoundation\Session\Session;
 class AdminUserController extends AbstractController
 {
+    
+    private $session;
+    public function __construct(PasswordHasher $passwordHasher)
+    {
+       
+        $this->session = new Session();
+        $this->session->start();
+        
+       
+    }
     #[Route('/admin/user', name: 'app_admin_user')]
     public function index(): Response
     {
@@ -19,11 +30,32 @@ class AdminUserController extends AbstractController
             'controller_name' => 'AdminUserController',
         ]);
     }
+           #[Route('/AdminB', name: 'app_adminb')]
+    public function listB(UsersRepository $UsersRepository,PaginatorInterface $paginator,Request $req,FlashyNotifier $flashy): Response
+    {
+          
+        //$repository = $entityManager->getRepository(Role::class);
+    
+      $flashy->success('User\'s status has been modified with succes!', '');
+     
+        $user = $UsersRepository->findAll();
+         $users = $paginator->paginate(
+            $user, /* query NOT result */
+            $req->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
+        return $this->render("admin_user/index.html.twig",[
+            'users'=>$users
+        ]);
+    }
             #[Route('/Admin', name: 'app_admin')]
     public function list(UsersRepository $UsersRepository,PaginatorInterface $paginator,Request $req,FlashyNotifier $flashy): Response
     {
+          
         //$repository = $entityManager->getRepository(Role::class);
-      $flashy->primary('Thanks for signing up!', 'http://your-awesome-link.com');
+    
+      $flashy->primary('Thanks for signing up!', '');
+     
         $user = $UsersRepository->findAll();
          $users = $paginator->paginate(
             $user, /* query NOT result */
@@ -66,6 +98,6 @@ class AdminUserController extends AbstractController
             'users'=>$users
         ]);*/
         
-        return $this->redirectToRoute('app_admin');
+        return $this->redirectToRoute('app_adminb');
     }
 }
