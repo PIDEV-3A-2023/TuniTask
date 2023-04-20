@@ -18,6 +18,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use App\Form\CommentaireaddType;
 use App\Form\CommentaireeditType;
 use App\Form\RatingType;
+use Twig\Environment;
+
 
 
 class CommentaireController extends AbstractController
@@ -39,7 +41,7 @@ class CommentaireController extends AbstractController
         $result = $entityManager->getRepository(Offre::class)
             ->createQueryBuilder('t')
             ->leftJoin(Users::class, 't2', 'WITH', 't2.id = t.user')
-            ->select('t.idoffre,t.description,t.rating, t.titre, t.salaireh, t2.firstName, t2.lastName,t2.srcimage')
+            ->select('t.idoffre,t.description,t.sumr, t.titre, t.salaireh, t2.firstName, t2.lastName,t2.srcimage')
             ->getQuery()
             ->getResult();
             
@@ -160,9 +162,16 @@ class CommentaireController extends AbstractController
         $ratingg = $form->get('rating')->getData();
         $currentOffre->setRating($Rati+$ratingg);
         $currentOffre->setCount($count+1);
+        $currentOffre->setSumr(($Rati+$ratingg)/($count+1));
         $entityManager->flush();
         return $this->redirectToRoute('app_readoc');}
         return $this->renderForm("Commentaire/addr.html.twig",array("fff"=>$form));}
-    
-
+            
+        #[Route('/search', name: 'app_search')]
+        public function search(Request $request, OffreRepository $offreRepository, Environment $twig): Response
+        {
+            $searchTerm = $request->request->get('searchTerm');
+            $result = $offreRepository->search($searchTerm); // Appel à une méthode de recherche dans votre repository
+            return new Response($twig->render('Commentaire/offre_list.html.twig', ['result' => $result]));
+        }
 }

@@ -32,6 +32,12 @@ class Commentaire
     #[ORM\ManyToOne(targetEntity: 'App\Entity\Offre')]
     #[ORM\JoinColumn(referencedColumnName: "idoffre",name: "offre_id")]
     private ?offre $offre = null;
+
+    #[ORM\Column(nullable: false)]
+    private ?int $jaime = null;
+
+    #[ORM\Column(nullable: false)]
+    private ?int $djaime = null;
     
 
     public function getIdcommentaire(): ?int
@@ -71,6 +77,30 @@ class Commentaire
     public function setOffre(?Offre $offre): self
     {
         $this->offre = $offre;
+
+        return $this;
+    }
+
+    public function getJaime(): ?int
+    {
+        return $this->jaime;
+    }
+
+    public function setJaime(?int $jaime): self
+    {
+        $this->jaime = $jaime;
+
+        return $this;
+    }
+
+    public function getDjaime(): ?int
+    {
+        return $this->djaime;
+    }
+
+    public function setDjaime(?int $djaime): self
+    {
+        $this->djaime = $djaime;
 
         return $this;
     }

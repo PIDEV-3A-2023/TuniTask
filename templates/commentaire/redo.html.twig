@@ -1,38 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="search-container">
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Rechercher...">
+            <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <br>
     <h1 id="h1">La liste des Offres</h1>
     <div class="card-deck">
-     {% if result is defined %}
-        {% for k in result %}  
-            <div class="card mb-4">
-                <img src="{{ k.srcimage }}" class="card-img-top" alt="Image utilisateur">
-                <div class="card-body">
-                    <h5 class="card-title">{{ k.titre }}</h5>
-                    <p class="card-text">Description :{{ k.description }}</p>
-                    <p class="card-text">Salaire : {{ k.salaireh }}dt/h</p>
-                    <p class="card-text">Posté par {{ k.firstName }} {{ k.lastName }}</p>
-                    Rating:
-                    {% for i in 1..5 %}
-                        {% if k.rating >= i %}
-                            <i class="fas fa-star"></i>
-                        {% else %}
-                            <i class="far fa-star"></i>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="card-footer">
-                    <form  action="{{path('app_addc',{'id':k.idoffre}) }}">
-                        <button class="b">Voir plus</button>
-                    </form>   
-                    <form  action="{{path('app_addR',{'id':k.idoffre}) }}">                 
-                  <button id="myBtn" class="b" ">Evaluer</button>
-                   </form>
-                </div>
-            </div>
-        {% endfor %}
-         {% endif %}
-    </div>         
+    {% include 'Commentaire/offre_list.html.twig' with {'result': result} %}
+    </div>   
+
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            // Fonction qui sera appelée lorsque le formulaire de recherche est soumis
+            $('#search-form').submit(function(event) {
+                event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+                var searchTerm = $('#search-input').val(); // Récupère la chaîne de recherche
+                $.ajax({
+                    url: '{{ path('app_search') }}', // URL de l'action de recherche côté serveur
+                    type: 'POST',
+                    data: {searchTerm: searchTerm}, // Envoie la chaîne de recherche au serveur
+                    success: function(response) {
+                        $('.card-deck').html(response); // Remplace le contenu de la liste des offres avec le résultat de la recherche
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+      
 {% endblock %}
 
 

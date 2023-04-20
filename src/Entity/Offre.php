@@ -39,6 +39,9 @@ class Offre
     #[ORM\Column]
     private ?int $count = 1;
 
+    #[ORM\Column]
+    private ?float $sumr = null;
+
     public function getIdoffre(): ?int
     {
         return $this->idoffre;
@@ -112,6 +115,18 @@ class Offre
     public function getRating(): float
     {
         return $this->rating;
+    }
+
+    public function getSumr(): ?float
+    {
+        return $this->sumr;
+    }
+
+    public function setSumr(float $sumr): self
+    {
+        $this->sumr = $sumr;
+
+        return $this;
     }
     
 

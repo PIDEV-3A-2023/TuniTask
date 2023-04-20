@@ -4,6 +4,38 @@
 .my-form-class{padding-left: 300px;}
 .my-form-classs{padding-left: 130px;}
 #h1{padding-left: 570px;}
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Styles pour le champ de recherche */
+  #search-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    width: 400px;
+    margin-right: 10px;
+  }
+  
+  /* Styles pour le bouton de recherche */
+  #search-button {
+    border: none;
+    border-radius: 5px;
+    background-color: #786ac6;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Styles pour le bouton de recherche lorsqu'il est survolé */
+  #search-button:hover {
+    background-color: #524986;
+  }
 .card-deck {
     display: flex;
     flex-wrap: wrap;
