@@ -36,7 +36,7 @@ class QuestionsController extends AbstractController
         }
         $questions = $questionsRepository->findBy(['idQuiz' => $quiz]);
 
-        return $this->render('questions/index.html.twig', [
+        return $this->render('questions/indexfreelancer.html.twig', [
             'quiz' => $quiz,
             'questions' => $questions,
         ]);
@@ -121,7 +121,7 @@ $flashy->success('Question has been added successfully!', 'http://your-awesome-l
 
         $answers = $answersRepository->findBy(['idQuestion' => $question]);
 
-        return $this->render('answers/index.html.twig', [
+        return $this->render('answers/indexfreelancer.html.twig', [
             'quiz' => $quiz,
             'question' => $question,
             'answers' => $answers,

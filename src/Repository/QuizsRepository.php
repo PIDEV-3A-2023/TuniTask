@@ -37,6 +37,19 @@ class QuizsRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    public function findByScore(int $score): array
+    {
+        $qb = $this->createQueryBuilder('q');
+
+        if ($score) {
+            $qb->andWhere('q.score = :score')
+                ->setParameter('score', $score);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 
     public function save(Quizs $entity, bool $flush = false): void
     {

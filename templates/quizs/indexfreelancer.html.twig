@@ -1,5 +1,29 @@
 {% extends 'base.html.twig' %}
+{% block nav %}
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-white sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
+            <a href="index.html" class="navbar-brand d-lg-none">
+                <h1 class="fw-bold m-0">TuniTask</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="index.html" class="nav-item nav-link ">Accueil</a>
+                    <a href="#" class="nav-item nav-link">Offre</a>
+                    <a href="{{ path('list_quizs') }}" class="nav-item nav-link active">Quizs</a>
+                    <a href="#.html" class="nav-item nav-link">Demande</a>
+                    <a href="#.html" class="nav-item nav-link">Evenements</a>
+                    <a href="#.html" class="nav-item nav-link">Reclamation</a>
 
+                </div>
+            </div>    </nav>
+    </div>
+    </div>{% endblock %}
 {% block body %}
 
 <head>
@@ -15,7 +39,8 @@
     const rows = document.querySelectorAll('.quiz-table tbody tr');
     rows.forEach(function(row) {
         const title = row.querySelector('td:nth-child(1)').textContent.trim().toLowerCase();
-        if (title.includes(searchValue)) {
+        const score = row.querySelector('td:nth-child(3)').textContent.trim();
+        if (title.includes(searchValue) || score.includes(searchValue)) {
             row.style.display = '';
         } else {
             row.style.display = 'none';
@@ -40,7 +65,7 @@
         <td style="padding: 10px; text-align: left;">
             <a href="{{ path('app_quizs_open', {'id': quiz.idQuiz}) }}" style="display: inline-block; padding: 8px 16px; background-color: #6a0995; color: #fff; border-radius: 4px; text-decoration: none;">Open</a>
             {% if  quiz.score is not null and quiz.score != 0 %}
-                <a href="{{ path('app_quizs_pdf', {'id': quiz.idQuiz}) }}" onclick="event.preventDefault(); swal('Congratulations!', 'You have received your certificate!', 'success').then(() => window.location.href = this.href);" style="display: inline-block; padding: 8px 16px; background-color: #6a0995; color: #fff; border-radius: 4px; text-decoration: none; margin-left: 10px;">Certificate</a>
+                <a href="{{ path('app_quizs_pdf', {'id': quiz.idQuiz}) }}" onclick="event.preventDefault(); swal('Congratulations!', 'You earned a certificate!', 'success').then(() => window.location.href = this.href);" style="display: inline-block; padding: 8px 16px; background-color: #6a0995; color: #fff; border-radius: 4px; text-decoration: none; margin-left: 10px;">Certificate</a>
             {% endif %}
          </td>
     </tr>
