@@ -60,6 +60,7 @@
     <!--**********************************
         Header start
     ***********************************-->
+    {% block nav %}
     <div class="header">
         <div class="header-content">
             <nav class="navbar navbar-expand">
@@ -109,6 +110,7 @@
             </nav>
         </div>
     </div>
+    {% endblock %}
     <!--**********************************
         Header end ti-comment-alt
     ***********************************-->
@@ -147,8 +149,10 @@
             </li>
             </ul>
         </div>
-
-
+        <?php
+	var quizTitle = "<?php echo $quiz->getQuizTitle(); ?>";
+        var quizScore = "<?php echo $quiz->getScore(); ?>";
+?>
     </div>
     {% block body %}{% endblock %}
     <!--**********************************
@@ -197,6 +201,7 @@
     <script src="{{asset('./vendor/chart.js/Chart.bundle.min.js')}}"></script>
 
     <script src="{{asset('./vendor/gaugeJS/dist/gauge.min.js')}}"></script>
+
 
     <!--  flot-chart js -->
     <script src="{{asset('./vendor/flot/jquery.flot.js')}}"></script>

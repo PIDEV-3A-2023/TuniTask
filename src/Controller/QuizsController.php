@@ -71,7 +71,22 @@ class QuizsController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(): Response
     {
-        return $this->render('base2.html.twig');
+        return $this->render('quizs/stats.html.twig');
+    }
+
+    #[Route('/stats', name: 'stats')]
+    public function stats(QuizsRepository $quizsRepository){
+        $quizs = $quizsRepository->findAll();
+        $quiztitle = [];
+        $quizscore = [];
+        foreach ($quizs as $quiz){
+            $quiztitle[] = $quiz->getQuizTitle();
+            $quizscore[] = $quiz->getScore();
+        }
+        return $this->render('quizs/stats.html.twig', [
+            'quiztitle' => json_encode($quiztitle),
+            'quizscore' => json_encode($quizscore),
+        ]);
     }
 
     #[Route('/quizs', name: 'list_quizs')]
