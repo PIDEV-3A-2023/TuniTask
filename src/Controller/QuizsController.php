@@ -28,14 +28,15 @@ class QuizsController extends AbstractController
         $this->entityManager = $entityManager;
     }
     #[Route('/quizs/{id}/pdf', name: 'app_quizs_pdf')]
-    public function pdf(Quizs $quiz): Response
+    public function pdf(Quizs $quiz)
     {
         $options = new Options();
         $options->set('isRemoteEnabled', true);
+
         $dompdf = new Dompdf($options);
+
         $html = $this->renderView('quizs/pdf.html.twig', [
             'quiz' => $quiz,
-
         ]);
 
         $dompdf->loadHtml($html);
@@ -44,12 +45,16 @@ class QuizsController extends AbstractController
 
         $dompdf->render();
 
-        $response = new Response($dompdf->output());
+        $pdfContent = $dompdf->output();
+
+        $response = new Response($pdfContent);
         $response->headers->set('Content-Type', 'application/pdf');
         $response->headers->set('Content-Disposition', 'inline; filename="quiz.pdf"');
 
         return $response;
     }
+
+
 
     /**
      * @Route("/quiz/{quizId}/update-score", name="update_quiz_score", methods={"POST"})
