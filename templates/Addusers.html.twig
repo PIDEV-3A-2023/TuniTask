@@ -1,164 +1,12 @@
 
 
 
-   {% extends 'base.html.twig' %}
-
-
-    
-
-   
-{% if role == "Client"%}
-<!-- Quote Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="fs-5 fw-medium text-primary">Step 1</p>
-                    <h1 class="display-5 mb-4">Fill in your general data</h1>
-                    <p>Done</p>
-                    
-                    
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="fs-5 fw-medium text-primary">Step2</p>
-                    <h1 class="display-5 mb-4">Fill more date</h1>
-                    <p><video id="video-preview" width="250"></video>
-<button id="take-picture-btn">Take Picture</button>
-<button id="take-picture">Take</button>
-<img id="captured-image" width="250" />
-
-                
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="1s">
-                    <h2 class="mb-4">step3</h2>
-                    <div class="row g-3">
-                      
-                      
-                       
-                      
-                   
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Quote Start -->
-
-{% elseif role == "Freelancer" %}
-<!-- Quote Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="fs-5 fw-medium text-primary">Step 1</p>
-                    <h1 class="display-5 mb-4">Fill in your general data</h1>
-                    <p>Done</p>
-                    
-                    
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="fs-5 fw-medium text-primary">Step2</p>
-                    <h1 class="display-5 mb-4">Fill more date</h1>
-      
-{{form_start (form)}}
-
-{{form_label(form.experience,'How many years of experience ?')}}
+ {% block body %}
+ </br>
 </br>
-{{form_widget(form.experience)}} 
 </br>
-{{form_label(form.skills,'Skills')}}
-{{form_widget(form.skills)}}
-{{form_label(form.langageDeProgrammation,'Programming language')}}
-{{form_widget(form.langageDeProgrammation)}}
-<div style="visibility: hidden;">
-{{form_label(form.entreprise,'Company')}}
-{{form_widget(form.entreprise)}}
-</div>
-{{form_end (form)}}
-<video id="video-preview" width="250"></video>
-<button id="take-picture-btn">Take Picture</button>
-<button id="take-picture">Take</button>
-<img id="captured-image" width="250" />
-{% elseif role == "Organisator" %}
-{{form_start (form)}}
-<div style="visibility: hidden;">
-{{form_label(form.experience,'years of experience')}}
-{{form_widget(form.experience)}} 
 </br>
-{{form_label(form.skills,'F')}}
-{{form_widget(form.skills)}}
-{{form_label(form.langageDeProgrammation,'l')}}
-{{form_widget(form.langageDeProgrammation)}}
-</div>
-{{form_label(form.entreprise,'l')}}
-{{form_widget(form.entreprise)}}
-<video id="video-preview" width="250"></video>
-<button id="take-picture-btn">Take Picture</button>
-<button id="take-picture">Take</button>
-<img id="captured-image" width="250" /> </p>
-                
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="1s">
-                    <h2 class="mb-4">step3</h2>
-                    <div class="row g-3">
-                           <!-- Quote Start -->
-{{form_start (form)}}
-{{form_label(form.experience,'years of experience')}}
-{{form_widget(form.experience)}} 
-</br>
-{{form_label(form.skills,'Skills')}}
-{{form_widget(form.skills)}}
-{{form_label(form.langageDeProgrammation,'langage de programmation')}}
-{{form_widget(form.langageDeProgrammation)}}
-<div style="visibility: hidden;">
-{{form_label(form.entreprise,'Company')}}
-{{form_widget(form.entreprise)}}
-</div>
-{{form_end (form)}}
-<video id="video-preview" width="250"></video>
-<button id="take-picture-btn">Take Picture</button>
-<button id="take-picture">Take</button>
-<img id="captured-image" width="250" />
-{% elseif role == "Organisator" %}
-{{form_start (form)}}
-<div style="visibility: hidden;">
-{{form_label(form.experience,'years of experience')}}
-{{form_widget(form.experience)}} 
-</br>
-{{form_label(form.skills,'F')}}
-{{form_widget(form.skills)}}
-{{form_label(form.langageDeProgrammation,'l')}}
-{{form_widget(form.langageDeProgrammation)}}
-</div>
-{{form_label(form.entreprise,'l')}}
-{{form_widget(form.entreprise)}}
-<video id="video-preview" width="250"></video>
-<button id="take-picture-btn">Take Picture</button>
-<button id="take-picture">Take</button>
-<img id="captured-image" width="250" /> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-{% elseif role == "Admin" %}
-<video id="video-preview" width="250"></video>
-<button id="take-picture-btn">Take Picture</button>
-<button id="take-picture">Take</button>
-<img id="captured-image" width="250" />
-{% elseif role == "email" %}
-Vous étes un membre
-{% else %}
-<!-- Quote Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-              <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                     <h2 class="mb-4">step1</h2>
-                    <h1 class="display-5 mb-4">Fill in your general data</h1>
-                    
-                      
-                      {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'style': 'width: 800px; height: 300px; margin: 0 auto; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 10px; padding: 20px;'}}) }}
+ {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'style': 'width: 800px; height: 300px; margin: 0 auto; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 10px; padding: 20px;'}}) }}
 
                                {{form_label(form.email,'Email')}} 
                                </br>
@@ -190,36 +38,15 @@ Vous étes un membre
                               <label style="color:red"> {{form_label(form.Save,"ok")}} </label>
                                {{form_widget(form.Save)}}
                                 {{form_end(form)}}
-                           
-                    
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="fs-5 fw-medium text-primary">Step2</p>
-                    <h1 class="display-5 mb-4">Fill more date</h1>
-                    <p>Soon</p>
-                
-                </div>
-                <div class="col-lg-4 wow fadeInUp" data-wow-delay="1s">
-                    <h2 class="mb-4">step3</h2>
-                    <div class="row g-3">
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Quote Start -->
-
-{% endif %}
-
- 
-
     
 
- 
+ <video id="video-preview" width="250"></video>
+<button id="take-picture-btn">Take Picture</button>
+<button id="take-picture">Take</button>
+<img id="captured-image" width="250" />
 
 
+ <script src ="{{asset('js/Takeaphoto.js')}}"></script>
 
 
-
-
+{% endblock %}

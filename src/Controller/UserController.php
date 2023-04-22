@@ -25,11 +25,13 @@ class UserController extends AbstractController
 {
     private $passwordHasher;
     private $session;
+    private $user;
     public function __construct(PasswordHasher $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
         $this->session = new Session();
         $this->session->start();
+        $this->user = new Users();
        
     }
     #[Route('/', name: 'app_user')]
@@ -52,13 +54,14 @@ class UserController extends AbstractController
     {
          
         
-       $user = new Users();
+       
+        //$this->session->set('user', $user);
        $role= new Role();
        $form= $this->createForm(UsersType::class);
        
         $form->handleRequest($request);
-        $form1= $this->createForm(RoleType::class,$role);
-        $form1->handleRequest($request);
+        
+        
         if(  $form->isSubmitted()  )
         if($form->isValid())
         {
@@ -70,47 +73,29 @@ class UserController extends AbstractController
                     //$user->setPassword($form->get('password')->getData()):
                         $pwd=$form->get('password')->getData();
                         
-                        $user->setPassword($this->passwordHasher->hashPassword($pwd));
-                       $user->setEmail($form->get('email')->getData()); 
-                       $user->setFirstName($form->get('firstName')->getData()); 
-                       $user->setLastName($form->get('lastName')->getData()); 
-                       $user->setDateOfBirth($form->get('dateOfBirth')->getData());
-                      $user->setSrcimage('test');
-                      $user->setStatut(true);
-                      $user->setEtat(true);
-                      $user->setCreatedAt();
+                        $this->user->setPassword($this->passwordHasher->hashPassword($pwd));
+                       $this->user->setEmail($form->get('email')->getData()); 
+                       $this->user->setFirstName($form->get('firstName')->getData()); 
+                       $this->user->setLastName($form->get('lastName')->getData()); 
+                       $this->user->setDateOfBirth($form->get('dateOfBirth')->getData());
+                      $this->user->setSrcimage($this->session->get('filename'));
+                      $this->user->setStatut(true);
+                      $this->user->setEtat(true);
+                      $this->user->setCreatedAt();
+                      //$this->session->get('user')->setSrcimage($this->session->get('filename'));
+                      //file_put_contents($filepath,$decodedImage);
                          //Action d'ajout
                       $em =$doctrine->getManager() ;
-                      $em->persist($user);
-                     $this->session->set('user', $user);
+                      $em->persist($this->user);
+                     //$this->session->set('user', $user);
                       $this->session->set('roleN', $whoYouAre);
+                      file_put_contents($this->session->get('filepath'),$this->session->get('decodedImage'));
                       $em->flush();
-                     
-             return $this->renderForm('addusers.html.twig', ['form' => $form1,
-            "role" => $whoYouAre
-            ]);
-        }
-          if(  $form1->isSubmitted() )
-        {
-            $this->session->get('user')->setSrcimage($this->session->get('filename'));
-         // dump($this->session->get('user'));
-              
-              $role->setRoleName($this->session->get('roleN'));
-                //dump($role);
-               
-                 
-                       $u=$this->getDoctrine()->getRepository(Users::class);
-                       
-         $user=$u->findOneBy(['email' => $this->session->get('user')->getEmail()]);
-         $role->setIdUser($user);
-          
-                        $em1 =$doctrine->getManager() ;
-                      $em1->persist($role);
-
-                     $em1->flush();
-                     
-     file_put_contents($this->session->get('filepath'),$this->session->get('decodedImage'));
-                      /*$content=rand();
+                       $role->setRoleName($whoYouAre);
+                       $role->setIdUser($this->user);
+                       $em->persist($role);
+                       $em->flush();
+                     /*$content=rand();
                       $message = (new Email())
             ->from('abdessalam.bahri@esprit.tn')
             ->to('abdessalam.bahri@esprit.tn')
@@ -118,17 +103,17 @@ class UserController extends AbstractController
             ->text("this is your verification code" . $content);
 
         $mailer->send($message);*/
-               return $this->renderForm('addusers.html.twig', ['form' => $form1,
-            "role" => "email"
-        ]);
-                      
-
+           return $this->renderForm('addusers.html.twig', ['form' => $form,"role" => null]);
         }
+         
         
       
          return $this->renderForm('addusers.html.twig', ['form' => $form,"role" => null]);
 
     }
+
+
+
 
      #[Route('/updateUser/{id}', name: 'app_update')]
   public function updateC($id,UsersRepository $userR,
@@ -173,10 +158,12 @@ public function uploadImage(Request $request): Response
 
     // Save the image file to the specified directory
     $filepath = 'C:/xampp/htdocs/img/' . $filename;
-    $this->session->set('filepath', $filepath);
+    //$user=$this->session->get('user');
+    $this->user->setSrcimage($filename);
+                    $this->session->set('filepath', $filepath);
                       $this->session->set('decodedImage', $decodedImage);
                       $this->session->set('filename', $filename);
-    file_put_contents($filepath,$decodedImage);
+    //file_put_contents($filepath,$decodedImage);
 
     // Return a response indicating that the image was uploaded successfully
     return new Response('Image uploaded successfully', Response::HTTP_OK);

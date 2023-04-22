@@ -17,13 +17,7 @@ class Users
     #[ORM\Column]
     private ?int $id = null;
     #[ORM\Column(length: 255)]
- /**
-     * @var string
-     *
-     * 
-     * @Assert\NotBlank(message="Password  cannot be blank")
-     * @Assert\Length(min="6", minMessage="Quiz description cannot be longer than {{ limit }} characters")
-     */
+
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
