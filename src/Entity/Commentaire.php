@@ -104,6 +104,19 @@ class Commentaire
 
         return $this;
     }
+    public function like(): self
+{
+    $this->jaime++;
+
+    return $this;
+}
+
+public function dislike(): self
+{
+    $this->djaime++;
+
+    return $this;
+}
 
 
 }

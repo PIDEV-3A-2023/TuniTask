@@ -59,7 +59,7 @@ class CommentaireController extends AbstractController
             ->leftJoin(Users::class, 't2', 'WITH', 't2.id = t.user')
             ->where('t.offre = :offreId')
             ->setParameter('offreId', $id)
-            ->select('t.commentaire,t2.firstName, t2.lastName,t2.srcimage,t2.id,t.idcommentaire')
+            ->select('t.commentaire,t2.firstName, t2.lastName,t2.srcimage,t2.id,t.idcommentaire,t.jaime,t.djaime')
             ->getQuery()
             ->getResult();
             $modifierClicked=false;
@@ -89,7 +89,9 @@ class CommentaireController extends AbstractController
         // Création du formulaire pour saisir les informations de l'Commentaire
         $form = $this->createForm(CommentaireaddType::class, $Commentaire);
         $form->handleRequest($request);
+       
         if ($form->isSubmitted() && $form->isValid()) {
+           
         // Ajout des informations de l'offre et de l'utilisateur courant
         $Commentaire->setCommentaire($form->get('commentaire')->getData());
         // Ajout de l'Commentaire dans la base de données
@@ -174,4 +176,21 @@ class CommentaireController extends AbstractController
             $result = $offreRepository->search($searchTerm); // Appel à une méthode de recherche dans votre repository
             return new Response($twig->render('Commentaire/offre_list.html.twig', ['result' => $result]));
         }
+
+        #[Route('/like/{id}/{type}', name: 'app_like_or_dislike')]
+        public function likeOrDislike(Request $request, $id, $type): Response
+{
+    $entityManager = $this->getDoctrine()->getManager();
+    $CommentaireRepository = $entityManager->getRepository(Commentaire::class);
+                $Commentaire = $CommentaireRepository->find($id);
+    if ($type == 'like') {
+        $Commentaire->like();
+    } elseif ($type == 'dislike') {
+        $Commentaire->dislike();
+    }
+
+    $entityManager->flush();
+
+    return $this->redirectToRoute(('app_readoc'));
+}
 }

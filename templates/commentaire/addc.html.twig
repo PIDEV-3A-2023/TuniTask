@@ -24,6 +24,10 @@
                 <img src="{{asset(comment.srcimage)  }}" class="cardd-img" alt="Image utilisateur">
                 <p>Commentaire: {{ comment.commentaire }}</p>
                 <p>Posté par {{ comment.firstName }} {{ comment.lastName }}</p>
+      <div class="like-dislike">
+  <a href="{{ path('app_like_or_dislike', {'id': comment.idcommentaire, 'type': 'like'}) }}" class="like-btn"><i class="fas fa-thumbs-up"></i></a>{{comment.jaime}}
+  <a href="{{ path('app_like_or_dislike', {'id': comment.idcommentaire, 'type': 'dislike'}) }}" class="dislike-btn"><i class="fas fa-thumbs-down"></i></a>{{comment.djaime}}
+</div>
                 <div class="button-group">
   {% if comment.modifier_url is defined %}            
   <a href="{{ comment.modifier_url }}">Modifier</a>        
