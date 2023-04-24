@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 
 class QuizsController extends AbstractController
 {
@@ -105,10 +106,12 @@ class QuizsController extends AbstractController
         } else {
             $quizs = $quizsRepository->findByTitle($term);
         }
-
-        return $this->render('quizs/indexfreelancer.html.twig', [
-            'quizs' => $quizs,
-        ]);
+//$jsonContent = $normalizer->normalize($quizs, 'json', ['groups' => 'quizs:read']);
+//        $retour= new JsonResponse($jsonContent);
+//        return new JsonResponse($retour);
+            return $this->render('quizs/index.html.twig', [
+                'quizs' => $quizs,
+            ]);
     }
 
 
