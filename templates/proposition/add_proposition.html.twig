@@ -30,13 +30,13 @@ function sendVerificationCode() {
     var phoneNumber = '+21622495578' 
     console.log("Phone number: " + phoneNumber);
     
+
     
     $.ajax({
         url: "/addProposition/{idDemande}/sendVerificationCode",
         type: "POST",
         data: { phone: phoneNumber },
         success: function(response) {
-            // Handle success response from server
             console.log(response);
             
             var flashMessage = 'an sms has been sent to your phone number';
@@ -45,7 +45,6 @@ function sendVerificationCode() {
 
         },
         error: function(xhr) {
-            // Handle error response from server
             console.log(xhr.responseText);
         }
     });

@@ -104,7 +104,10 @@ class PropositionController extends AbstractController
         $this->entityManager->flush();
         return $this->redirectToRoute('app_readP', [], Response::HTTP_SEE_OTHER);
        }
-    
+       // Persist the new proposition object in the database
+       
+   
+       // Redirect back to the list of demands
        return $this->renderForm('proposition/add_proposition.html.twig',['prop'=>$proposition,'form'=>$form]);
 
 
@@ -113,25 +116,26 @@ class PropositionController extends AbstractController
    #[Route('/addProposition/{idDemande}/sendVerificationCode', methods: ['POST'])]
   public function sendVerificationCode(Request $request)
   {
-      
+
     $phoneNumber = '+21622495578';
 
+
+
+  
       $session = $request->getSession();
   
-      // Send the verification code via Twilio
       $sid = 'AC612246f81a50ebe4b07c556da16fb0c6';
-      $token = 'f4c53811e2fcbe7d9bc8cd8e49c4d20b';
+      $token = '6a7e0c0742c1c6436d04e42b54952294';
       $client = new Client($sid, $token);
   
       $message = $client->messages->create(
           $phoneNumber, 
           array(
-              'from' => '+15675871436', // your Twilio phone number
+              'from' => '+15675871436', 
               'body' => 'votre proposition a été ajouté avec succées ' 
           )
       );
   
-      // Return a JSON response indicating success
       return new JsonResponse(['success' => true]);
   }
 
