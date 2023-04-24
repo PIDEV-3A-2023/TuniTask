@@ -17,7 +17,16 @@ class DemandeController extends AbstractController
     #[Route('/', name: 'app_demande')]
     public function index(): Response
     {
-        return $this->render('base2.html.twig');
+        return $this->render('base.html.twig');
+        
+        
+    }
+
+    #[Route('/admin', name: 'app_demandeb')]
+    public function index1( DemandeRepository $DemandeRepository): Response
+    {
+
+        return $this->render('demande/readDbyAdmin.html.twig',['d' => $DemandeRepository->findAll(),]);
         
         
     }

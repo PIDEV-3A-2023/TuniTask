@@ -8,12 +8,12 @@
     <title>{% block title %}TuniTask{% endblock %}</title>
     <!-- Favicon icon -->
     <link rel="icon"  sizes="16x16" href="{{asset('./images/logo.png')}}">
-    {% block stylesheets %}
+    
     <link rel="stylesheet" href="{{asset('./vendor/owl-carousel/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('./vendor/owl-carousel/css/owl.theme.default.min.css')}}">
     <link href="{{asset('./vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
     <link href="{{asset('./css/style1.css')}}" rel="stylesheet">
-    
+    {% block stylesheets %}
     {% endblock %}
 </head>
 <body>

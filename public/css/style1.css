@@ -255,7 +255,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
 body {
-  margin: 0;
+  margin: 200;
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;

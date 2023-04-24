@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %} 
+
+
+<h1 style='text-align:center;'>voulez vous comfirmer cette proposition</h1>
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+<div style='display:none;'>
+{{ form_widget(form.idFreelancer) }}
+{{ form_widget(form.idDemande) }}
+</div>
+
+<div>
+    <button id="verify-phone-btn" class="btn btn-primary" type="submit">{{button_label|default('comfirmer')}}</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+
+  
+    $('#verify-phone-btn').click(function() {
+        sendVerificationCode();
+    });
+});
+
+function sendVerificationCode() {
+    console.log('sendVerificationCode function called!');
+    var phoneNumber = '+21622495578' 
+    console.log("Phone number: " + phoneNumber);
+    
+    
+    $.ajax({
+        url: "/addProposition/{idDemande}/sendVerificationCode",
+        type: "POST",
+        data: { phone: phoneNumber },
+        success: function(response) {
+            // Handle success response from server
+            console.log(response);
+            
+            var flashMessage = 'an sms has been sent to your phone number';
+            var aa = alert(flashMessage);
+            
+
+        },
+        error: function(xhr) {
+            // Handle error response from server
+            console.log(xhr.responseText);
+        }
+    });
+}
+</script>
+
+{{ form_end(form) }}
+
+{% endblock %}

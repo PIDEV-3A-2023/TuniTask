@@ -1,51 +1,58 @@
-{% extends 'base2.html.twig' %}
-{% block body %}
-<h1>Ajouter une demande </h1>
- 
-{{form_start(f,{'attr': {'novalidate': 'novalidate'}}) }}
-<table>
-<tr>
-<td> {{ form_label(f.titre,"Titre")  }} 
- </td>
-<td>  {{ form_widget(f.titre) }} 
-</td>  
-<td> {{ form_errors(f.titre) }} 
-</td>
-</tr>
+{% extends 'base.html.twig' %}
 
-<tr>
-<td>  {{ form_label(f.description,"Description") }} 
-</td> 
-<td> {{ form_widget(f.description)}} 
- </td> 
-<td>  {{ form_errors(f.description) }} 
-</td> 
-</tr>
-<tr>
-<td>  {{ form_label(f.salaire,"Salaire") }} 
-</td> 
-<td> {{ form_widget(f.salaire)}} 
- </td> 
-<td>  {{ form_errors(f.salaire) }} 
-</td> 
-</tr>
-<tr>
-<td>  {{ form_label(f.delai,"Delai") }} 
-</td> 
-<td> {{ form_widget(f.delai)}} 
- </td> 
-<td>  {{ form_errors(f.delai) }} 
-</td> 
-</tr>
-<tr>
-<td>  {{ form_label(f.langage,"Langage") }} 
-</td> 
-<td> {{ form_widget(f.langage)}} 
- </td> 
-<td>  {{ form_errors(f.langage) }} 
-</td> 
-</tr>
-</table>
- {{ form_widget(f.save)}} 
-{{form_end(f)}}
+{% block stylesheets %}
+{{ parent() }}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+{% block body %}
+
+<div class="container" style="border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; justify-content: center; align-items: center; min-height: 100vh; background-color: #f8f9fa;">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; text-align:center;">Ajouter une demande</h1>
+      {{ form_start(f,{'attr': {'novalidate': 'novalidate', 'class': 'form'}}) }}
+      <div class="form-group">
+        {{ form_label(f.titre, 'Titre', {'label_attr': {'class': 'col-form-label', 'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(f.titre, {'attr': {'class': 'form-control', 'style': 'border-color: gray;'}}) }}
+        {% if form_errors(f.titre) %}
+                <div class="error-message" style="color: red;">{{ form_errors(f.titre) }}</div>
+            {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form_label(f.description, 'Description', {'label_attr': {'class': 'col-form-label', 'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(f.description, {'attr': {'class': 'form-control', 'style': 'border-color: gray;'}}) }}
+         {% if form_errors(f.description) %}
+                <div class="error-message" style="color: red;">{{ form_errors(f.description) }}</div>
+            {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form_label(f.salaire, 'Salaire', {'label_attr': {'class': 'col-form-label', 'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(f.salaire, {'attr': {'class': 'form-control', 'style': 'border-color: gray;'}}) }}
+         {% if form_errors(f.salaire) %}
+                <div class="error-message" style="color: red;">{{ form_errors(f.salaire) }}</div>
+            {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form_label(f.delai, 'Delai', {'label_attr': {'class': 'col-form-label', 'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(f.delai, {'attr': {'class': 'form-control', 'style': 'border-color: gray;'}}) }}
+         {% if form_errors(f.delai) %}
+                <div class="error-message" style="color: red;">{{ form_errors(f.delai) }}</div>
+            {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form_label(f.langage, 'Langage', {'label_attr': {'class': 'col-form-label', 'style': 'font-weight: bold;'}}) }}
+        {{ form_widget(f.langage, {'attr': {'class': 'form-control', 'style': 'border-color: gray;'}}) }}
+         {% if form_errors(f.langage) %}
+                <div class="error-message" style="color: red;">{{ form_errors(f.langage) }}</div>
+            {% endif %}
+      </div>
+      <div style="text-align: center; margin-top: 20px;">
+      {{ form_widget(f.save, {'attr': {'class': 'btn btn-primary', 'style': 'font-weight: bold; padding: 10px 20px; border-radius: 5px; background-color: #007bff; border-color: #007bff;'}}) }}
+    </div>
+      {{ form_end(f) }}
+    </div>
+  </div>
+</div>
+
 {% endblock %}

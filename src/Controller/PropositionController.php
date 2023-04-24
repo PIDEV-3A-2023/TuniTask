@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\DemandeRepository;
 use App\Repository\PropositionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,9 +12,25 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Proposition;
 use App\Entity\Demande;
 use App\Entity\Users;
+use App\Form\AddPropositionType;
+use Doctrine\ORM\EntityManagerInterface;
+use Twilio\Rest\Client;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+
 
 class PropositionController extends AbstractController
 {
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+
+
     #[Route('/proposition', name: 'app_proposition')]
     public function index(): Response
     {
@@ -40,7 +57,8 @@ class PropositionController extends AbstractController
                 ->leftJoin(Demande::class, 't2', 'WITH', 't2.id = t.idDemande')
                 ->where('t.idFreelancer = :userId')
                 ->setParameter('userId', $currentUser->getId())
-                ->select('t.id, t2.id as idDemande, t1.firstName, t1.lastName, t1.email')
+                //->select('t.id, t2.id as idDemande, t1.firstName, t1.lastName, t1.email')
+                ->select('t.id, t2.titre, t1.firstName, t1.lastName, t1.email')
                 ->getQuery()
                 ->getResult();
                 return $this->render('Proposition/readP.html.twig', [
@@ -66,6 +84,61 @@ class PropositionController extends AbstractController
     }
 
    
+  #[Route('/addProposition/{idDemande}', name:'add_proposition')]
+ 
+  public function add_proposition($idDemande,Request $request , DemandeRepository $DemandeRepository , PropositionRepository $PropositionRepository ): Response
+   {
+       
+   
+       // Create a new proposition object and associate it with the demand
+       $proposition = new Proposition();
+       $demande = $this->entityManager->getRepository(Demande::class)->find($idDemande);
+       $proposition->setIdDemande($demande);
+       $user= $this->entityManager->getRepository(Users::class)->find(41);
+       $proposition->setIdFreelancer($user);
+       $form = $this->createForm(AddPropositionType::class,$proposition);
+       $form->handleRequest($request);
+       if($form->isSubmitted() && $form->isValid())
+       {
+        $this->entityManager->persist($proposition);
+        $this->entityManager->flush();
+        return $this->redirectToRoute('app_readP', [], Response::HTTP_SEE_OTHER);
+       }
+    
+       return $this->renderForm('proposition/add_proposition.html.twig',['prop'=>$proposition,'form'=>$form]);
 
 
-}
+   }
+
+   #[Route('/addProposition/{idDemande}/sendVerificationCode', methods: ['POST'])]
+  public function sendVerificationCode(Request $request)
+  {
+      
+    $phoneNumber = '+21622495578';
+
+      $session = $request->getSession();
+  
+      // Send the verification code via Twilio
+      $sid = 'AC612246f81a50ebe4b07c556da16fb0c6';
+      $token = 'f4c53811e2fcbe7d9bc8cd8e49c4d20b';
+      $client = new Client($sid, $token);
+  
+      $message = $client->messages->create(
+          $phoneNumber, 
+          array(
+              'from' => '+15675871436', // your Twilio phone number
+              'body' => 'votre proposition a été ajouté avec succées ' 
+          )
+      );
+  
+      // Return a JSON response indicating success
+      return new JsonResponse(['success' => true]);
+  }
+
+
+
+
+
+
+    }
+

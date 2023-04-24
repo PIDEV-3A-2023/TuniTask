@@ -146,5 +146,9 @@ class Demande
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->langage; // assuming that the Station entity has a 'name' property
+    }
 
 }

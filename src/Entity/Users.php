@@ -145,5 +145,9 @@ class Users
         return $this;
     }
     
+    public function __toString()
+    {
+        return $this->lastName; // assuming that the Station entity has a 'name' property
+    }
 
 }
