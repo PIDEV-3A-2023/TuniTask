@@ -19,6 +19,9 @@ use App\Form\CommentaireaddType;
 use App\Form\CommentaireeditType;
 use App\Form\RatingType;
 use Twig\Environment;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+
 
 
 
@@ -50,7 +53,7 @@ class CommentaireController extends AbstractController
         ]);
     }
     #[Route('/addc/{id}', name: 'app_addc')]
-    public function addCommentaire(Request $request, $id): Response
+    public function addCommentaire(Request $request, $id, MailerInterface $mailer): Response
     {   
         $userId = 55; 
         $entityManager = $this->getDoctrine()->getManager();
@@ -80,6 +83,14 @@ class CommentaireController extends AbstractController
         // l'ID de l'utilisateur courant
         $userRepository = $entityManager->getRepository(Users::class);
         $currentUser = $userRepository->find($userId);
+        $tex = sprintf("Hi %s,\n\nYour offer has been viewed by %s.\n\nBest regards,\nThe Job Platform team", 
+        "anes", $currentUser->getFirstName());
+        $email = (new Email())
+        ->from("alphateamesprit53@gmail.com")
+        ->to("elfadanes@gmail.com")
+        ->subject('Quelqu un vu votre offre')
+        ->text($tex);
+        $mailer->send($email);
         $Commentaire->setUser($currentUser);
         // Récupération de l'Offre courant et de son ID
         $idoffre = $id; // l'ID de l'utilisateur courant
@@ -193,4 +204,5 @@ class CommentaireController extends AbstractController
 
     return $this->redirectToRoute(('app_readoc'));
 }
+
 }
