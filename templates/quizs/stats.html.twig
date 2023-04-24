@@ -19,7 +19,7 @@
         let borderColor = [];
 
         // Loop through each dataset and generate a random color
-        for (let i = 0; i < {{ quiztitle|length }}; i++) {
+        for (let i = 0; i < {{ quiztitle | length }}; i++) {
             let color = "#" + Math.floor(Math.random()*16777215).toString(16);
             backgroundColors.push(color);
             borderColor.push(color + "FF"); // Add opacity to the border color
