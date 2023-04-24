@@ -26,7 +26,6 @@ class UsersType extends AbstractType
             ->add('Who_you_are', ChoiceType::class, [
     'choices'  => [
         'Client' => 'Client',
-        'Admin' => 'Admin',
         'Freelancer' => 'Freelancer',
         'Organisator'=> 'Organisator'
     ],

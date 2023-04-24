@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Controller\Api\ApiImage;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 class UserController extends AbstractController
 {
     private $passwordHasher;
@@ -35,7 +36,7 @@ class UserController extends AbstractController
        
     }
     #[Route('/', name: 'app_user')]
-    public function index(MailerInterface $mailer): Response
+    public function index(MailerInterface $mailer,FlashyNotifier $flashy): Response
     {
        /* $content=rand();
                       $message = (new Email())
@@ -45,12 +46,13 @@ class UserController extends AbstractController
             ->text("this is your verification code" . $content);
 
         $mailer->send($message);*/
+        //$flashy->success('Welcome to our app!', '');
         return $this->render('index.html.twig');
     }
 
    
         #[Route('/AddUser', name: 'Add_user')]
-    public function addUser(ManagerRegistry $doctrine,Request $request,MailerInterface $mailer): Response
+    public function addUser(ManagerRegistry $doctrine,Request $request,MailerInterface $mailer,FlashyNotifier $flashy): Response
     {
          
         
@@ -68,7 +70,7 @@ class UserController extends AbstractController
             
         // $session = $this->requestStack->getSession();
             $whoYouAre = $form->get('Who_you_are')->getData();
-                 dump($whoYouAre);
+                
                   
                     //$user->setPassword($form->get('password')->getData()):
                         $pwd=$form->get('password')->getData();
@@ -95,6 +97,7 @@ class UserController extends AbstractController
                        $role->setIdUser($this->user);
                        $em->persist($role);
                        $em->flush();
+                       
                      /*$content=rand();
                       $message = (new Email())
             ->from('abdessalam.bahri@esprit.tn')
@@ -126,7 +129,7 @@ class UserController extends AbstractController
       
       
       
-      dump($user);
+      
     $form=$this->createForm(UsersType::class,$user);
                  $form->handleRequest($request);
                 if($form->isSubmitted()){

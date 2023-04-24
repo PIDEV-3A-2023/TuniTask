@@ -47,23 +47,18 @@ take.addEventListener("click", () => {
     stream.getTracks().forEach((track) => track.stop());
     stream = null;
   }
-  fetch("http://127.0.0.1:8000/api/images", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+  $.ajax({
+    url: "http://127.0.0.1:8000/api/images",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({
       image: imageData,
     }),
-  })
-    .then((response) => {
-      if (response.ok) {
-        console.log("Image sent successfully");
-      } else {
-        console.error("Error sending image");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    success: function () {
+      console.log("Image sent successfully");
+    },
+    error: function () {
+      console.error("Error sending image");
+    },
+  });
 });

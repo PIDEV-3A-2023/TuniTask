@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UsersRepository;
+use App\Repository\RoleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
@@ -48,13 +49,23 @@ class AdminUserController extends AbstractController
             'users'=>$users
         ]);
     }
+    #[Route('/staic', name: 'app_static')]
+       public function static(UsersRepository $UsersRepository,RoleRepository $RoleRepository,Request $req,FlashyNotifier $flashy): Response
+    {
+         $flashy->info('Enjoy with some statistics!', '');
+        $user= $UsersRepository->findAll();
+        $role = $RoleRepository->findAll();
+        return $this->render("admin_user/statistic.html.twig",[
+            'roles'=>$role,'users'=>$user
+        ]);
+    }
             #[Route('/Admin', name: 'app_admin')]
     public function list(UsersRepository $UsersRepository,PaginatorInterface $paginator,Request $req,FlashyNotifier $flashy): Response
     {
           
         //$repository = $entityManager->getRepository(Role::class);
     
-      $flashy->primary('Thanks for signing up!', '');
+      $flashy->primary('There are some users, be responsible !', '');
      
         $user = $UsersRepository->findAll();
          $users = $paginator->paginate(
@@ -77,7 +88,7 @@ class AdminUserController extends AbstractController
         $statut=1;
         else
         $statut=0;
-        dump($statut);
+        
           $query = $entityManager->createQuery(
         'UPDATE App\Entity\Users u
         SET u.statut = :newStatut
