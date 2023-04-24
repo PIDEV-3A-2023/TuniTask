@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use DateTime;
+use App\Services\QrcodeService;
 
 #[Route('/reservation')]
 class ReservationController extends AbstractController
@@ -30,8 +31,31 @@ class ReservationController extends AbstractController
                 unset($reservations[$key]);
             }
         }
+
+        $rsrvs = [];
+
+        foreach ($reservations as $reservation) {
+            $rsrvs[] = [
+                'id' => $reservation->getId(),
+                'date' => $reservation->getDate()->format('Y-m-d H:i:s'),
+                'type' => $reservation->getEvent()->getNom(),
+                'event' => $reservation->getEvent()->getNom(),
+                'start' => $reservation->getDate()->format('Y-m-d H:i:s'),
+                'end' => $reservation->getDate()->format('Y-m-d H:i:s'),
+                'title' => $reservation->getEvent()->getNom() . ' | ' . $reservation->getNbRes(),
+                'description' => $reservation->getEvent()->getNom(),
+                'backgroundColor' => $reservation->getEvent()->getNom(),
+                'borderColor' => $reservation->getEvent()->getNom(),
+                'textColor' => $reservation->getEvent()->getNom(),
+                'allDay' => $reservation->getEvent()->getNom(),
+            ];
+        }
+
+        $data = json_encode($rsrvs);
+
         return $this->render('reservation/index.html.twig', [
             'reservations' => $reservations,
+            'data' => $data
         ]);
     }
 
@@ -55,10 +79,13 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_reservation_show', methods: ['GET'])]
-    public function show(Reservation $reservation): Response
+    public function show(Reservation $reservation, Request $request, QrcodeService $qrcodeService): Response
     {
+        $qrCode = null;
+        $qrCode = $qrcodeService->qrcode($reservation->getEvent()->getNom() . ' | ' . $reservation->getEvent()->getDate()->format('Y-m-d'));
         return $this->render('reservation/show.html.twig', [
             'reservation' => $reservation,
+            'qrCode' => $qrCode
         ]);
     }
 
@@ -82,6 +109,8 @@ class ReservationController extends AbstractController
             $reservation->setDate($now);
             $eventRepository->save($event, true);
             $reservationRepository->save($reservation, true);
+
+            $this->addFlash('notice','Réservation mise à jour avec success!');
 
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -128,6 +157,8 @@ class ReservationController extends AbstractController
             // dd('event' . $event);
             // dd('reservation' . $reservation);
             $reservationRepository->save($reservation, true);
+
+            $this->addFlash('notice','Evennement réservé avec success!');
 
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
         }

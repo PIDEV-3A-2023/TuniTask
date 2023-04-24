@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    {% block stylesheets %}
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('back_office/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('back_office/vendor/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('back_office/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
     <link href="{{ asset('back_office/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('back_office/css/style.css') }}" rel="stylesheet">
+    {% endblock %}
 </head>
 <body>
 
@@ -22,9 +25,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="images/logo.png" alt="">
-                <img class="logo-compact" src="images/logo-text.png" alt="">
-                <img class="brand-title" src="images/logo-text.png" alt="">
+                <img class="logo-abbr" src="../back_office/images/logo.png" alt="">
+                <img class="logo-compact" src="../back_office/images/logo-text.png" alt="">
+                <img class="brand-title" src="../back_office/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -217,6 +220,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+    {% block javascripts %}
     <script src="{{ asset('back_office/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('back_office/js/quixnav-init.js') }}"></script>
     <script src="{{ asset('back_office/js/custom.min.js') }}"></script>
@@ -246,6 +251,7 @@
 
 
     <script src="{{ asset('back_office/js/dashboard/dashboard-1.js') }}"></script>
+    {% endblock %}
 
 </body>
 

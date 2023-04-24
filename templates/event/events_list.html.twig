@@ -3,9 +3,22 @@
 {% endblock %}
 {% block content %}
 <div style="display: block;">
-            <div style="display: flex; width: 100%; margin-top: 40px;" class="fadeInUp" data-wow-delay="0.1s">
+            <div style="display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;" class="fadeInUp" data-wow-delay="0.1s">
+            <div style="width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;">
 		{% for e in event %}
-                <div style="margin: 0 auto; width: 20%; height: 500px;" class="project-item mb-5">
+                <div style="width: calc(25% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;" class="project-item mb-5">
                     <div class="position-relative">
                         <img style="height: 240px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ e.image) }}" alt="">
                     </div>
@@ -26,6 +39,7 @@
                 </div>
 
 		{% endfor %}
+        </div>
 	</div>
         <a style="margin-left: 80px;" href="{{ path('app_reservation_index') }}">My Event Reservations</a>
         </div>

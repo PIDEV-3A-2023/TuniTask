@@ -7,7 +7,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    {% block stylesheets %}
     <!-- Favicon -->
     <link href="img/favicon.html" rel="icon">
 
@@ -32,6 +33,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('front_office/css/style.css') }}" rel="stylesheet">
+    {% endblock %}
 </head>
 
 <body>
@@ -184,6 +186,8 @@
             class="bi bi-arrow-up"></i></a>
 
 {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+    {% block javascripts %}
 <!-- JavaScript Libraries -->
 <script src="{{ asset('front_office/js/jquery.min.js') }}"></script>
 <script src="{{ asset('front_office/js/bootstrap.bundle.min.js') }}"></script>
@@ -195,6 +199,7 @@
 
 <!-- Template Javascript -->
 <script src="{{ asset('front_office/js/main.js') }}"></script>
+    {% endblock %}
 </body>
 
 

@@ -2,10 +2,26 @@
 
 {% block title %}Reservation index
 {% endblock %}
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		#calendrier {
+			width: 80%;
+			margin: auto;
+			height: 500px;
+		}
+	</style>
+{% endblock %}
 
 {% block content %}
 	<div style="margin: 50px;">
 		<h1>My Reservations</h1>
+
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-success ">
+			{{ message }}
+		</div>
+	{% endfor %}
 
 		<table class="table">
 			<thead>
@@ -24,16 +40,20 @@
 						<td>
 							<ul>
 								<li>
-									Nom: {{ reservation.event.nom }}
+									Nom:
+									{{ reservation.event.nom }}
 								</li>
 								<li>
-									Date: {{ reservation.event.date ? reservation.event.date|date('d-m-Y H:i:s') : '' }}
+									Date:
+									{{ reservation.event.date ? reservation.event.date|date('d-m-Y H:i:s') : '' }}
 								</li>
 								<li>
-									Lieu: {{ reservation.event.lieu }}
+									Lieu:
+									{{ reservation.event.lieu }}
 								</li>
 								<li>
-									Capacité: {{ reservation.event.nbrPlace }}
+									Capacité:
+									{{ reservation.event.nbrPlace }}
 								</li>
 							</ul>
 						</td>
@@ -51,6 +71,56 @@
 			</tbody>
 		</table>
 
+		<div id="calendrier"></div>
+
 		<a href="{{ path('eventList') }}">Book another Event</a>
 	</div>
+
+	
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'dayGridMonth',
+locale: 'fr',
+timeZone: 'Europe/Paris',
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+events: {{ data|raw }},
+editable: false,
+eventResizableFromStart: false
+})
+calendar.on('eventChange', (e) => {
+let url = `/api/${
+e.event.id
+}/edit`
+console.log(e.event.type)
+let donnees = {
+"id": e.event.id,
+"type": e.event.title,
+"date": e.event.start,
+"cours": e.event.title,
+"title": e.event.title,
+"description": e.event.extendedProps.type,
+"start": e.event.start,
+"end": e.event.start,
+"backgroundColor": e.event.backgroundColor,
+"borderColor": e.event.borderColor,
+"textColor": e.event.textColor,
+"allDay": e.event.allDay
+}
+
+let xhr = new XMLHttpRequest
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+calendar.render()
+}
+	</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
 {% endblock %}
