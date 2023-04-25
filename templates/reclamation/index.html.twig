@@ -1,0 +1,46 @@
+{% extends 'basepage.html.twig' %}
+
+{% block title %}My Reclamations{% endblock %}
+
+{% block display %}My Reclamations{% endblock %}
+
+{% block breadcrumb %}My Reclamations{% endblock %}
+
+{% block content %}
+    <h1>My Reclamations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.nom }}</td>
+                <td>{{ reclamation.prenom }}</td>
+                <td>{{ reclamation.email }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no reclamations found in your list</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div style="display: block;">
+    <a style="display: block;" href="{{ path('app_reclamation_new') }}">Send another reclamation</a>
+    <a style="display: block;" href="{{ path('app_reponserec_index') }}">my reponses</a>
+    </div>
+{% endblock %}

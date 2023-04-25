@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reponses Rec{% endblock %}
+
+{% block body %}
+    <h1>Reponses Rec</h1>
+
+	<div id="div_chart"></div>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		{{ gc_draw(piechart, "div_chart") }}</script>
+
+
+        
+    {# <div id="columnChart"></div>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw(columnChart, 'columnChart') }}
+    </script> #}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nomagent</th>
+                <th>Prenomagent</th>
+                <th>Resolution</th>
+                <th>Reclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponserec in reponserecs %}
+            <tr>
+                <td>{{ reponserec.nomagent }}</td>
+                <td>{{ reponserec.prenomagent }}</td>
+                <td>{{ reponserec.resolution }}</td>
+                <td>{{ reponserec.id }}</td>
+                <td>
+                    <a href="{{ path('admin_reponserec_show', {'reponseId': reponserec.reponseId}) }}">show</a>
+                    {{ include('reponserecAdmin/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no responses found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_reponserec_new') }}">Create new</a>
+{% endblock %}
