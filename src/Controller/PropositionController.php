@@ -17,6 +17,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Twilio\Rest\Client;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
 
 
 
@@ -39,8 +42,6 @@ class PropositionController extends AbstractController
         ]);
     }
 
-
-  
 
         #[Route('/readProposition', name: 'app_readP')]
         public function readProposition(): Response
@@ -117,6 +118,25 @@ $this->entityManager->persist($demande);
        }
        // Persist the new proposition object in the database
        
+    
+       
+
+       // Create a new Email message
+       $email = (new Email())
+       ->from('gabsilaroussi99@gmail.com')
+       ->to($demande->getIdClient()->getEmail())
+       ->subject('Proposition')
+       ->text(sprintf("Hi %s,\n\nUn freelancer nommé %s %s a fait une proposition sur votre demande.\n\nTuniTask", $demande->getIdClient()->getFirstName(), $user->getFirstName(), $user->getLastName() ));
+
+
+   // Create a new Gmail Transport
+   $transport = Transport::fromDsn('gmail://gabsilaroussi99@gmail.com:xaxgmidqhrcaiyfl@default');
+
+   // Send the message using the Transport and MailerInterface
+   $mailer = new Mailer($transport);
+   $mailer->send($email); 
+
+
    
        // Redirect back to the list of demands
        return $this->renderForm('proposition/add_proposition.html.twig',['prop'=>$proposition,'form'=>$form]);
@@ -136,7 +156,7 @@ $this->entityManager->persist($demande);
       $session = $request->getSession();
   
       $sid = 'AC612246f81a50ebe4b07c556da16fb0c6';
-      $token = '6a7e0c0742c1c6436d04e42b54952294';
+      $token = 'a9c248c053acbd69bdcb793cb141ac26';
       $client = new Client($sid, $token);
   
       $message = $client->messages->create(
