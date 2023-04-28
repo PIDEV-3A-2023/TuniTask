@@ -18,16 +18,23 @@ class EditDemandeFormType extends AbstractType
     {
         $builder
             ->add('titre')
-           // ->add('description')
-           ->add('description', TextareaType::class, [
-            'label' => false,
-            'attr' => ['class' => 'i']
-        ])
-            ->add('salaire')
+            ->add('description')
+          // ->add('description', TextareaType::class, [
+           // 'label' => false,
+           // 'attr' => ['class' => 'i']
+        //]
+        //)
+            ->add('salaire', null, [
+                'label' => false,
+                'attr' => ['class' => 'i'],
+                'constraints' => [
+                    new Assert\NotBlank(['message' => 'Le salaire ne peut pas être vide.']),
+                    new Assert\Type(['type' => 'numeric', 'message' => 'Le salaire doit être numérique.']),],
+                    'invalid_message' => 'Le salaire doit être numérique.' ])
             ->add('delai')
             ->add('langage')
     
-           ->add('modifier',SubmitType::class);
+           ->add('save',SubmitType::class);
         ;
     }
 

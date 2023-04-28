@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Demande;
 use App\Form\DemandeFormType;
+use App\Form\EditDemandeFormType;
 use App\Entity\Users;
 
 class DemandeController extends AbstractController
@@ -42,7 +43,7 @@ class DemandeController extends AbstractController
         $demandes = $entityManager->getRepository(Demande::class)
             ->createQueryBuilder('t')
             ->leftJoin(Users::class, 't1', 'WITH', 't1.id = t.idClient')
-            ->select('t.id, t1.firstName, t1.lastName, t.titre, t.description, t.salaire, t.delai, t.langage')
+            ->select('t.id, t1.firstName, t1.lastName, t.titre, t.description, t.salaire, t.delai, t.langage, t.etat')
             ->getQuery()
             ->getResult();
 
@@ -66,7 +67,7 @@ class DemandeController extends AbstractController
                 ->leftJoin(Users::class, 't1', 'WITH', 't1.id = t.idClient')
                 ->where('t.idClient = :userId')
                 ->setParameter('userId', $currentUser->getId())
-                ->select('t.id,t1.firstName, t1.lastName, t.titre, t.description, t.salaire, t.delai, t.langage')
+                ->select('t.id,t1.firstName, t1.lastName, t.titre, t.description, t.salaire, t.delai, t.langage, t.etat')
                 ->getQuery()
                 ->getResult();
 
@@ -127,23 +128,23 @@ class DemandeController extends AbstractController
 
                
 
- #[Route('/updateDemande/{id}', name: 'app_updateD')]
-  public function updateDemande($id,DemandeRepository $rep,
-  ManagerRegistry $doctrine,Request $request)
-               {
-      //récupérer la classe à modifier
-      $demande=$rep->find($id);
-    $form=$this->createForm(DemandeFormType::class,$demande);
-                 $form->handleRequest($request);
-                if($form->isSubmitted() && $form->isValid()){
-             
-                 $em =$doctrine->getManager() ;
-                $em->flush();
-
-                $this->addFlash('success', sprintf('votre demande a été modifié avec succès'));
-             return $this->redirectToRoute("app_readmd");
-                       }
-        return $this->renderForm("demande/editD.html.twig",
-                                      array("f"=>$form));
-                                  }
+                  #[Route('/updateDemande/{id}', name: 'app_updateD')]
+                  public function updateDemande($id,DemandeRepository $rep,
+                  ManagerRegistry $doctrine,Request $request)
+                               {
+                      //récupérer la classe à modifier
+                      $demande=$rep->find($id);
+                    $form=$this->createForm(EditDemandeFormType::class,$demande);
+                                 $form->handleRequest($request);
+                                if($form->isSubmitted() && $form->isValid()){
+                             
+                                 $em =$doctrine->getManager() ;
+                                $em->flush();
+                
+                                $this->addFlash('success', sprintf('votre demande a été modifié avec succès'));
+                             return $this->redirectToRoute("app_readmd");
+                                       }
+                        return $this->renderForm("demande/editD.html.twig",
+                                                      array("f"=>$form));
+                                                  }
 }

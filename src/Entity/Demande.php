@@ -29,8 +29,7 @@ class Demande
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message:"Salaire is required")]
-   // #[Assert\Positive(message:"Le salaire '{{ value }}' doit être de type float et positif ")]
-    #[Assert\Type(type:"numeric", message:"Le salaire doit être numérique.")]
+   #[Assert\Positive(message:"Le salaire '{{ value }}' doit être positif ")]
    private ?float $salaire= null;
 
 

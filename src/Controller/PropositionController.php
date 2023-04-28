@@ -79,7 +79,15 @@ class PropositionController extends AbstractController
         $em=$doctrine->getManager();
         $em->remove($proposition);
         
+       // $em->flush();
+
+
+        $demande = $proposition->getIdDemande();
+        $demande->setEtat(null);
+        $em->persist($demande);
         $em->flush();
+
+
         return $this->redirectToRoute('app_readP');
     }
 
@@ -100,6 +108,9 @@ class PropositionController extends AbstractController
        $form->handleRequest($request);
        if($form->isSubmitted() && $form->isValid())
        {
+
+        $demande->setEtat(1); // Assuming 1 means a freelancer has applied
+$this->entityManager->persist($demande);
         $this->entityManager->persist($proposition);
         $this->entityManager->flush();
         return $this->redirectToRoute('app_readP', [], Response::HTTP_SEE_OTHER);

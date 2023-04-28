@@ -14,6 +14,7 @@
         <th style="padding: 10px; border: 1px solid #ddd;">Salaire</th> 
         <th style="padding: 10px; border: 1px solid #ddd;">Délai</th>
         <th style="padding: 10px; border: 1px solid #ddd;">Langage</th>
+        
         <th style="border: 1px solid #ddd; padding: 12px;">Actions</th>
       </tr>
     </thead>
@@ -32,9 +33,11 @@
 <!--form action="{{ path('add_proposition', {'idDemande': i.id}) }}" method="post" style="display:inline;"-->
 <!--button type="submit" style="background-color:blue; color:#fff; padding:6px 12px; border:none; border-radius:3px; cursor:pointer;">Ajouter Proposition</button-->
 <!--/form-->
+{% if i.etat is null %}
 <form action="{{ path('add_proposition', {'idDemande': i.id}) }}" method="get" style="display:inline;">
     <button type="submit" style="background-color:blue; color:#fff; padding:6px 12px; border:none; border-radius:3px; cursor:pointer;">Ajouter Proposition</button>
 </form>
+{% endif %}
 </td>
         </tr>
       {% endfor %}
