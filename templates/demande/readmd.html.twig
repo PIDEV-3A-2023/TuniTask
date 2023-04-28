@@ -7,22 +7,37 @@
         <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
     </head>
 
 <div style="text-align:center;">
+
+{% for type, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ type }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endfor %}
+
 <h1 style="font-size:2em;">Mes Demandes</h1>
 </br>
-<input style="width:20%; margin-left:10%" type="text" id="filter-name" name="name" class="form-control" placeholder="Filter by title">
-<input style="width:20%; margin-left:10%" type="number" id="filter-min-salary" name="min-salary" class="form-control" placeholder="Minimum salary">
-<input style="width:20%; margin-left:10%" type="number" id="filter-max-salary" name="max-salary" class="form-control" placeholder="Maximum salary">
-<select style="width:20% ; margin-left:10%" id="filter-langage" name="langage" class="form-control">
+<div style="display: flex; align-items: center;">
+<input style="width:20%; margin-left:5%" type="text" id="filter-name" name="name" class="form-control" placeholder="Filter by title">
+<input style="width:20%; margin-left:5%" type="number" id="filter-min-salary" name="min-salary" class="form-control" placeholder="Minimum salary">
+<input style="width:20%; margin-left:5%" type="number" id="filter-max-salary" name="max-salary" class="form-control" placeholder="Maximum salary">
+<select style="width:20% ; margin-left:5% ; margin-right:60px" id="filter-langage" name="langage" class="form-control">
     <option value="">Filter by language</option>
     <option value="symfony">symfony</option>
     <option value="flutter 2">flutter 2</option>
-    <option value="C++">C++</option>
+    <option value="java">java</option>
     <!-- Add more options for other languages -->
 </select>
+</div>
+</br>
 <!--input type="date" id="filter-delai" name="delai" class="form-control" placeholder="Filter by deadline"-->
 
 <table style="width:100%; border-collapse: collapse;" id="customers-table">

@@ -140,9 +140,5 @@ class PropositionController extends AbstractController
   }
 
 
-
-
-
-
     }
 

@@ -29,7 +29,7 @@
         <td style="border: 1px solid #ccc; padding: 8px; color:black;">{{ i.lastName }}</td>
         <td style="border: 1px solid #ccc; padding: 8px; color:black;">{{ i.email }}</td>
         <td style="border: 1px solid #ccc; padding: 8px;">
-        <form action="{{ path('app_deleteP', {'id': i.id}) }}" method="post" style="display: inline-block;" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette station ?')">
+        <form action="{{ path('app_deleteP', {'id': i.id}) }}" method="post" style="display: inline-block;" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette proposition ?')">
             <button type="submit" class="delete-button" style="background-color: #dc3545; color: #fff; border: none; padding: 8px 16px; border-radius: 4px;">Supprimer</button>
           </form>
         </td>

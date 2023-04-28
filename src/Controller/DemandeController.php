@@ -117,6 +117,9 @@ class DemandeController extends AbstractController
                       // Ajout de la demande dans la base de données
                       $entityManager->persist($demande);
                       $entityManager->flush();
+
+                      $this->addFlash('success', sprintf('votre demande a été ajoutée avec succès'));
+
                       return $this->redirectToRoute('app_readmd');}
                       return $this->renderForm("demande/addD.html.twig",array("f"=>$form));
                   }
@@ -136,6 +139,8 @@ class DemandeController extends AbstractController
              
                  $em =$doctrine->getManager() ;
                 $em->flush();
+
+                $this->addFlash('success', sprintf('votre demande a été modifié avec succès'));
              return $this->redirectToRoute("app_readmd");
                        }
         return $this->renderForm("demande/editD.html.twig",
