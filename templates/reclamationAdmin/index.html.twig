@@ -1,0 +1,81 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block body %}
+ <div class="content-body">
+    <h1>Reclamations</h1>
+
+    <form id="search-form" action="{{ path('reclamation_search') }}" method="get">
+        <div class="form-group">
+            <input type="text" name="q" class="form-control" value="{{ query }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <hr>
+    
+    <a class="btn btn-primary" href="{{path('sort_by_asc_etat')}}">Etat Asc</a>
+    <a class="btn btn-primary" href="{{path('sort_by_desc_etat')}}">Etat Desc</a>
+
+    <a class="btn btn-primary" href="{{path('sort_by_asc_nom')}}">Nom Asc</a>
+    <a class="btn btn-primary" href="{{path('sort_by_desc_nom')}}">Nom Desc</a>
+    
+	{# {{ knp_pagination_render(reclamations) }} #}
+
+    <table style="margin-top: 20px;" class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.nom }}</td>
+                <td>{{ reclamation.prenom }}</td>
+                <td>{{ reclamation.email }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>
+					<a href="{{ path('print_reclamation',{'id':reclamation.id}) }}">export</a>
+                    <a href="{{ path('admin_reclamation_show', {'id': reclamation.id}) }}">show</a>
+                    {% if reclamation.etat == "en attente" %}
+                        {{ include('reclamationAdmin/_delete_form.html.twig') }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no reclamations found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     </div>
+	{{ knp_pagination_render(reclamations) }}
+
+    <a href="{{ path('print_reclamations', {'id': 0}) }}">Export all reclamations</a>
+
+    <script>
+        $(function () {
+            $('#search-form').submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $('#search-results').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+   
+{% endblock %}

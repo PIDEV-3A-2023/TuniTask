@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\Entity\Login; ;
 use App\Form\LoginType ;
+use App\Entity\Users;
 use App\Repository\UsersRepository;
 use App\Repository\RoleRepository;
 use Symfony\Component\HttpFoundation\Request;

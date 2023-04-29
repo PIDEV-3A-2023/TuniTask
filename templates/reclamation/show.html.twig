@@ -1,0 +1,38 @@
+{% extends 'basepage.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block display %}Reclamation{% endblock %}
+
+{% block breadcrumb %}Reclamation{% endblock %}
+
+{% block content %}
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ reclamation.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ reclamation.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reclamation.email }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ reclamation.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_index') }}">my reclamations</a>
+{% endblock %}

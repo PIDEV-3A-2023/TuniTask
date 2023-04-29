@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Reclamation Print</title>
+    <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}" />
+</head>
+<body>
+<header class="clearfix">
+    <div id="logo">
+        TuniTask
+    </div>
+    <h1 align="center">TuniTask - toutes les Reclamations</h1>
+    <hr></hr>
+    <div class="table-wrapper">
+      <h1>Reclamations</h1>
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th>Etat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reclamation in reclamations %}
+          <tr>
+            <td>{{ reclamation.nom }}</td>
+            <td>{{ reclamation.prenom}}</td>
+            <td>{{ reclamation.email }}</td>
+            <td>{{ reclamation.description }}</td>
+            <td>{{ reclamation.etat }}</td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="6">no reclamations found</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</header>
+</main>
+
+</body>

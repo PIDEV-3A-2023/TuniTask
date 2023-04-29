@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Reclamation Print</title>
+    <link rel="stylesheet" href="/style.css" media="all" />
+</head>
+<body>
+<header class="clearfix">
+    <h1 align="center">TuniTask Reclamations </h1>
+    <hr></hr>
+    <div><span>Reclamation N° </span> {{ reclamation.id }} </div>
+    <hr></hr>
+    <div id="company" class="clearfix">
+        <div><span>Nom: </span> {{ reclamation.nom }}  </div>
+        <div><span>Prenom: </span> {{ reclamation.prenom }}  </div>
+        <div><span>Email: </span> {{ reclamation.email }}  </div>
+        <div><span>Description: </span> {{ reclamation.description }}  </div>
+        <div><span>Etat: </span> {{ reclamation.etat }}  </div>
+        <hr></hr>
+    </div>
+</header>
+</main>
+
+</body>

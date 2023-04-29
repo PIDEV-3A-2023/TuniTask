@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reponse Rec{% endblock %}
+
+{% block body %}
+    <h1>Send new Reponse Rec</h1>
+
+	<div class="col-lg-12 wow fadeInUp" data-wow-delay="0.5s">
+		<div class="row g-3">
+			{{form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+
+			<div class="col-lg-6">
+				{{form_label(form.nomagent,'Nom Agent : ',{'attr':{'class':'form-label'}})}}
+				{{form_widget(form.nomagent,{'attr':{'class':'form-control'}})}}
+				{{ form_errors(form.nomagent,{'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class="col-lg-6">
+				{{form_label(form.prenomagent,'Prenom Agent : ',{'attr':{'class':'form-label'}})}}
+				{{form_widget(form.prenomagent,{'attr':{'class':'form-control'}})}}
+				{{ form_errors(form.prenomagent,{'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class="col-lg-6">
+				{{form_label(form.resolution,'Résolution : ',{'attr':{'class':'form-label'}})}}
+				{{form_widget(form.resolution,{'attr':{'class':'form-control'}})}}
+				{{ form_errors(form.resolution,{'attr':{'class':'form-control'}}) }}
+			</div>
+			<div class="col-lg-6">
+				{{form_label(form.id,'Reclamation à traiter : ',{'attr':{'class':'form-label'}})}}
+				{{form_widget(form.id,{'attr':{'class':'form-control'}})}}
+				{{ form_errors(form.id,{'attr':{'class':'form-control'}}) }}
+			</div>
+			<div style="margin: 10px 0 20px 0;" class="col-lg-6">
+				<button class="btn btn-primary w-100 py-3" type="submit">Send</button>
+			</div>
+			{{form_end(form)}}
+		</div>
+	</div>
+
+    <a href="{{ path('admin_reponserec_index') }}">back to list</a>
+{% endblock %}

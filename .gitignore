@@ -9,6 +9,7 @@
 /vendor/
 ###< symfony/framework-bundle ###
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 ###> phpunit/phpunit ###
@@ -21,3 +22,5 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 >>>>>>> offre
+=======
+>>>>>>> origin/reclamation

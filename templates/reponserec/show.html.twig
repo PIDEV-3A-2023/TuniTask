@@ -1,0 +1,34 @@
+{% extends 'basepage.html.twig' %}
+
+{% block title %}Reponse{% endblock %}
+
+{% block display %}Reponse{% endblock %}
+
+{% block breadcrumb %}Reponse{% endblock %}
+
+{% block content %}
+    <h1>Reponse Rec</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nomagent</th>
+                <td>{{ reponserec.nomagent }}</td>
+            </tr>
+            <tr>
+                <th>Prenomagent</th>
+                <td>{{ reponserec.prenomagent }}</td>
+            </tr>
+            <tr>
+                <th>Resolution</th>
+                <td>{{ reponserec.resolution }}</td>
+            </tr>
+            <tr>
+                <th>Reclamation</th>
+                <td>{{ reponserec.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reponserec_index') }}">my reponses</a>
+{% endblock %}
