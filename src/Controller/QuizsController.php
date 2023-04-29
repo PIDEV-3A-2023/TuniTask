@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Quizs;
+use
+    App\Entity\Quizs;
 use App\Form\QuizsType;
 use App\Repository\QuestionsRepository;
 use App\Repository\QuizsRepository;
