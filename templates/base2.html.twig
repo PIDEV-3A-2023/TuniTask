@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="Fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}TuniTask{% endblock %}</title>
+    <!-- Favicon icon -->
+    <link rel="icon"  sizes="16x16" href="{{asset('admin/images/logo.png')}}">
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/owl-carousel/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendor/owl-carousel/css/owl.theme.default.min.css')}}">
+    <link href="{{asset('admin/vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin/css/style1.css')}}" rel="stylesheet">
+    
+    {% endblock %}
+</head>
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="#" class="brand-logo">
+                <img class="logo-abbr" src="{{asset('admin/images/logo.png')}}" alt="">
+                <img class="logo-compact" src="{{asset('admin/images/logo-text.png')}}" alt="">
+                <img class="brand-title" src="{{asset('admin/images/logo-text.png')}}" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-bell"></i>
+                                    <div class="pulse-css"></div>
+                                </a>
+                               
+                            </li>
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                              
+                                  
+                                    <a href="{{path('app_user')}}" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Menu</li>
+               
+                   
+                  
+                    <li class="nav-label">Gestion</li>
+                    <li><a class="has-arrow" href="{{path('app_admin')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Users</span></a>
+                                  <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Offre</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Demande</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Quiz</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Events</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Reclamation</span></a>
+                       </li>
+                       <li class="nav-label">Statistics</li>
+                    
+                                  <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Demande</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Events</span></a>
+                                      <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Users</span></a>
+                                       <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Reclamation</span></a>
+                        
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        {% block body %}{% endblock %}
+         <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Aster</a> 2023</p>
+                <p>Distributed by <a href="#" target="_blank">Aster</a></p> 
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    {% block js %}
+     <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <script src="{{asset('admin/js/dashboard/dashboard-1.js')}}"></script>
+    <!-- Required vendors -->
+    <script src="{{asset('admin/vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('admin/js/quixnav-init.js')}}"></script>
+    <script src="{{asset('admin/js/custom.min.js')}}"></script>
+
+
+    <!-- Vectormap -->
+    <script src="{{asset('admin/vendor/raphael/raphael.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/morris/morris.min.js')}}"></script>
+
+
+    <script src="{{asset('admin/vendor/circle-progress/circle-progress.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/chart.js/Chart.bundle.min.js')}}"></script>
+
+    <script src="{{asset('admin/vendor/gaugeJS/dist/gauge.min.js')}}"></script>
+
+    <!--  flot-chart js -->
+    <script src="{{asset('admin/vendor/flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('admin/vendor/flot/jquery.flot.resize.js')}}"></script>
+
+    <!-- Owl Carousel -->
+    <script src="{{asset('admin/vendor/owl-carousel/js/owl.carousel.min.js')}}"></script>
+
+    <!-- Counter Up -->
+    <script src="{{asset('admin/vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
+    <script src="{{asset('admin/vendor/jquery.counterup/jquery.counterup.min.js')}}"></script>
+
+       <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+   
+    {% endblock %}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+</body>
+
+</html>

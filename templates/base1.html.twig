@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Tunitask{% endblock %}</title>
+       
+      <meta charset="utf-8">
+     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   
+
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            <!-- Customized Bootstrap Stylesheet -->
+      <link href ="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="{{asset("css/style.css")}}" rel="stylesheet">
+            
+        {% endblock %}
+      
+
+       
+    </head>
+    <body>
+   
+    {% block topbar %} <!-- Topbar Start -->
+    
+    <div class="aa">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="#">
+                    <h2 class="text-white fw-bold m-0">TuniTask</h2>
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>Av. Fethi Zouhir, Cebalat Ben Ammar 2083</small>
+                    <small class="ms-4"><i class="fa fa-envelope me-3"></i>Aster@gmail.com</small>
+                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>+216 244 10946</small>
+                    <div class="ms-3 d-flex">
+                        <img src="img/logo.png" class="logo1" height="60">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topbar End -->
+{% endblock %}
+    {% block navbar %} <!-- Navbar Start -->
+    <div class="container-fluid bg-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <h1 class="fw-bold m-0">TuniTask</h1>
+                </a>
+                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="{{asset('/')}}" class="nav-item nav-link active">Accueil</a>
+                        <a href="#" class="nav-item nav-link">Offre</a>
+                        <a href="#" class="nav-item nav-link">Demande</a>
+                        <a href="#" class="nav-item nav-link">Evenements</a>
+                        
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                         
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                
+                  <form class="ms-3 d-flex">
+       <a href="{{asset('/login')}}" class="nav-item nav-link">S'identifier</a>
+        
+        <a href="{{asset('/AddUser')}}" class="nav-item nav-link">S'inscrire</a>
+        </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->{% endblock %}
+        {% block body %}{% endblock %}
+         {% block javascripts %}
+             <!-- JavaScript Libraries -->
+    
+    <!-- Template Javascript -->
+   
+            <script src ="{{asset('js/Takeaphoto.js')}}"></script>
+        {% endblock %}
+    </body>
+</html>

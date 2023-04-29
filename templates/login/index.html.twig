@@ -1,0 +1,87 @@
+
+
+{% block body %}
+
+<div class="container-fuild">
+    
+     <div class="row"></div>
+     <div class="row">
+     <div class="col col-lg-8">
+     <br>
+     <br>
+     <br>
+     <br>
+     <center><a  ><img src ={{asset('img/logo.png')}}   ></a><center>
+     </div>
+     
+     <div class="col col-lg-4" style="background-color:	#120449; border-top-left-radius:  300px;border-bottom-left-radius:300px">
+   
+     <br>
+     <br>
+     <br>
+     <br>
+   
+    
+     
+     <center> <div class="card" style="width: 23rem;height:17rem;left: 26px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)">
+     <br>
+                 <div class="card-body">
+     <center> 
+        
+                  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                       	
+
+
+               {{ form_label(form.email) }} 
+             <center>  {{ form_widget(form.email) }} </center>
+             </br>
+                 {{ form_label(form.password) }} 
+             <center>  {{ form_widget(form.password) }} </center>
+             
+              
+              
+             {% if test != null %}
+              {% if test == 'banned'  %}
+               <div class="alert alert-danger" role="alert">
+               You have been banned !
+               
+              
+               </div>
+               
+               {% else  %}
+               <div class="alert alert-danger" role="alert">
+               
+               Vérifiez vos Login ou vos Password !
+              
+               </div>
+               {% endif %}
+               {% endif %}
+             
+              
+            
+                       
+           <center> <button type="submit" class="btn btn-primary">S'authentifier</button></center>
+            
+            {{ form_end(form) }}
+            <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+            </div>
+            </div></center>
+               <br>
+             
+     <br>
+     <br>
+             <br>
+     <br>
+     </div>
+  
+     </div>
+            
+
+           
+          
+         
+            
+      </div>   
+     </div>
+
+{% endblock %}
