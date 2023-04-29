@@ -5,16 +5,23 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UsersRepository;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+=======
+
+
+#[ORM\Entity(repositoryClass: UsersRepository::class)]
+>>>>>>> offre
 class Users
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+<<<<<<< HEAD
     #[Groups("user")]
     private ?int $id = null;
     #[ORM\Column(length: 255)]
@@ -49,12 +56,57 @@ private \DateTime $createdAt;
 
  #[ORM\Column]
     private $etat;
+=======
+    private ?int $id=null;
+
+    #[ORM\Column(length: 250)]
+    private ?string $password= null;
+    
+
+    #[ORM\Column(length: 50)]
+    private ?string $email= null;
+    
+
+    #[ORM\Column(length: 50)]
+    private ?string $firstName= null;
+    
+
+    #[ORM\Column(length: 50)]
+    private ?string $lastName= null;
+    
+   
+
+    
+    
+
+   
+    #[ORM\Column]
+    private ?bool $statut= null;
+
+    #[ORM\Column(length: 500)]
+    private ?string $srcimage= null;
+    
+
+    #[ORM\Column]
+    private ?bool $etat= null;
+    
+>>>>>>> offre
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
+<<<<<<< HEAD
+=======
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+>>>>>>> offre
     public function getPassword(): ?string
     {
         return $this->password;
@@ -103,6 +155,7 @@ private \DateTime $createdAt;
         return $this;
     }
 
+<<<<<<< HEAD
     public function getDateOfBirth(): ?\DateTimeInterface
     {
         return $this->dateOfBirth;
@@ -128,6 +181,9 @@ $this->createdAt = \DateTime::createFromFormat('Y-m-d', $date);
 
         return $this;
     }
+=======
+   
+>>>>>>> offre
 
     public function isStatut(): ?bool
     {
@@ -164,6 +220,10 @@ $this->createdAt = \DateTime::createFromFormat('Y-m-d', $date);
 
         return $this;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> offre
 
 }

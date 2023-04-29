@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1 style="padding-left: 670px;">L' Offre</h1>
+<div style="display: flex; flex-direction: column; padding-left: 460px">
+ 
+    <div class="card-deck">
+            <div class="card mb-4">
+                <img src="{{asset(l.user.srcimage)  }}" class="card-img-top" alt="Image utilisateur">
+                <div class="card-body">
+                    <h5 class="card-title">{{ l.titre }}</h5>
+                    <p class="card-text">Description :{{ l.description }}</p>
+                    <p class="card-text">Salaire : {{ l.salaireh }}dt/h</p>
+                    <p class="card-text">Posté par {{ l.user.firstName }} {{ l.user.lastName }}</p>
+                </div>
+               
+            </div>
+    </div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center;">
+   <h1 style="text-align: center;">Commentaires</h1>
+    <div class="cardd-deck ">
+        {% for comment in result %}
+            <div class="cardd">
+                <img src="{{asset(comment.srcimage)  }}" class="cardd-img" alt="Image utilisateur">
+                <p>Commentaire: {{ comment.commentaire }}</p>
+                <p>Posté par {{ comment.firstName }} {{ comment.lastName }}</p>
+      <div class="like-dislike">
+  <a href="{{ path('app_like_or_dislike', {'id': comment.idcommentaire, 'type': 'like'}) }}" class="like-btn"><i class="fas fa-thumbs-up"></i></a>{{comment.jaime}}
+  <a href="{{ path('app_like_or_dislike', {'id': comment.idcommentaire, 'type': 'dislike'}) }}" class="dislike-btn"><i class="fas fa-thumbs-down"></i></a>{{comment.djaime}}
+</div>
+                <div class="button-group">
+  {% if comment.modifier_url is defined %}            
+  <a href="{{ comment.modifier_url }}">Modifier</a>        
+  {% endif %}
+  {% if comment.delete_url is defined %}            
+  <a href="{{ comment.delete_url }}">Supprimer</a>        
+  {% endif %}
+</div>
+            </div>
+        {% endfor %}
+    </div>             
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+<h1 style="text-align: center;">Ajout Commentaire </h1>
+{{form_start(f,{'attr': {'class': 'my-form-classs', 'novalidate': 'novalidate'}}) }}
+<table>
+<tr>
+<td> {{ form_label(f.commentaire,"Commentaire")  }} 
+ </td>
+<td>  {{ form_widget(f.commentaire) }} 
+</td>  
+<td> {{ form_errors(f.commentaire) }} 
+</td>
+</tr>
+</table>
+ {{ form_widget(f.submit)}} 
+{{form_end(f)}}
+<form action="{{path('app_readoc') }}">
+                        <button class="b-danger">Annuler</button>
+                    </form>
+
+ </div>
+{% endblock %}

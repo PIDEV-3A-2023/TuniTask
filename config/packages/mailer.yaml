@@ -1,3 +1,8 @@
 framework:
+<<<<<<< HEAD
   mailer:
     dsn: "%env(MAILER_DSN)%"
+=======
+    mailer:
+        dsn: '%env(MAILER_DSN)%'
+>>>>>>> offre

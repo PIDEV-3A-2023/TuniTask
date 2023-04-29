@@ -1,0 +1,30 @@
+ {% if result is defined %}
+        {% for k in result %}  
+            <div class="card mb-4">
+                <img src="{{ k.srcimage }}" class="card-img-top" alt="Image utilisateur">
+                <div class="card-body">
+                    <h5 class="card-title">{{ k.titre }}</h5>
+                    <p class="card-text">Description :{{ k.description }}</p>
+                    <p class="card-text">Salaire : {{ k.salaireh }}dt/h</p>
+                    <p class="card-text">Posté par {{ k.firstName }} {{ k.lastName }}</p>
+                    Rating:
+                    {% for i in 1..5 %}
+                        {% if k.sumr >= i %} 
+                            <i class="fas fa-star"></i>                          
+                        {% else %}
+                            <i class="far fa-star"></i> 
+                        {% endif %} 
+                    {% endfor %}
+                    {{k.sumr }}%
+                </div>
+                <div class="card-footer">
+                    <form  action="{{path('app_addc',{'id':k.idoffre}) }}">
+                        <button class="b" >Voir plus</button>
+                    </form>   
+                    <form  action="{{path('app_addR',{'id':k.idoffre}) }}">                 
+                  <button id="myBtn" class="b" ">Evaluer</button>
+                   </form>
+                </div>
+            </div>
+        {% endfor %}
+         {% endif %}

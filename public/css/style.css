@@ -1,5 +1,256 @@
 /********** Template CSS **********/
 .aa{background-color:#2b3453 ;}
+<<<<<<< HEAD
+=======
+/********** Anes **********/
+.my-form-class{padding-left: 300px;}
+.my-form-classs{padding-left: 130px;}
+#h1{padding-left: 570px;}
+.like-dislike {
+    display: flex;
+    gap: 10px;
+  }
+
+  .like-btn, .dislike-btn {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .like-btn:hover, .dislike-btn:hover {
+    color: #007bff;
+  }
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Styles pour le champ de recherche */
+  #search-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    width: 400px;
+    margin-right: 10px;
+  }
+  
+  /* Styles pour le bouton de recherche */
+  #search-button {
+    border: none;
+    border-radius: 5px;
+    background-color: #786ac6;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Styles pour le bouton de recherche lorsqu'il est survolé */
+  #search-button:hover {
+    background-color: #524986;
+  }
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 150px;
+  }
+  
+  .card {
+    margin-bottom: 15px;
+  }
+  
+  .card-img-top {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+  }
+  .card-body {
+    flex: 1 1 auto;
+  }
+  .b-danger{
+    padding: 10px 20px;
+    margin-left: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ef6a6a;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .b-danger:hover {
+    background-color: #fb0000;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+  
+  .card-text {
+    margin-bottom: 1rem;
+  }
+
+  
+  .card-footer {
+    font-size: 0.875rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid rgba(0,0,0,.125);
+    padding: 0.75rem 1.25rem;
+  }
+.i {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+  }
+  
+  /* Style pour les labels */
+  .l {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .bb {
+    padding: 10px 20px;
+    margin-left: 250px;
+    border: none;
+    border-radius: 5px;
+    background-color: #786ac6;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #ppp{color: #000000;}
+  
+  .parent-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .bb:hover {
+    background-color: #524986;
+  }
+  /* Style pour les boutons */
+  .b {
+    padding: 10px 20px;
+    margin-left: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: #786ac6;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Style pour les boutons au survol */
+  .b:hover {
+    background-color: #524986;
+  }
+  .cardd-deck {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cardd {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .cardd-img {
+    display: block;
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cardd p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .cardd a {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  .cardd a:hover {
+    background-color: #555;
+    color: #fff;
+  }
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* ajustez la marge en fonction de vos besoins */
+  }
+  
+  .button-group a {
+    margin: 0 10px; /* ajustez la marge entre les boutons en fonction de vos besoins */
+  }
+  /********** Anes **********/
+>>>>>>> offre
 :root {
     --primary: #786ac6;
     --secondary: #555555;

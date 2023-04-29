@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}TuniTask{% endblock %}</title>
     <!-- Favicon icon -->
+<<<<<<< HEAD
     <link rel="icon"  sizes="16x16" href="{{asset('admin/images/logo.png')}}">
     {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
@@ -15,6 +16,14 @@
     <link href="{{asset('admin/vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/style1.css')}}" rel="stylesheet">
     
+=======
+    <link rel="icon"  sizes="16x16" href="{{asset('./images/logo.png')}}">
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('./vendor/owl-carousel/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('./vendor/owl-carousel/css/owl.theme.default.min.css')}}">
+    <link href="{{asset('./vendor/jqvmap/css/jqvmap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('./css/style1.css')}}" rel="stylesheet">
+>>>>>>> offre
     {% endblock %}
 </head>
 <body>
@@ -43,10 +52,17 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
+<<<<<<< HEAD
             <a href="#" class="brand-logo">
                 <img class="logo-abbr" src="{{asset('admin/images/logo.png')}}" alt="">
                 <img class="logo-compact" src="{{asset('admin/images/logo-text.png')}}" alt="">
                 <img class="brand-title" src="{{asset('admin/images/logo-text.png')}}" alt="">
+=======
+            <a href="index.html" class="brand-logo">
+                <img class="logo-abbr" src="{{asset('./images/logo.png')}}" alt="">
+                <img class="logo-compact" src="{{asset('./images/logo-text.png')}}" alt="">
+                <img class="brand-title" src="{{asset('./images/logo-text.png')}}" alt="">
+>>>>>>> offre
             </a>
 
             <div class="nav-control">
@@ -92,9 +108,21 @@
                                     <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
+<<<<<<< HEAD
                               
                                   
                                     <a href="{{path('app_user')}}" class="dropdown-item">
+=======
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <a href="./page-login.html" class="dropdown-item">
+>>>>>>> offre
                                         <i class="icon-key"></i>
                                         <span class="ml-2">Logout </span>
                                     </a>
@@ -116,6 +144,7 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Menu</li>
+<<<<<<< HEAD
                
                    
                   
@@ -144,6 +173,26 @@
                                        <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
                                 class="icon icon-form"></i><span class="nav-text"> Reclamation</span></a>
                         
+=======
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="./index.html">Dashboard 1</a></li>
+                            <li><a href="./index2.html">Dashboard 2</a></li>
+                        </ul>
+                    </li>
+                   
+                  
+                    <li class="nav-label">Offre</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Offre</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="#">Ajout offre</a></li>
+                        </ul>
+                    
+                            <li><a href="./page-lock-screen.html">Lock Screen</a></li>
+                        </ul>
+>>>>>>> offre
                     </li>
                 </ul>
             </div>
@@ -182,6 +231,7 @@
         Scripts
     ***********************************-->
     {% block js %}
+<<<<<<< HEAD
      <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
     <script src="{{asset('admin/js/dashboard/dashboard-1.js')}}"></script>
     <!-- Required vendors -->
@@ -217,6 +267,39 @@
    
     {% endblock %}
     {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+=======
+    <!-- Required vendors -->
+    <script src="{{asset('./vendor/global/global.min.js')}}"></script>
+    <script src="{{asset('./js/quixnav-init.js')}}"></script>
+    <script src="{{asset('./js/custom.min.js')}}"></script>
+
+
+    <!-- Vectormap -->
+    <script src="{{asset('./vendor/raphael/raphael.min.js')}}"></script>
+    <script src="{{asset('./vendor/morris/morris.min.js')}}"></script>
+
+
+    <script src="{{asset('./vendor/circle-progress/circle-progress.min.js')}}"></script>
+    <script src="{{asset('./vendor/chart.js/Chart.bundle.min.js')}}"></script>
+
+    <script src="{{asset('./vendor/gaugeJS/dist/gauge.min.js')}}"></script>
+
+    <!--  flot-chart js -->
+    <script src="{{asset('./vendor/flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('./vendor/flot/jquery.flot.resize.js')}}"></script>
+
+    <!-- Owl Carousel -->
+    <script src="{{asset('./vendor/owl-carousel/js/owl.carousel.min.js')}}"></script>
+
+    <!-- Counter Up -->
+    <script src="{{asset('./vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
+    <script src="{{asset('./vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
+    <script src="{{asset('./vendor/jquery.counterup/jquery.counterup.min.js')}}"></script>
+
+
+    <script src="{{asset('./js/dashboard/dashboard-1.js')}}"></script>
+    {% endblock %}
+>>>>>>> offre
 </body>
 
 </html>
