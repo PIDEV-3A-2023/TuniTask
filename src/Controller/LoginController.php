@@ -47,14 +47,36 @@ class LoginController extends AbstractController
         ]);
                     }
                     else
-                   {$role=$r->findOneBy(['idUser'=>$email_user]);
+                   {
+                    $request->getSession()->set('user',$email_user);
+                    $role=$r->findOneBy(['idUser'=>$email_user]);
                    
                    if($role->getRoleName()=="Freelancer")
-                   { return $this->renderForm('FreelancerA.html.twig', [
+                   {
+                    return $this->redirectToRoute('app_admin');}
+                   else  if($role->getRoleName()=="Admin") {
+                     
+                   { /*return $this->renderForm('admin_user/index.html.twig', [
                    'form' => $form,"test" => null
-                   ]) ;}
-                   else  {
-                      if($role->getRoleName()=="Admin")
+                   ]) ;*/
+                     return $this->redirectToRoute('app_admin');
+                }}
+                else  if($role->getRoleName()=="Client") {
+                     
+                   { /*return $this->renderForm('admin_user/index.html.twig', [
+                   'form' => $form,"test" => null
+                   ]) ;*/
+                     return $this->redirectToRoute('app_admin');
+                }}
+                 else  if($role->getRoleName()=="Organizateur") {
+                     
+                   { /*return $this->renderForm('admin_user/index.html.twig', [
+                   'form' => $form,"test" => null
+                   ]) ;*/
+                     return $this->redirectToRoute('app_admin');
+                }}
+                  else {
+                     
                    { /*return $this->renderForm('admin_user/index.html.twig', [
                    'form' => $form,"test" => null
                    ]) ;*/

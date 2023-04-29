@@ -25,19 +25,19 @@ use MercurySeries\FlashyBundle\FlashyNotifier;
 class UserController extends AbstractController
 {
     private $passwordHasher;
-    private $session;
+
     private $user;
     public function __construct(PasswordHasher $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
-        $this->session = new Session();
-        $this->session->start();
+       
         $this->user = new Users();
        
     }
     #[Route('/', name: 'app_user')]
-    public function index(MailerInterface $mailer,FlashyNotifier $flashy): Response
+    public function index(MailerInterface $mailer,FlashyNotifier $flashy,Request $request): Response
     {
+       
        /* $content=rand();
                       $message = (new Email())
             ->from('abdessalam.bahri@esprit.tn')
@@ -47,6 +47,7 @@ class UserController extends AbstractController
 
         $mailer->send($message);*/
         //$flashy->success('Welcome to our app!', '');
+        $request->getSession()->clear();
         return $this->render('index.html.twig');
     }
 

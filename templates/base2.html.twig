@@ -43,7 +43,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="#" class="brand-logo">
                 <img class="logo-abbr" src="{{asset('admin/images/logo.png')}}" alt="">
                 <img class="logo-compact" src="{{asset('admin/images/logo-text.png')}}" alt="">
                 <img class="brand-title" src="{{asset('admin/images/logo-text.png')}}" alt="">
@@ -92,10 +92,7 @@
                                     <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item">
-                                        <i class="icon-user"></i>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
+                              
                                   
                                     <a href="{{path('app_user')}}" class="dropdown-item">
                                         <i class="icon-key"></i>
@@ -122,12 +119,30 @@
                
                    
                   
-                    <li class="nav-label">Users</li>
+                    <li class="nav-label">Gestion</li>
                     <li><a class="has-arrow" href="{{path('app_admin')}}" aria-expanded="false"><i
                                 class="icon icon-form"></i><span class="nav-text">Users</span></a>
-                       
-                    <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
-                                class="icon icon-form"></i><span class="nav-text">Statistics</span></a>
+                                  <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Offre</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Demande</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Quiz</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Events</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text">Reclamation</span></a>
+                       </li>
+                       <li class="nav-label">Statistics</li>
+                    
+                                  <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Demande</span></a>
+                                     <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Events</span></a>
+                                      <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Users</span></a>
+                                       <li><a class="has-arrow" href="{{path('app_static')}}" aria-expanded="false"><i
+                                class="icon icon-form"></i><span class="nav-text"> Reclamation</span></a>
                         
                     </li>
                 </ul>

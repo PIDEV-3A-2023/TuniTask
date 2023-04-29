@@ -15,12 +15,16 @@ class Users
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("user")]
     private ?int $id = null;
     #[ORM\Column(length: 255)]
 
+    #[Groups("user")]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
+    
+    #[Groups("user")]
     private ?string $email = null;
 
  #[ORM\Column(length: 50)]
