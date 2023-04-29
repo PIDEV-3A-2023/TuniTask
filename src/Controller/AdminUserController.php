@@ -19,8 +19,7 @@ class AdminUserController extends AbstractController
     public function __construct(PasswordHasher $passwordHasher)
     {
        
-        $this->session = new Session();
-        $this->session->start();
+
         
        
     }

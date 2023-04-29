@@ -5,7 +5,7 @@
  
     <div class="card-deck">
             <div class="card mb-4">
-                <img src="{{asset(l.user.srcimage)  }}" class="card-img-top" alt="Image utilisateur">
+                <img src="{{asset("http://localhost/img/"~ l.user.srcimage)}}"class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ l.titre }}</h5>
                     <p class="card-text">Description :{{ l.description }}</p>
@@ -21,7 +21,7 @@
     <div class="cardd-deck ">
         {% for comment in result %}
             <div class="cardd">
-                <img src="{{asset(comment.srcimage)  }}" class="cardd-img" alt="Image utilisateur">
+                <img src="{{asset("http://localhost/img/"~ comment.srcimage)}}"class="card-img-top" alt="...">
                 <p>Commentaire: {{ comment.commentaire }}</p>
                 <p>Posté par {{ comment.firstName }} {{ comment.lastName }}</p>
       <div class="like-dislike">

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Entity;
-<<<<<<< HEAD
 use App\Repository\RoleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,46 +35,6 @@ class Role
 #[ORM\ManyToOne(targetEntity: "Users")]
 #[ORM\JoinColumn(name: "id_user", referencedColumnName: "id")]
     private $idUser;
-=======
-
-use App\Entity\Users;
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\DBAL\Types\Types;
-use App\Repository\RoleRepository;
-
-#[ORM\Entity(repositoryClass: RoleRepository::class)]
-class Role
-{
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $idRole=null;
-    
-
-    #[ORM\Column(length: 255)]
-    private ?string $roleName= null;
-    
-
-    #[ORM\Column(length: 255)]
-    private ?string $skills= null;
-    
-
-    #[ORM\Column(length: 255)]
-    private ?string $experience= null;
-    
-
-    #[ORM\Column(length: 255)]
-    private ?string $entreprise= null;
-    
-
-    #[ORM\Column(length: 255)]
-    private ?string $langageDeProgrammation= null;
-    
-
-    #[ORM\ManyToOne(inversedBy: 'Role')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Users $idUser = null;
->>>>>>> offre
 
     public function getIdRole(): ?int
     {

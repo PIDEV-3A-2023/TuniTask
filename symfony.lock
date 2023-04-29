@@ -56,6 +56,9 @@
             "ref": "c51ce07c10331d506762efe25b6f5843c1a5ea17"
         }
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.9.0"
+    },
     "knpuniversity/oauth2-client-bundle": {
         "version": "2.14",
         "recipe": {
@@ -64,6 +67,9 @@
             "version": "1.20",
             "ref": "1ff300d8c030f55c99219cc55050b97a695af3f6"
         }
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v5.1.0"
     },
     "phpunit/phpunit": {
         "version": "9.6",

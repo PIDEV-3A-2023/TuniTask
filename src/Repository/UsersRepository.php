@@ -39,7 +39,6 @@ class UsersRepository extends ServiceEntityRepository
         }
     }
 
-<<<<<<< HEAD
    
      public function statut($value): ?int
    {
@@ -54,37 +53,12 @@ class UsersRepository extends ServiceEntityRepository
 
 
 //    public function findOneBySomeField($value): ?Club
-=======
-#//    /**
-//     * @return Users[] Returns an array of Users objects
-//     */
-//    public function findByExampleField($value): array
->>>>>>> offre
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
 //            ->setParameter('val', $value)
-<<<<<<< HEAD
-=======
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-#//    public function findOneBySomeField($value): ?Users
-#//    {
-#//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
->>>>>>> offre
 //            ->getQuery()
 //            ->getOneOrNullResult()
 //        ;
 //    }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> offre

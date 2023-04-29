@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'base2.html.twig' %}
 
 {% block body %}
+<div class="content-body">
     <h1 id="h1">La liste des Offres</h1>
     <div class="card-deck">
         {% for k in result %}
             <div class="card mb-4">
-                <img src="{{ k.srcimage }}" class="card-img-top" alt="Image utilisateur">
+               
+                <img src="{{asset("http://localhost/img/"~ k.srcimage)}}"class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ k.titre }}</h5>
                     <p class="card-text">Description :{{ k.description }}</p>
@@ -21,4 +23,5 @@
                     <form action="{{path('app_readou') }}">
                         <button class="b">Voir mes offres</button>
                     </form>
+                    </div>
 {% endblock %}

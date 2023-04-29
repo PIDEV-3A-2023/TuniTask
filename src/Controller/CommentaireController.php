@@ -55,7 +55,7 @@ class CommentaireController extends AbstractController
     #[Route('/addc/{id}', name: 'app_addc')]
     public function addCommentaire(Request $request, $id, MailerInterface $mailer): Response
     {   
-        $userId = 55; 
+        $userId = $request->getSession()->get('user')->getId(); 
         $entityManager = $this->getDoctrine()->getManager();
         $result = $entityManager->getRepository(Commentaire::class)
             ->createQueryBuilder('t')

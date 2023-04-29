@@ -1,7 +1,8 @@
  {% if result is defined %}
         {% for k in result %}  
             <div class="card mb-4">
-                <img src="{{ k.srcimage }}" class="card-img-top" alt="Image utilisateur">
+            
+                <img src="{{asset("http://localhost/img/"~ k.srcimage)}}"class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ k.titre }}</h5>
                     <p class="card-text">Description :{{ k.description }}</p>

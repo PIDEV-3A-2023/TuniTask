@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Offre;
 use App\Entity\Users;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\OffreRepository;
-use Symfony\Component\HttpFoundation\Request;
+
 use App\Form\OffreformType;
 use App\Form\EditoffreformType;
 
@@ -42,11 +43,11 @@ class OffreController extends AbstractController
     }
 
     #[Route('/readou', name: 'app_readou')]
-        public function readuoffre(): Response
+        public function readuoffre(Request $request): Response
         {
             $entityManager = $this->getDoctrine()->getManager();
             // Récupération de l'utilisateur courant
-            $userId = 55; // l'ID de l'utilisateur courant
+            $userId = $request->getSession()->get('user')->getId(); // l'ID de l'utilisateur courant
             $userRepository = $entityManager->getRepository(Users::class);
             $currentUser = $userRepository->find($userId);
             // Récupération des offres de l'utilisateur courant
@@ -71,7 +72,7 @@ class OffreController extends AbstractController
         // Création d'une nouvelle offre
         $offre = new Offre();
         // Récupération de l'utilisateur courant et de son ID
-        $userId = 55; // l'ID de l'utilisateur courant
+        $userId = $request->getSession()->get('user')->getId(); // l'ID de l'utilisateur courant
         $userRepository = $entityManager->getRepository(Users::class);
         $currentUser = $userRepository->find($userId);
         $offre->setUser($currentUser);
