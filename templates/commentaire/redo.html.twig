@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="search-container">
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Rechercher...">
+            <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <br>
+    <h1 id="h1">La liste des Offres</h1>
+    <div class="card-deck">
+    {% include 'Commentaire/offre_list.html.twig' with {'result': result} %}
+    </div>   
+
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            // Fonction qui sera appelée lorsque le formulaire de recherche est soumis
+            $('#search-form').submit(function(event) {
+                event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+                var searchTerm = $('#search-input').val(); // Récupère la chaîne de recherche
+                $.ajax({
+                    url: '{{ path('app_search') }}', // URL de l'action de recherche côté serveur
+                    type: 'POST',
+                    data: {searchTerm: searchTerm}, // Envoie la chaîne de recherche au serveur
+                    success: function(response) {
+                        $('.card-deck').html(response); // Remplace le contenu de la liste des offres avec le résultat de la recherche
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+      
+{% endblock %}
+
+

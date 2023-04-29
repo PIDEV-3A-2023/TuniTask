@@ -1,0 +1,52 @@
+
+
+
+ {% block body %}
+ </br>
+</br>
+</br>
+</br>
+ {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'style': 'width: 800px; height: 300px; margin: 0 auto; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 10px; padding: 20px;'}}) }}
+
+                               {{form_label(form.email,'Email')}} 
+                               </br>
+                               {{form_widget(form.email)}}
+                               </br>
+                               {{form_label(form.firstName,'First Name')}}
+                               </br>
+                               {{form_widget(form.firstName)}}
+                               </br>
+                               {{form_label(form.lastName,'last Name')}}
+                               </br>
+                               {{form_widget(form.lastName)}}
+                              </br>
+                              </br> 
+                               {{form_label(form.dateOfBirth,'date Of Birth')}}
+                               </br>
+                               {{form_widget(form.dateOfBirth)}}
+                               </br>
+                               {{form_errors(form.password)}}
+                               {{form_label(form.password,'Password')}}
+                               </br>
+                               {{form_widget(form.password)}}
+                               </br>
+                               {{form_label(form.Who_you_are,'you are ?')}}
+                               </br>
+                               {{form_widget(form.Who_you_are)}}
+                               </br>
+                               </br>
+                              <label style="color:red"> {{form_label(form.Save,"ok")}} </label>
+                               {{form_widget(form.Save)}}
+                                {{form_end(form)}}
+    
+
+ <video id="video-preview" width="250"></video>
+<button id="take-picture-btn">Take Picture</button>
+<button id="take-picture">Take</button>
+<img id="captured-image" width="250" />
+
+<script src="//code.jquery.com/jquery.js"></script>
+ <script src ="{{asset('js/Takeaphoto.js')}}"></script>
+
+
+{% endblock %}
