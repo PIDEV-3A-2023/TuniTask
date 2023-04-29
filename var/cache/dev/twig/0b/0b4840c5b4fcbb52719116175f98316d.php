@@ -69,7 +69,7 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
 
     <!-- Icon Font Stylesheet -->
     <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/cssAhmed/all.min.cssAhmed\" rel=\"stylesheet\">
-    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.cssAhmed\" rel=\"stylesheet\">
+    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons1@1.4.1/font/bootstrap-icons1.cssAhmed\" rel=\"stylesheet\">
 ";
         // line 24
         $this->displayBlock('stylesheets', $context, $blocks);
@@ -97,15 +97,15 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
         echo "    <!-- Libraries Stylesheet -->
     <link  href=\" ";
         // line 26
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/animate/animate.min.cssAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/animate/animate.min.cssAhmed"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     <link href=\"";
         // line 27
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/owlcarousel/assets/owl.carousel.min.cssAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/owlcarousel/assets/owl.carousel.min.cssAhmed"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     <link href=\"";
         // line 28
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/lightbox/cssAhmed/lightbox.min.cssAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/lightbox/cssAhmed/lightbox.min.cssAhmed"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -366,23 +366,23 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
         echo "\"></script>
 <script src=\"";
         // line 191
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/wow/wow.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/wow/wow.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 192
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/easing/easing.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/easing/easing.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 193
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/waypoints/waypoints.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/waypoints/waypoints.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 194
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/owlcarousel/owl.carousel.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/owlcarousel/owl.carousel.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 <script src=\"";
         // line 195
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/lightbox/jsAhmed/lightbox.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib1/lightbox/jsAhmed/lightbox.min.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 196
@@ -440,12 +440,12 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
 
     <!-- Icon Font Stylesheet -->
     <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/cssAhmed/all.min.cssAhmed\" rel=\"stylesheet\">
-    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.cssAhmed\" rel=\"stylesheet\">
+    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons1@1.4.1/font/bootstrap-icons1.cssAhmed\" rel=\"stylesheet\">
 {% block stylesheets %}
     <!-- Libraries Stylesheet -->
-    <link  href=\" {{ asset('lib/animate/animate.min.cssAhmed') }}\" rel=\"stylesheet\">
-    <link href=\"{{ asset('lib/owlcarousel/assets/owl.carousel.min.cssAhmed') }}\" rel=\"stylesheet\">
-    <link href=\"{{ asset('lib/lightbox/cssAhmed/lightbox.min.cssAhmed') }}\" rel=\"stylesheet\">
+    <link  href=\" {{ asset('lib1/animate/animate.min.cssAhmed') }}\" rel=\"stylesheet\">
+    <link href=\"{{ asset('lib1/owlcarousel/assets/owl.carousel.min.cssAhmed') }}\" rel=\"stylesheet\">
+    <link href=\"{{ asset('lib1/lightbox/cssAhmed/lightbox.min.cssAhmed') }}\" rel=\"stylesheet\">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href=\"{{asset('cssAhmed/bootstrap.min.cssAhmed')}}\" rel=\"stylesheet\">
@@ -608,11 +608,11 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
 <!-- JavaScript Libraries -->
 <script src=\"{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.jsAhmed') }}\"></script>
 <script src=\"{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/jsAhmed/bootstrap.bundle.min.jsAhmed')}}\"></script>
-<script src=\"{{ asset('lib/wow/wow.min.jsAhmed') }}\"></script>
-<script src=\"{{ asset('lib/easing/easing.min.jsAhmed') }}\"></script>
-<script src=\"{{ asset('lib/waypoints/waypoints.min.jsAhmed') }}\"></script>
-<script src=\"{{ asset('lib/owlcarousel/owl.carousel.min.jsAhmed') }}\"></script>
-<script src=\"{{ asset('lib/lightbox/jsAhmed/lightbox.min.jsAhmed') }}\"></script>
+<script src=\"{{ asset('lib1/wow/wow.min.jsAhmed') }}\"></script>
+<script src=\"{{ asset('lib1/easing/easing.min.jsAhmed') }}\"></script>
+<script src=\"{{ asset('lib1/waypoints/waypoints.min.jsAhmed') }}\"></script>
+<script src=\"{{ asset('lib1/owlcarousel/owl.carousel.min.jsAhmed') }}\"></script>
+<script src=\"{{ asset('lib1/lightbox/jsAhmed/lightbox.min.jsAhmed') }}\"></script>
     <script src=\"{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.jsAhmed') }}\"></script><!-- Template Javascript -->
 <script src=\"{{ asset('jsAhmed/main.jsAhmed') }}\"></script>
 {% endblock %}

@@ -8,9 +8,9 @@
     -------------------
     Ticker
     -------------------*/
-    if ($('#webticker-dark-icons').length) {
+    if ($('#webticker-dark-icons1').length) {
         
-        $("#webticker-dark-icons").webTicker({
+        $("#webticker-dark-icons1").webTicker({
             height: 'auto',
             duplicate: true,
             startEmpty: false,
@@ -24,9 +24,9 @@
     -------------------
     Ticker
     -------------------*/
-    if ($('#webticker-wout-icons').length) {
+    if ($('#webticker-wout-icons1').length) {
 
-        $("#webticker-wout-icons").webTicker({
+        $("#webticker-wout-icons1").webTicker({
                 height: 'auto',
                 duplicate: true,
                 startEmpty: false,

@@ -255,15 +255,15 @@ class __TwigTemplate_db6f801eeba1349dc4d9aa4f1496652c extends Template
 
         // line 12
         echo "        <link rel=\"stylesheet\" href=\"";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/owl-carousel/cssAhmed/owl.carousel.min.cssAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/owl-carousel/cssAhmed/owl.carousel.min.cssAhmed"), "html", null, true);
         echo "\">
         <link rel=\"stylesheet\" href=\"";
         // line 13
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/owl-carousel/cssAhmed/owl.theme.default.min.cssAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/owl-carousel/cssAhmed/owl.theme.default.min.cssAhmed"), "html", null, true);
         echo "\">
         <link href=\"";
         // line 14
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/jqvmap/cssAhmed/jqvmap.min.cssAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/jqvmap/cssAhmed/jqvmap.min.cssAhmed"), "html", null, true);
         echo "\" rel=\"stylesheet\">
         <link href=\"";
         // line 15
@@ -379,7 +379,7 @@ class __TwigTemplate_db6f801eeba1349dc4d9aa4f1496652c extends Template
         echo "    <!-- Required vendors -->
     <script src=\"";
         // line 192
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/global/global.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/global/global.min.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 193
@@ -394,57 +394,57 @@ class __TwigTemplate_db6f801eeba1349dc4d9aa4f1496652c extends Template
     <!-- Vectormap -->
     <script src=\"";
         // line 198
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/raphael/raphael.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/raphael/raphael.min.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 199
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/morris/morris.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/morris/morris.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 
 
     <script src=\"";
         // line 202
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/circle-progress/circle-progress.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/circle-progress/circle-progress.min.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 203
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/chart.jsAhmed/Chart.bundle.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/chart.jsAhmed/Chart.bundle.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 
     <script src=\"";
         // line 205
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/gaugeJS/dist/gauge.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/gaugeJS/dist/gauge.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 
 
     <!--  flot-chart jsAhmed -->
     <script src=\"";
         // line 209
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/flot/jquery.flot.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/flot/jquery.flot.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 210
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/flot/jquery.flot.resize.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/flot/jquery.flot.resize.jsAhmed"), "html", null, true);
         echo "\"></script>
 
     <!-- Owl Carousel -->
     <script src=\"";
         // line 213
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/owl-carousel/jsAhmed/owl.carousel.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/owl-carousel/jsAhmed/owl.carousel.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 
     <!-- Counter Up -->
     <script src=\"";
         // line 216
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/jqvmap/jsAhmed/jquery.vmap.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/jqvmap/jsAhmed/jquery.vmap.min.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 217
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/jqvmap/jsAhmed/jquery.vmap.usa.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/jqvmap/jsAhmed/jquery.vmap.usa.jsAhmed"), "html", null, true);
         echo "\"></script>
     <script src=\"";
         // line 218
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor/jquery.counterup/jquery.counterup.min.jsAhmed"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("./vendor1/jquery.counterup/jquery.counterup.min.jsAhmed"), "html", null, true);
         echo "\"></script>
 
 
@@ -489,9 +489,9 @@ class __TwigTemplate_db6f801eeba1349dc4d9aa4f1496652c extends Template
     <!-- Favicon icon -->
     <link rel=\"icon\"  sizes=\"16x16\" href=\"{{asset('img/logo.png')}}\">
     {% block stylesheets %}
-        <link rel=\"stylesheet\" href=\"{{asset('./vendor/owl-carousel/cssAhmed/owl.carousel.min.cssAhmed')}}\">
-        <link rel=\"stylesheet\" href=\"{{asset('./vendor/owl-carousel/cssAhmed/owl.theme.default.min.cssAhmed')}}\">
-        <link href=\"{{asset('./vendor/jqvmap/cssAhmed/jqvmap.min.cssAhmed')}}\" rel=\"stylesheet\">
+        <link rel=\"stylesheet\" href=\"{{asset('./vendor1/owl-carousel/cssAhmed/owl.carousel.min.cssAhmed')}}\">
+        <link rel=\"stylesheet\" href=\"{{asset('./vendor1/owl-carousel/cssAhmed/owl.theme.default.min.cssAhmed')}}\">
+        <link href=\"{{asset('./vendor1/jqvmap/cssAhmed/jqvmap.min.cssAhmed')}}\" rel=\"stylesheet\">
         <link href=\"{{asset('./cssAhmed/style2.cssAhmed')}}\" rel=\"stylesheet\">
     {% endblock %}
 </head>
@@ -669,33 +669,33 @@ class __TwigTemplate_db6f801eeba1349dc4d9aa4f1496652c extends Template
 ***********************************-->
 {% block jsAhmed %}
     <!-- Required vendors -->
-    <script src=\"{{asset('./vendor/global/global.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/global/global.min.jsAhmed')}}\"></script>
     <script src=\"{{asset('./jsAhmed/quixnav-init.jsAhmed')}}\"></script>
     <script src=\"{{asset('./jsAhmed/custom.min.jsAhmed')}}\"></script>
 
 
     <!-- Vectormap -->
-    <script src=\"{{asset('./vendor/raphael/raphael.min.jsAhmed')}}\"></script>
-    <script src=\"{{asset('./vendor/morris/morris.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/raphael/raphael.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/morris/morris.min.jsAhmed')}}\"></script>
 
 
-    <script src=\"{{asset('./vendor/circle-progress/circle-progress.min.jsAhmed')}}\"></script>
-    <script src=\"{{asset('./vendor/chart.jsAhmed/Chart.bundle.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/circle-progress/circle-progress.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/chart.jsAhmed/Chart.bundle.min.jsAhmed')}}\"></script>
 
-    <script src=\"{{asset('./vendor/gaugeJS/dist/gauge.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/gaugeJS/dist/gauge.min.jsAhmed')}}\"></script>
 
 
     <!--  flot-chart jsAhmed -->
-    <script src=\"{{asset('./vendor/flot/jquery.flot.jsAhmed')}}\"></script>
-    <script src=\"{{asset('./vendor/flot/jquery.flot.resize.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/flot/jquery.flot.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/flot/jquery.flot.resize.jsAhmed')}}\"></script>
 
     <!-- Owl Carousel -->
-    <script src=\"{{asset('./vendor/owl-carousel/jsAhmed/owl.carousel.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/owl-carousel/jsAhmed/owl.carousel.min.jsAhmed')}}\"></script>
 
     <!-- Counter Up -->
-    <script src=\"{{asset('./vendor/jqvmap/jsAhmed/jquery.vmap.min.jsAhmed')}}\"></script>
-    <script src=\"{{asset('./vendor/jqvmap/jsAhmed/jquery.vmap.usa.jsAhmed')}}\"></script>
-    <script src=\"{{asset('./vendor/jquery.counterup/jquery.counterup.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/jqvmap/jsAhmed/jquery.vmap.min.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/jqvmap/jsAhmed/jquery.vmap.usa.jsAhmed')}}\"></script>
+    <script src=\"{{asset('./vendor1/jquery.counterup/jquery.counterup.min.jsAhmed')}}\"></script>
 
 
     <script src=\"{{asset('./jsAhmed/dashboard/dashboard-1.jsAhmed')}}\"></script>

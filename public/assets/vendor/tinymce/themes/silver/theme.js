@@ -8753,7 +8753,7 @@
       backgroundMenu: 'tox-background-menu',
       selectedMenu: 'tox-selected-menu',
       selectedItem: 'tox-collection__item--active',
-      hasIcons: 'tox-menu--has-icons',
+      hasIcons: 'tox-menu--has-icons1',
       menu: forMenu(presets),
       tieredMenu: 'tox-tiered-menu'
     });

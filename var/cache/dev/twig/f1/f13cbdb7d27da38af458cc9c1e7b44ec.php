@@ -220,6 +220,6 @@ a.doc:hover {
     top: -7em;
     visibility: hidden;
 }
-", "@WebProfiler/Profiler/open.cssAhmed.twig", "C:\\Users\\Ahmed\\Desktop\\webtaskk\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.cssAhmed.twig");
+", "@WebProfiler/Profiler/open.cssAhmed.twig", "C:\\Users\\Ahmed\\Desktop\\webtaskk\\vendor1\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.cssAhmed.twig");
     }
 }

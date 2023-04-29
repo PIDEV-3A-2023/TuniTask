@@ -49,7 +49,7 @@ class __TwigTemplate_8662dce83f0b09184bd0ecd4c2f0b3f1 extends Template
             // line 3
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "type", [], "any", false, false, false, 3), "html", null, true);
             echo "\">
-            <i class=\"material-icons\">speaker_notes</i>
+            <i class=\"material-icons1\">speaker_notes</i>
             <a href=\"#\" class=\"flashy__body\" target=\"_blank\"></a>
         </div>
     </script>
@@ -95,7 +95,7 @@ class __TwigTemplate_8662dce83f0b09184bd0ecd4c2f0b3f1 extends Template
         return new Source("{% for message in app.flashes('mercuryseries_flashy_notification') %}
     <script id=\"flashy-template\" type=\"text/template\">
         <div class=\"flashy flashy--{{ message.type }}\">
-            <i class=\"material-icons\">speaker_notes</i>
+            <i class=\"material-icons1\">speaker_notes</i>
             <a href=\"#\" class=\"flashy__body\" target=\"_blank\"></a>
         </div>
     </script>

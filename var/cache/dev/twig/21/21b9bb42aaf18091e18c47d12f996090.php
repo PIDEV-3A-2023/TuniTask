@@ -1214,6 +1214,6 @@ div.sf-toolbar  .sf-toolbar-block .sf-toolbar-info-piece.sf-toolbar-info-php-ext
         display: none !important;
     }
 }
-", "@WebProfiler/Profiler/toolbar.cssAhmed.twig", "C:\\Users\\Ahmed\\Desktop\\webtaskk\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar.cssAhmed.twig");
+", "@WebProfiler/Profiler/toolbar.cssAhmed.twig", "C:\\Users\\Ahmed\\Desktop\\webtaskk\\vendor1\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\toolbar.cssAhmed.twig");
     }
 }

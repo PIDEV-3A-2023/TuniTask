@@ -17,9 +17,9 @@ class getMercuryseriesFlashy_FlashyNotifierService extends App_KernelDevDebugCon
      */
     public static function do($container, $lazyLoad = true)
     {
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'mercuryseries'.\DIRECTORY_SEPARATOR.'flashy-bundle'.\DIRECTORY_SEPARATOR.'src'.\DIRECTORY_SEPARATOR.'FlashyNotifier.php';
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'mercuryseries'.\DIRECTORY_SEPARATOR.'flashy-bundle'.\DIRECTORY_SEPARATOR.'src'.\DIRECTORY_SEPARATOR.'SessionStore.php';
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'mercuryseries'.\DIRECTORY_SEPARATOR.'flashy-bundle'.\DIRECTORY_SEPARATOR.'src'.\DIRECTORY_SEPARATOR.'SymfonySessionStore.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'mercuryseries'.\DIRECTORY_SEPARATOR.'flashy-bundle'.\DIRECTORY_SEPARATOR.'src'.\DIRECTORY_SEPARATOR.'FlashyNotifier.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'mercuryseries'.\DIRECTORY_SEPARATOR.'flashy-bundle'.\DIRECTORY_SEPARATOR.'src'.\DIRECTORY_SEPARATOR.'SessionStore.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'mercuryseries'.\DIRECTORY_SEPARATOR.'flashy-bundle'.\DIRECTORY_SEPARATOR.'src'.\DIRECTORY_SEPARATOR.'SymfonySessionStore.php';
 
         return $container->services['mercuryseries_flashy.flashy_notifier'] = new \MercurySeries\FlashyBundle\FlashyNotifier(new \MercurySeries\FlashyBundle\SymfonySessionStore(($container->services['request_stack'] ?? ($container->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack()))), 'mercuryseries_flashy_notification');
     }

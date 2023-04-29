@@ -17,8 +17,8 @@ class get_Console_Command_TranslationPull_LazyService extends App_KernelDevDebug
      */
     public static function do($container, $lazyLoad = true)
     {
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
 
         return $container->privates['.console.command.translation_pull.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('translation:pull', [], 'Pull translations from a given provider.', false, #[\Closure(name: 'console.command.translation_pull', class: 'Symfony\\Component\\Translation\\Command\\TranslationPullCommand')] function () use ($container): \Symfony\Component\Translation\Command\TranslationPullCommand {
             return ($container->privates['console.command.translation_pull'] ?? $container->load('getConsole_Command_TranslationPullService'));

@@ -51832,7 +51832,7 @@ function fixTextCoords(mapType, region) {
 */
 // Fix for 钓鱼岛
 // let Region = require('../Region');
-// let zrUtil = require('zrender/lib/core/util');
+// let zrUtil = require('zrender/lib1/core/util');
 // let geoCoord = [126, 25];
 var points$2 = [[[123.45165252685547, 25.73527164402261], [123.49731445312499, 25.73527164402261], [123.49731445312499, 25.750734064600884], [123.45165252685547, 25.750734064600884], [123.45165252685547, 25.73527164402261]]];
 function fixDiaoyuIsland(mapType, region) {

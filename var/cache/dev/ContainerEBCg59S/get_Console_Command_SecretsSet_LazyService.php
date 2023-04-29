@@ -17,8 +17,8 @@ class get_Console_Command_SecretsSet_LazyService extends App_KernelDevDebugConta
      */
     public static function do($container, $lazyLoad = true)
     {
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
 
         return $container->privates['.console.command.secrets_set.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('secrets:set', [], 'Set a secret in the vault', false, #[\Closure(name: 'console.command.secrets_set', class: 'Symfony\\Bundle\\FrameworkBundle\\Command\\SecretsSetCommand')] function () use ($container): \Symfony\Bundle\FrameworkBundle\Command\SecretsSetCommand {
             return ($container->privates['console.command.secrets_set'] ?? $container->load('getConsole_Command_SecretsSetService'));

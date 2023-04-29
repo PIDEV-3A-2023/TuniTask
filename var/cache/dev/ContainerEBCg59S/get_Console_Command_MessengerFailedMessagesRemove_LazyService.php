@@ -17,8 +17,8 @@ class get_Console_Command_MessengerFailedMessagesRemove_LazyService extends App_
      */
     public static function do($container, $lazyLoad = true)
     {
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
 
         return $container->privates['.console.command.messenger_failed_messages_remove.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('messenger:failed:remove', [], 'Remove given messages from the failure transport', false, #[\Closure(name: 'console.command.messenger_failed_messages_remove', class: 'Symfony\\Component\\Messenger\\Command\\FailedMessagesRemoveCommand')] function () use ($container): \Symfony\Component\Messenger\Command\FailedMessagesRemoveCommand {
             return ($container->privates['console.command.messenger_failed_messages_remove'] ?? $container->load('getConsole_Command_MessengerFailedMessagesRemoveService'));

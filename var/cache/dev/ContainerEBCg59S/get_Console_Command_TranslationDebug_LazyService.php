@@ -17,8 +17,8 @@ class get_Console_Command_TranslationDebug_LazyService extends App_KernelDevDebu
      */
     public static function do($container, $lazyLoad = true)
     {
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'Command.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'console'.\DIRECTORY_SEPARATOR.'Command'.\DIRECTORY_SEPARATOR.'LazyCommand.php';
 
         return $container->privates['.console.command.translation_debug.lazy'] = new \Symfony\Component\Console\Command\LazyCommand('debug:translation', [], 'Display translation messages information', false, #[\Closure(name: 'console.command.translation_debug', class: 'Symfony\\Bundle\\FrameworkBundle\\Command\\TranslationDebugCommand')] function () use ($container): \Symfony\Bundle\FrameworkBundle\Command\TranslationDebugCommand {
             return ($container->privates['console.command.translation_debug'] ?? $container->load('getConsole_Command_TranslationDebugService'));

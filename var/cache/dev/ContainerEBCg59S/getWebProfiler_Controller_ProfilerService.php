@@ -17,7 +17,7 @@ class getWebProfiler_Controller_ProfilerService extends App_KernelDevDebugContai
      */
     public static function do($container, $lazyLoad = true)
     {
-        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'web-profiler-bundle'.\DIRECTORY_SEPARATOR.'Controller'.\DIRECTORY_SEPARATOR.'ProfilerController.php';
+        include_once \dirname(__DIR__, 4).''.\DIRECTORY_SEPARATOR.'vendor1'.\DIRECTORY_SEPARATOR.'symfony'.\DIRECTORY_SEPARATOR.'web-profiler-bundle'.\DIRECTORY_SEPARATOR.'Controller'.\DIRECTORY_SEPARATOR.'ProfilerController.php';
 
         return $container->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController(($container->services['router'] ?? $container->getRouterService()), ($container->services['.container.private.profiler'] ?? $container->get_Container_Private_ProfilerService()), ($container->privates['twig'] ?? $container->getTwigService()), $container->parameters['data_collector.templates'], ($container->privates['web_profiler.csp.handler'] ?? $container->getWebProfiler_Csp_HandlerService()), \dirname(__DIR__, 4));
     }
