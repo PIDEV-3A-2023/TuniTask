@@ -5,7 +5,7 @@ Licensed under the MIT license.
 
 */
 
-// first an inline dependency, jquery.colorhelpers.js, we inline it here
+// first an inline dependency, jquery.colorhelpers.jsAhmed, we inline it here
 // for convenience
 
 /* Plugin for jQuery for working with colors.
@@ -1737,7 +1737,7 @@ Licensed under the MIT license.
             }
 
             // Flot supports base-10 axes; any other mode else is handled by a plug-in,
-            // like flot.time.js.
+            // like flot.time.jsAhmed.
 
             if (!axis.tickGenerator) {
 

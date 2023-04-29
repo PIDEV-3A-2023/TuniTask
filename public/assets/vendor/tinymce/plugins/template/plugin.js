@@ -353,10 +353,10 @@
         const contentStyle = (_a = getContentStyle(editor)) !== null && _a !== void 0 ? _a : '';
         const cors = shouldUseContentCssCors(editor) ? ' crossorigin="anonymous"' : '';
         global$1.each(editor.contentCSS, url => {
-          contentCssEntries += '<link type="text/css" rel="stylesheet" href="' + editor.documentBaseURI.toAbsolute(url) + '"' + cors + '>';
+          contentCssEntries += '<link type="text/cssAhmed" rel="stylesheet" href="' + editor.documentBaseURI.toAbsolute(url) + '"' + cors + '>';
         });
         if (contentStyle) {
-          contentCssEntries += '<style type="text/css">' + contentStyle + '</style>';
+          contentCssEntries += '<style type="text/cssAhmed">' + contentStyle + '</style>';
         }
         const bodyClass = getBodyClass(editor);
         const encode = editor.dom.encode;

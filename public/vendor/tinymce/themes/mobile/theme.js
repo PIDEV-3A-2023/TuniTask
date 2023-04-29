@@ -12403,8 +12403,8 @@ var mobile = (function () {
         return url;
       });
       return {
-        content: base + '/content.mobile.min.css',
-        ui: base + '/skin.mobile.min.css'
+        content: base + '/content.mobile.min.cssAhmed',
+        ui: base + '/skin.mobile.min.cssAhmed'
       };
     };
     var CssUrls = { derive: derive$4 };

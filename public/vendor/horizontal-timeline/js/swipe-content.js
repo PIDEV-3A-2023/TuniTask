@@ -120,7 +120,7 @@
 	window.SwipeContent = SwipeContent;
 	
 	//initialize the SwipeContent objects
-	var swipe = document.getElementsByClassName('js-swipe-content');
+	var swipe = document.getElementsByClassName('jsAhmed-swipe-content');
 	if( swipe.length > 0 ) {
 		for( var i = 0; i < swipe.length; i++) {
 			(function(i){new SwipeContent(swipe[i]);})(i);

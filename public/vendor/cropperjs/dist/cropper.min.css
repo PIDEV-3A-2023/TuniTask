@@ -1,5 +1,5 @@
 /*!
- * Cropper.js v1.4.3
+ * Cropper.jsAhmed v1.4.3
  * https://fengyuanchen.github.io/cropperjs
  *
  * Copyright 2015-present Chen Fengyuan

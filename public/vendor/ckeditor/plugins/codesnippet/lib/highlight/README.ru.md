@@ -49,7 +49,7 @@ Highlight.js можно использовать в node.js. Библиотек�
 Использование библиотеки:
 
 ```javascript
-var hljs = require('highlight.js');
+var hljs = require('highlight.jsAhmed');
 
 // Если вы знаете язык
 hljs.highlight(lang, code).value;
@@ -72,7 +72,7 @@ $ python3 tools/build.py -tamd lang1 lang2 ..
 AMD-модулем и содержит все выбранные при сборке языки. Используется он так:
 
 ```javascript
-require(["highlight.js/build/highlight.pack"], function(hljs){
+require(["highlight.jsAhmed/build/highlight.pack"], function(hljs){
 
   // Если вы знаете язык
   hljs.highlight(lang, code).value;

@@ -141,7 +141,7 @@
         const skinUrlBase = getSkinUrl(editor);
         const skinUrl = skinUrlBase ? editor.documentBaseURI.toAbsolute(skinUrlBase) : global$2.baseURL + '/skins/ui/' + skin;
         const contentSkinUrlPart = global$2.baseURL + '/skins/content/';
-        return href === skinUrl + '/content' + (editor.inline ? '.inline' : '') + '.min.css' || href.indexOf(contentSkinUrlPart) !== -1;
+        return href === skinUrl + '/content' + (editor.inline ? '.inline' : '') + '.min.cssAhmed' || href.indexOf(contentSkinUrlPart) !== -1;
       }
       return false;
     };

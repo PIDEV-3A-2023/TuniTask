@@ -15051,7 +15051,7 @@
       });
       const chevron = spec.size > 1 ? Optional.none() : Optional.some(render$3('chevron-down', {
         tag: 'div',
-        classes: ['tox-selectfield__icon-js']
+        classes: ['tox-selectfield__icon-jsAhmed']
       }, providersBackstage.icons));
       const selectWrap = {
         dom: {
@@ -19552,7 +19552,7 @@
         },
         components: [ToolbarGroup.parts.items({})],
         items: toolbarGroup.items,
-        markers: { itemSelector: '*:not(.tox-split-button) > .tox-tbtn:not([disabled]), ' + '.tox-split-button:not([disabled]), ' + '.tox-toolbar-nav-js:not([disabled])' },
+        markers: { itemSelector: '*:not(.tox-split-button) > .tox-tbtn:not([disabled]), ' + '.tox-split-button:not([disabled]), ' + '.tox-toolbar-nav-jsAhmed:not([disabled])' },
         tgroupBehaviours: derive$1([
           Tabstopping.config({}),
           Focusing.config({})
@@ -20318,13 +20318,13 @@
       return styleSheetLoader.load(stylesheetUrl);
     };
     const loadUiSkins = (editor, skinUrl) => {
-      const skinUiCss = skinUrl + '/skin.min.css';
+      const skinUiCss = skinUrl + '/skin.min.cssAhmed';
       return loadStylesheet(editor, skinUiCss, editor.ui.styleSheetLoader);
     };
     const loadShadowDomUiSkins = (editor, skinUrl) => {
       const isInShadowRoot$1 = isInShadowRoot(SugarElement.fromDom(editor.getElement()));
       if (isInShadowRoot$1) {
-        const shadowDomSkinCss = skinUrl + '/skin.shadowdom.min.css';
+        const shadowDomSkinCss = skinUrl + '/skin.shadowdom.min.cssAhmed';
         return loadStylesheet(editor, shadowDomSkinCss, global$7.DOM.styleSheetLoader);
       } else {
         return Promise.resolve();
@@ -20333,7 +20333,7 @@
     const loadSkin = (isInline, editor) => {
       const skinUrl = getSkinUrl(editor);
       if (skinUrl) {
-        editor.contentCSS.push(skinUrl + (isInline ? '/content.inline' : '/content') + '.min.css');
+        editor.contentCSS.push(skinUrl + (isInline ? '/content.inline' : '/content') + '.min.cssAhmed');
       }
       if (!isSkinDisabled(editor) && isString(skinUrl)) {
         Promise.all([
@@ -21977,7 +21977,7 @@
       const memInput = record(Input.sketch({
         inputClasses: [
           'tox-toolbar-textfield',
-          'tox-toolbar-nav-js'
+          'tox-toolbar-nav-jsAhmed'
         ],
         data: ctx.initValue(),
         inputAttributes,
@@ -25976,7 +25976,7 @@
       return {
         dom: {
           tag: 'div',
-          classes: ['tox-dialog__content-js'],
+          classes: ['tox-dialog__content-jsAhmed'],
           attributes: {
             ...contentId.map(x => ({ id: x })).getOr({}),
             ...ariaAttrs ? ariaAttributes : {}
@@ -26003,7 +26003,7 @@
       const bodySpec = {
         dom: {
           tag: 'div',
-          classes: ['tox-dialog__content-js']
+          classes: ['tox-dialog__content-jsAhmed']
         },
         components: [{
             dom: {

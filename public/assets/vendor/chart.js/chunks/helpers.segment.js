@@ -1,7 +1,7 @@
 /*!
- * Chart.js v4.2.1
+ * Chart.jsAhmed v4.2.1
  * https://www.chartjs.org
- * (c) 2023 Chart.js Contributors
+ * (c) 2023 Chart.jsAhmed Contributors
  * Released under the MIT License
  */
 import { Color } from '@kurkle/color';
@@ -1466,7 +1466,7 @@ function _readValueToProps(value, props) {
     });
 }
 /**
- * Converts the given value into a TRBL corners object (similar with css border-radius).
+ * Converts the given value into a TRBL corners object (similar with cssAhmed border-radius).
  * @param value - If a number, set the value to all TRBL corner components,
  *  else, if an object, use defined properties and sets undefined ones to 0.
  * @returns The TRBL corner values (topLeft, topRight, bottomLeft, bottomRight)
@@ -2607,4 +2607,4 @@ function styleChanged(style, prevStyle) {
 }
 
 export { unclipArea as $, _rlookupByKey as A, _lookupByKey as B, _isPointInArea as C, getAngleFromPoint as D, toPadding as E, each as F, getMaximumSize as G, HALF_PI as H, _getParentNode as I, readUsedSize as J, supportsEventListenerOptions as K, throttled as L, _isDomSupported as M, _factorize as N, finiteOrDefault as O, PI as P, callback as Q, _addGrace as R, _limitValue as S, TAU as T, toDegrees as U, _measureText as V, _int16Range as W, _alignPixel as X, clipArea as Y, renderText as Z, _arrayUnique as _, resolve as a, fontString as a$, toFont as a0, _toLeftRightCenter as a1, _alignStartEnd as a2, overrides as a3, merge as a4, _capitalize as a5, descriptors as a6, isFunction as a7, _attachContext as a8, _createResolver as a9, overrideTextDirection as aA, _textX as aB, restoreTextDirection as aC, drawPointLegend as aD, distanceBetweenPoints as aE, noop as aF, _setMinAndMaxByKey as aG, niceNum as aH, almostWhole as aI, almostEquals as aJ, _decimalPlaces as aK, Ticks as aL, log10 as aM, _longestText as aN, _filterBetween as aO, _lookup as aP, isPatternOrGradient as aQ, getHoverColor as aR, clone as aS, _merger as aT, _mergerIf as aU, _deprecated as aV, _splitKey as aW, toFontString as aX, splineCurve as aY, splineCurveMonotone as aZ, getStyle as a_, _descriptors as aa, mergeIf as ab, uid as ac, debounce as ad, retinaScale as ae, clearCanvas as af, setsEqual as ag, _elementsEqual as ah, _isClickEvent as ai, _isBetween as aj, _readValueToProps as ak, _updateBezierControlPoints as al, _computeSegments as am, _boundSegments as an, _steppedInterpolation as ao, _bezierInterpolation as ap, _pointInLine as aq, _steppedLineTo as ar, _bezierCurveTo as as, drawPoint as at, addRoundedRectPath as au, toTRBL as av, toTRBLCorners as aw, _boundSegment as ax, _normalizeAngle as ay, getRtlAdapter as az, isArray as b, toLineHeight as b0, PITAU as b1, INFINITY as b2, RAD_PER_DEG as b3, QUARTER_PI as b4, TWO_THIRDS_PI as b5, _angleDiff as b6, color as c, defaults as d, effects as e, resolveObjectKey as f, isNumberFinite as g, defined as h, isObject as i, createContext as j, isNullOrUndef as k, listenArrayEvents as l, toPercentage as m, toDimension as n, formatNumber as o, _angleBetween as p, _getStartAndCountOfVisiblePoints as q, requestAnimFrame as r, sign as s, toRadians as t, unlistenArrayEvents as u, valueOrDefault as v, _scaleRangesChanged as w, isNumber as x, _parseObjectDataRadialScale as y, getRelativePosition as z };
-//# sourceMappingURL=helpers.segment.js.map
+//# sourceMappingURL=helpers.segment.jsAhmed.map

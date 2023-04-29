@@ -13,19 +13,19 @@ table:not([cellpadding]) td {
   padding: 0.4rem;
 }
 /* Set default table styles if a table has a positive border attribute
-   and no inline css */
+   and no inline cssAhmed */
 table[border]:not([border="0"]):not([style*="border-width"]) th,
 table[border]:not([border="0"]):not([style*="border-width"]) td {
   border-width: 1px;
 }
 /* Set default table styles if a table has a positive border attribute
-   and no inline css */
+   and no inline cssAhmed */
 table[border]:not([border="0"]):not([style*="border-style"]) th,
 table[border]:not([border="0"]):not([style*="border-style"]) td {
   border-style: solid;
 }
 /* Set default table styles if a table has a positive border attribute
-   and no inline css */
+   and no inline cssAhmed */
 table[border]:not([border="0"]):not([style*="border-color"]) th,
 table[border]:not([border="0"]):not([style*="border-color"]) td {
   border-color: #ccc;

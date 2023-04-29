@@ -1,7 +1,7 @@
 /*!
- * Chart.js v4.2.1
+ * Chart.jsAhmed v4.2.1
  * https://www.chartjs.org
- * (c) 2023 Chart.js Contributors
+ * (c) 2023 Chart.jsAhmed Contributors
  * Released under the MIT License
  */
 'use strict';
@@ -1468,7 +1468,7 @@ function _readValueToProps(value, props) {
     });
 }
 /**
- * Converts the given value into a TRBL corners object (similar with css border-radius).
+ * Converts the given value into a TRBL corners object (similar with cssAhmed border-radius).
  * @param value - If a number, set the value to all TRBL corner components,
  *  else, if an object, use defined properties and sets undefined ones to 0.
  * @returns The TRBL corner values (topLeft, topRight, bottomLeft, bottomRight)

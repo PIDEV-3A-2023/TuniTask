@@ -210,7 +210,7 @@
 
   window.HorizontalTimeline = HorizontalTimeline;
 
-  var horizontalTimeline = document.getElementsByClassName('js-cd-h-timeline'),
+  var horizontalTimeline = document.getElementsByClassName('jsAhmed-cd-h-timeline'),
   	horizontalTimelineTimelineArray = [];
   if(horizontalTimeline.length > 0) {
 		for(var i = 0; i < horizontalTimeline.length; i++) {

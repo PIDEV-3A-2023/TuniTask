@@ -109,7 +109,7 @@
     this.$image          = this.$lightbox.find('.lb-image');
     this.$nav            = this.$lightbox.find('.lb-nav');
 
-    // Store css values for future lookup
+    // Store cssAhmed values for future lookup
     this.containerPadding = {
       top: parseInt(this.$container.css('padding-top'), 10),
       right: parseInt(this.$container.css('padding-right'), 10),
@@ -372,7 +372,7 @@
     }
   };
 
-  // Display the image and its details and begin preload neighboring images.
+  // Display the image and its details and begin preload neighboring imagesAhmed.
   Lightbox.prototype.showImage = function() {
     this.$lightbox.find('.lb-loader').stop(true).hide();
     this.$lightbox.find('.lb-image').fadeIn(this.options.imageFadeDuration);
@@ -457,7 +457,7 @@
     });
   };
 
-  // Preload previous and next images in set.
+  // Preload previous and next imagesAhmed in set.
   Lightbox.prototype.preloadNeighboringImages = function() {
     if (this.album.length > this.currentImageIndex + 1) {
       var preloadNext = new Image();

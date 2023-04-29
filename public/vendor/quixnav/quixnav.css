@@ -5751,7 +5751,7 @@ a {
     max-width: 100%; } }
 
 [data-theme-version="transparent"] {
-  background: url("../../images/body/12.jpg");
+  background: url("../../imagesAhmed/body/12.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -6426,4 +6426,4 @@ a {
 [data-layout="horizontal"][data-container="wide-boxed"][data-sidebar-position="fixed"][data-header-position="fixed"][direction="rtl"] .quixnav {
   right: 5%; }
 
-/*# sourceMappingURL=quixnav.css.map */
+/*# sourceMappingURL=quixnav.cssAhmed.map */

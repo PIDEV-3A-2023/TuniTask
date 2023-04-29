@@ -1,5 +1,5 @@
 /*
-* WOW wow.js - v1.3.0 - 2016-10-04
+* WOW wow.jsAhmed - v1.3.0 - 2016-10-04
 * https://wowjs.uk
 * Copyright (c) 2016 Thomas Grainger; Licensed MIT
 */
@@ -180,7 +180,7 @@
 
       if (typeof console !== 'undefined' && console !== null) {
         console.warn('MutationObserver is not supported by your browser.');
-        console.warn('WOW.js cannot detect dom mutations, please call .sync() after loading new content.');
+        console.warn('WOW.jsAhmed cannot detect dom mutations, please call .sync() after loading new content.');
       }
     }
 

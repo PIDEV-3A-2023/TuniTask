@@ -7172,7 +7172,7 @@
         return subRange === 0 ? r0 : (r0 + r1) / 2;
       } // Avoid accuracy problem in edge, such as
       // 146.39 - 62.83 === 83.55999999999999.
-      // See echarts/test/ut/spec/util/number.js#linearMap#accuracyError
+      // See echarts/test/ut/spec/util/number.jsAhmed#linearMap#accuracyError
       // It is a little verbose for efficiency considering this method
       // is a hotspot.
 
@@ -7577,7 +7577,7 @@
       return exponent >= -20 ? +val.toFixed(exponent < 0 ? -exponent : 0) : val;
     }
     /**
-     * This code was copied from "d3.js"
+     * This code was copied from "d3.jsAhmed"
      * <https://github.com/d3/d3/blob/9cc9a875e636a1dcf36cc1e07bdf77e1ad6e2c74/src/arrays/quantile.js>.
      * See the license statement at the head of this file.
      * @param ascArr
@@ -7660,7 +7660,7 @@
      *     0x12, '0x12', '-0x12', 012, '012', '-012',
      *     non-string, ...
      *
-     * @test See full test cases in `test/ut/spec/util/number.js`.
+     * @test See full test cases in `test/ut/spec/util/number.jsAhmed`.
      * @return Must be a typeof number. If not numeric, return NaN.
      */
 
@@ -15607,7 +15607,7 @@
      */
 
     function getUID(type) {
-      // Considering the case of crossing js context,
+      // Considering the case of crossing jsAhmed context,
       // use Math.random to make id as unique as possible.
       return [type || '', base++].join('_');
     }
@@ -16895,7 +16895,7 @@
        *
        * (A) If using class declaration in typescript (since echarts 5):
        * ```ts
-       * import {ComponentOption} from '../model/option.js';
+       * import {ComponentOption} from '../model/option.jsAhmed';
        * export interface XxxOption extends ComponentOption {
        *     aaa: number
        * }
@@ -16908,8 +16908,8 @@
        * Component.registerClass(XxxModel);
        * ```
        * ```ts
-       * import {inheritDefaultOption} from '../util/component.js';
-       * import {XxxModel, XxxOption} from './XxxModel.js';
+       * import {inheritDefaultOption} from '../util/component.jsAhmed';
+       * import {XxxModel, XxxOption} from './XxxModel.jsAhmed';
        * export interface XxxSubOption extends XxxOption {
        *     bbb: number
        * }
@@ -16925,14 +16925,14 @@
        * ```
        *
        * (B) If using class extend (previous approach in echarts 3 & 4):
-       * ```js
+       * ```jsAhmed
        * let XxxComponent = Component.extend({
        *     defaultOption: {
        *         xx: 123
        *     }
        * })
        * ```
-       * ```js
+       * ```jsAhmed
        * let XxxSubComponent = XxxComponent.extend({
        *     defaultOption: {
        *         yy: 456
@@ -18669,7 +18669,7 @@
      *
      * (1) No prop "baseOption" declared:
      * Root option is used as "baseOption" (except prop "options" and "media").
-     * ```js
+     * ```jsAhmed
      * option = {
      *     series: [],
      *     timeline: {},
@@ -18690,7 +18690,7 @@
      * (2) Prop "baseOption" declared:
      * If "baseOption" declared, `ECUnitOption` props can only be declared
      * inside "baseOption" except prop "timeline" (compat ec2).
-     * ```js
+     * ```jsAhmed
      * option = {
      *     baseOption: {
      *         timeline: {},
@@ -21110,7 +21110,7 @@
          * Intuitively, the end users known the content of the original `dataset.source`,
          * calucating the transform result in mind.
          * Suppose the original `dataset.source` is:
-         * ```js
+         * ```jsAhmed
          * [
          *     ['product', '2012', '2013', '2014', '2015'],
          *     ['AAA', 41.1, 30.4, 65.1, 53.3],
@@ -21638,7 +21638,7 @@
 
         var minDist = Infinity;
         var minDiff = -1;
-        var nearestIndicesLen = 0; // Check the test case of `test/ut/spec/data/SeriesData.js`.
+        var nearestIndicesLen = 0; // Check the test case of `test/ut/spec/data/SeriesData.jsAhmed`.
 
         for (var i = 0, len = this.count(); i < len; i++) {
           var dataIndex = this.getRawIndex(i);
@@ -22348,7 +22348,7 @@
      * By default the dimensions are inherited from ancestors, unless a transform return
      * a new dimensions definition.
      * Consider the case:
-     * ```js
+     * ```jsAhmed
      * dataset: [{
      *     source: [ ['Product', 'Sales', 'Prise'], ['Cookies', 321, 44.21], ...]
      * }, {
@@ -22366,7 +22366,7 @@
      *
      * [SCENARIO]:
      * (1) Provide source data directly:
-     * ```js
+     * ```jsAhmed
      * series: {
      *     encode: {...},
      *     dimensions: [...]
@@ -22375,7 +22375,7 @@
      * }
      * ```
      * (2) Series refer to dataset.
-     * ```js
+     * ```jsAhmed
      * series: [{
      *     encode: {...}
      *     // Ignore datasetIndex means `datasetIndex: 0`
@@ -22387,7 +22387,7 @@
      * }]
      * ```
      * (3) dataset transform
-     * ```js
+     * ```jsAhmed
      * dataset: [{
      *     source: [...]
      * }, {
@@ -23141,7 +23141,7 @@
 
       SeriesModel.prototype.isAnimationEnabled = function () {
         var ecModel = this.ecModel; // Disable animation if using echarts in node but not give ssr flag.
-        // In ssr mode, renderToString will generate svg with css animation.
+        // In ssr mode, renderToString will generate svg with cssAhmed animation.
 
         if (env.node && !(ecModel && ecModel.ssr)) {
           return false;
@@ -23518,7 +23518,7 @@
         var originalLarge = !!fields.large;
         var originalProgressive = !!fields.progressiveRender; // FIXME: if the planner works on a filtered series, `pipelineContext` does not
         // exists. See #11611 . Probably we need to modify this structure, see the comment
-        // on `performRawSeries` in `Schedular.js`.
+        // on `performRawSeries` in `Schedular.jsAhmed`.
 
         var large = fields.large = !!(pipelineContext && pipelineContext.large);
         var progressive = fields.progressiveRender = !!(pipelineContext && pipelineContext.progressiveRender);
@@ -28990,7 +28990,7 @@
     /**
      * @usage
      * (A)
-     * ```js
+     * ```jsAhmed
      * let chart1 = echarts.init(dom1);
      * let chart2 = echarts.init(dom2);
      * chart1.group = 'xxx';
@@ -28998,7 +28998,7 @@
      * echarts.connect('xxx');
      * ```
      * (B)
-     * ```js
+     * ```jsAhmed
      * let chart1 = echarts.init(dom1);
      * let chart2 = echarts.init(dom2);
      * echarts.connect('xxx', [chart1, chart2]);
@@ -29793,7 +29793,7 @@
       function SeriesDimensionDefine(opt) {
         /**
          * The format of `otherDims` is:
-         * ```js
+         * ```jsAhmed
          * {
          *     tooltip?: number
          *     label?: number
@@ -29803,7 +29803,7 @@
          * ```
          *
          * A `series.encode` can specified these fields:
-         * ```js
+         * ```jsAhmed
          * encode: {
          *     // "3, 1, 5" is the index of data dimension.
          *     tooltip: [3, 1, 5],
@@ -29812,7 +29812,7 @@
          * }
          * ```
          * `otherDims` is the parse result of the `series.encode` above, like:
-         * ```js
+         * ```jsAhmed
          * // Suppose the index of this data dimension is `3`.
          * this.otherDims = {
          *     // `3` is at the index `0` of the `encode.tooltip`
@@ -30190,7 +30190,7 @@
        * have a user-specified name, and other dimensions will get a return of null/undefined.
        *
        * @notice Because of this reason, should better use `getDimensionIndex` instead, for examples:
-       * ```js
+       * ```jsAhmed
        * const val = data.getStore().get(data.getDimensionIndex(dim), dataIdx);
        * ```
        *
@@ -32318,7 +32318,7 @@
       };
       /**
        * @usage
-       * ```js
+       * ```jsAhmed
        * const ordinalNumber = ordinalScale.getRawOrdinalNumber(tickVal);
        *
        * // case0
@@ -33253,7 +33253,7 @@
       return TimeScale;
     }(IntervalScale);
     /**
-     * This implementation was originally copied from "d3.js"
+     * This implementation was originally copied from "d3.jsAhmed"
      * <https://github.com/d3/d3/blob/b516d77fb8566b576088e73410437494717ada26/src/time/scale.js>
      * with some modifications made for this program.
      * See the license statement at the head of this file.
@@ -45423,4 +45423,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=echarts.simple.js.map
+//# sourceMappingURL=echarts.simple.jsAhmed.map

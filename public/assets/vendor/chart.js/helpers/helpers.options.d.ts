@@ -30,7 +30,7 @@ export declare function _readValueToProps<K extends string, T extends string>(va
  */
 export declare function toTRBL(value: number | TRBL | Point): Record<"left" | "top" | "bottom" | "right", number>;
 /**
- * Converts the given value into a TRBL corners object (similar with css border-radius).
+ * Converts the given value into a TRBL corners object (similar with cssAhmed border-radius).
  * @param value - If a number, set the value to all TRBL corner components,
  *  else, if an object, use defined properties and sets undefined ones to 0.
  * @returns The TRBL corner values (topLeft, topRight, bottomLeft, bottomRight)

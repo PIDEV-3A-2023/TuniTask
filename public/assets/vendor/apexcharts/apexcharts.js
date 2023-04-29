@@ -887,7 +887,7 @@
             w: w
           });
         }
-      } // SVG.js animation for morphing one path to another
+      } // SVG.jsAhmed animation for morphing one path to another
 
     }, {
       key: "morphSVG",
@@ -1381,7 +1381,7 @@
           'stroke-width': strokeWidth !== null ? strokeWidth : 0,
           stroke: strokeColor !== null ? strokeColor : 'none',
           'stroke-dasharray': strokeDashArray
-        }); // fix apexcharts.js#1410
+        }); // fix apexcharts.jsAhmed#1410
 
         rect.node.setAttribute('fill', color);
         return rect;
@@ -1524,7 +1524,7 @@
        *  animationDelay = how much to delay when starting animation (in milliseconds)
        *  dataChangeSpeed = for dynamic animations, when data changes
        *  className = class attribute to add
-       * @return {object} svg.js path object
+       * @return {object} svg.jsAhmed path object
        **/
 
     }, {
@@ -2971,7 +2971,7 @@
     }, {
       key: "_getYAxisAnnotationWidth",
       value: function _getYAxisAnnotationWidth(anno) {
-        // issue apexcharts.js#2009
+        // issue apexcharts.jsAhmed#2009
         var w = this.w;
         var width = w.globals.gridWidth;
 
@@ -4350,7 +4350,7 @@
             w.globals.dom.elGraphical.add(annoArray[i]);
 
             if (initialAnim && !w.globals.resized && !w.globals.dataChanged) {
-              // fixes apexcharts/apexcharts.js#685
+              // fixes apexcharts/apexcharts.jsAhmed#685
               if (w.config.chart.type !== 'scatter' && w.config.chart.type !== 'bubble' && w.globals.dataPoints > 1) {
                 annoElArray[i].classList.add('apexcharts-element-hidden');
               }
@@ -10947,7 +10947,7 @@
 
         if (w.globals.isMultipleYAxis || w.globals.collapsedSeries.length) {
           // The autoScale option for multiple y-axis is turned off as it leads to buggy behavior.
-          // Also, when a series is collapsed, it results in incorrect behavior. Hence turned it off for that too - fixes apexcharts.js#795
+          // Also, when a series is collapsed, it results in incorrect behavior. Hence turned it off for that too - fixes apexcharts.jsAhmed#795
           console.warn('autoScaleYaxis is not supported in a multi-yaxis chart.');
           return yaxis;
         }
@@ -11243,7 +11243,7 @@
             if (typeof yaxe.max === 'number') {
               gl.maxYArr[index] = yaxe.max;
             } else if (typeof yaxe.max === 'function') {
-              // fixes apexcharts.js/issues/2098
+              // fixes apexcharts.jsAhmed/issues/2098
               gl.maxYArr[index] = yaxe.max(gl.isMultipleYAxis ? gl.maxYArr[index] : gl.maxY);
             } // gl.maxY is for single y-axis chart, it will be ignored in multi-yaxis
 
@@ -11255,7 +11255,7 @@
             if (typeof yaxe.min === 'number') {
               gl.minYArr[index] = yaxe.min;
             } else if (typeof yaxe.min === 'function') {
-              // fixes apexcharts.js/issues/2098
+              // fixes apexcharts.jsAhmed/issues/2098
               gl.minYArr[index] = yaxe.min(gl.isMultipleYAxis ? gl.minYArr[index] === Number.MIN_VALUE ? 0 : gl.minYArr[index] : gl.minY);
             } // gl.minY is for single y-axis chart, it will be ignored in multi-yaxis
 
@@ -11505,7 +11505,7 @@
             });
 
             if (gl.dataPoints === 1 || gl.minXDiff === Number.MAX_VALUE) {
-              // fixes apexcharts.js #1221
+              // fixes apexcharts.jsAhmed #1221
               gl.minXDiff = 0.5;
             }
           });
@@ -13050,7 +13050,7 @@
         };
 
         var padYAxe = function padYAxe(yaxe, i) {
-          if (isCollapsed(i)) return; // the code below causes issue apexcharts.js#1989
+          if (isCollapsed(i)) return; // the code below causes issue apexcharts.jsAhmed#1989
           // after testing with other use-cases, this has no actual value, hence commented
           // if (xtype !== 'datetime') {
           //   if (
@@ -13353,7 +13353,7 @@
           if (w.globals.ignoreYAxisIndexes.indexOf(index) === -1 && !yaxe.floating && !axesUtils.isYAxisHidden(index)) {
             if (yaxe.opposite) {
               w.globals.translateX = w.globals.translateX - (yaxisLabelCoords[index].width + yTitleCoords[index].width) - parseInt(w.config.yaxis[index].labels.style.fontSize, 10) / 1.2 - 12;
-            } // fixes apexcharts.js#1599
+            } // fixes apexcharts.jsAhmed#1599
 
 
             if (w.globals.translateX < 2) {
@@ -14975,7 +14975,7 @@
           // zoom is Enabled and user has dragged, so draw blue rect
 
           if (w.globals.zoomEnabled && this.dragged) {
-            if (width < 0) width = 1; // fixes apexcharts.js#1168
+            if (width < 0) width = 1; // fixes apexcharts.jsAhmed#1168
 
             zoomRect.attr({
               x: x,
@@ -16613,7 +16613,7 @@
             bcx = bcx - (barLen % 2 !== 0 ? bw / 2 : 0);
           }
 
-          if (jBar && // fixes apexcharts.js#2354
+          if (jBar && // fixes apexcharts.jsAhmed#2354
           isBoxOrCandle && w.globals.comboCharts) {
             bcx = bcx - bw / 2;
           }
@@ -16701,7 +16701,7 @@
 
             var elPointOptions = marker.getMarkerConfig({
               cssClass: PointClasses,
-              seriesIndex: Number(pointsMain.getAttribute('data:realIndex')) // fixes apexcharts/apexcharts.js #1427
+              seriesIndex: Number(pointsMain.getAttribute('data:realIndex')) // fixes apexcharts/apexcharts.jsAhmed #1427
 
             });
             point = graphics.drawMarker(0, 0, elPointOptions);
@@ -18912,7 +18912,7 @@
         }
 
         pathTo = pathTo + graphics.line(x1, y2) + graphics.line(x2 - strokeWidth, y2) + graphics.line(x2 - strokeWidth, y1) + (w.config.plotOptions.bar.borderRadiusApplication === 'around' ? ' Z' : ' z'); // the lines in pathFrom are repeated to equal it to the points of pathTo
-        // this is to avoid weird animation (bug in svg.js)
+        // this is to avoid weird animation (bug in svg.jsAhmed)
 
         pathFrom = pathFrom + graphics.line(x1, y1) + sl + sl + sl + sl + sl + graphics.line(x1, y1) + (w.config.plotOptions.bar.borderRadiusApplication === 'around' ? ' Z' : ' z');
 
@@ -19882,7 +19882,7 @@
           barWidth = xDivision;
 
           if (w.globals.isXNumeric && w.globals.dataPoints > 1) {
-            // the check (w.globals.dataPoints > 1) fixes apexcharts.js #1617
+            // the check (w.globals.dataPoints > 1) fixes apexcharts.jsAhmed #1617
             xDivision = w.globals.minXDiff / this.xRatio;
             barWidth = xDivision * parseInt(this.barOptions.columnWidth, 10) / 100;
           } else {
@@ -23468,7 +23468,7 @@
 
           if (w.config.chart.stacked) {
             if (i > 0 && w.globals.collapsedSeries.length < w.config.series.length - 1) {
-              // a collapsed series in a stacked bar chart may provide wrong result for the next series, hence find the prevIndex of prev series which is not collapsed - fixes apexcharts.js#1372
+              // a collapsed series in a stacked bar chart may provide wrong result for the next series, hence find the prevIndex of prev series which is not collapsed - fixes apexcharts.jsAhmed#1372
               var prevIndex = function prevIndex(pi) {
                 var pii = pi;
 
@@ -23732,7 +23732,7 @@
         var w = this.w;
 
         if (series[i][j] === null && w.config.markers.showNullDataPoints || series[i].length === 1) {
-          // fixes apexcharts.js#1282, #1252
+          // fixes apexcharts.jsAhmed#1282, #1252
           var elPointsWrap = this.markers.plotChartMarkers(pointsPos, realIndex, j + 1, this.strokeWidth - w.config.markers.strokeWidth / 2, true);
 
           if (elPointsWrap !== null) {
@@ -23746,7 +23746,7 @@
   }();
 
   /*
-   * treemap-squarify.js - open source implementation of squarified treemaps
+   * treemap-squarify.jsAhmed - open source implementation of squarified treemaps
    *
    * Treemap Squared 0.5 - Treemap Charting library
    *
@@ -24811,7 +24811,7 @@
           date = firstVal.minDate;
           numberOfDays++;
         } else if (firstVal.minDate !== 1 && firstVal.minHour === 0 && firstVal.minMinute === 0) {
-          // fixes apexcharts/apexcharts.js/issues/1730
+          // fixes apexcharts/apexcharts.jsAhmed/issues/1730
           firstTickPosition = 0;
           firstTickValue = firstVal.minDate;
           date = firstTickValue;
@@ -25563,7 +25563,7 @@
 
         if (gl.dom.elLegendForeign) {
           gl.dom.elLegendForeign.setAttribute('height', newHeight);
-        } // fix apexcharts/apexcharts.js/issues/3105 (when % is provided in height, it keeps increasing)
+        } // fix apexcharts/apexcharts.jsAhmed/issues/3105 (when % is provided in height, it keeps increasing)
 
 
         if (w.config.chart.height && String(w.config.chart.height).indexOf('%') > 0) return;
@@ -26196,7 +26196,7 @@
       isHex: /^#[a-f0-9]{3,6}$/i,
       // Test rgb value
       isRgb: /^rgb\(/,
-      // Test css declaration
+      // Test cssAhmed declaration
       isCss: /[^:]+:[^;]+;?/,
       // Test for blank string
       isBlank: /^(\s+)?$/,
@@ -26856,7 +26856,7 @@
 
           return parents;
         },
-        // matches the element vs a css selector
+        // matches the element vs a cssAhmed selector
         matches: function matches(selector) {
           return _matches(this.node, selector);
         },
@@ -26959,7 +26959,7 @@
         this.animations = {// functionToCall: [list of morphable objects]
           // e.g. move: [SVG.Number, SVG.Number]
         };
-        this.attrs = {// holds all attributes which are not represented from a function svg.js provides
+        this.attrs = {// holds all attributes which are not represented from a function svg.jsAhmed provides
           // e.g. someAttr: SVG.Number
         };
         this.styles = {// holds all styles which should be animated
@@ -27889,7 +27889,7 @@
               this.style(v_, s[v_]);
             }
           } else if (SVG.regex.isCss.test(s)) {
-            // parse css string
+            // parse cssAhmed string
             s = s.split(/\s*;\s*/) // filter out suffix ; and stuff like ;;
             .filter(function (e) {
               return !!e;
@@ -28190,7 +28190,7 @@
         if (element) {
           // ensure the presence of a dom element
           element = typeof element === 'string' ? document.getElementById(element) : element; // If the target is an svg element, use that element as the main wrapper.
-          // This allows svg.js to work with svg documents as well.
+          // This allows svg.jsAhmed to work with svg documents as well.
 
           if (element.nodeName == 'svg') {
             this.constructor.call(this, element);
@@ -28870,7 +28870,7 @@
         },
         // Get all the first level lines
         lines: function lines() {
-          var node = (this.textPath && this.textPath() || this).node; // filter tspans and map them to SVG.js instances
+          var node = (this.textPath && this.textPath() || this).node; // filter tspans and map them to SVG.jsAhmed instances
 
           var lines = SVG.utils.map(SVG.utils.filterSVGElements(node.childNodes), function (el) {
             return SVG.adopt(el);
@@ -29505,7 +29505,7 @@
     return SVG;
   });
 
-  /*! svg.filter.js - v2.0.2 - 2016-02-24
+  /*! svg.filter.jsAhmed - v2.0.2 - 2016-02-24
   * https://github.com/wout/svg.filter.js
   * Copyright (c) 2016 Wout Fierens; Licensed MIT */
   (function() {
@@ -30536,7 +30536,7 @@
   }
   }());
 
-  /*! svg.draggable.js - v2.2.2 - 2019-01-08
+  /*! svg.draggable.jsAhmed - v2.2.2 - 2019-01-08
   * https://github.com/svgdotjs/svg.draggable.js
   * Copyright (c) 2019 Wout Fierens; Licensed MIT */
   (function() {
@@ -30934,7 +30934,7 @@
           })(i);
 
           // add every point to the set
-          // add css-classes and a touchstart-event which fires our event for moving points
+          // add cssAhmed-classes and a touchstart-event which fires our event for moving points
           var point = this.drawPoint(array[i][0], array[i][1])
                           .addClass(this.options.classPoints)
                           .addClass(this.options.classPoints + '_point')
@@ -31032,7 +31032,7 @@
           };
       }
 
-      // create the selection-rectangle and add the css-class
+      // create the selection-rectangle and add the cssAhmed-class
       if (!this.rectSelection.set.get(0)) {
           this.rectSelection.set.add(this.nested.rect(bbox.width, bbox.height).addClass(this.options.classRect));
       }
@@ -31777,7 +31777,7 @@
         var _this = this;
 
         var isUpdating = _ref2.isUpdating;
-        var elSVG = this.w.globals.dom.Paper.node; // fixes apexcharts.js#1654 & vue-apexcharts#256
+        var elSVG = this.w.globals.dom.Paper.node; // fixes apexcharts.jsAhmed#1654 & vue-apexcharts#256
 
         if (elSVG.parentNode && elSVG.parentNode.parentNode && !isUpdating) {
           elSVG.parentNode.parentNode.style.minHeight = 'unset';
@@ -31942,11 +31942,11 @@
 
               var inShadowRoot = Utils$1.is('ShadowRoot', rootNode);
               var doc = _this.el.ownerDocument;
-              var globalCSS = doc.getElementById('apexcharts-css');
+              var globalCSS = doc.getElementById('apexcharts-cssAhmed');
 
               if (inShadowRoot || !globalCSS) {
                 _this.css = document.createElement('style');
-                _this.css.id = 'apexcharts-css';
+                _this.css.id = 'apexcharts-cssAhmed';
                 _this.css.textContent = css_248z;
 
                 if (inShadowRoot) {
@@ -32245,7 +32245,7 @@
         var updateSyncedCharts = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
         var overwriteInitialConfig = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
         var w = this.w; // when called externally, clear some global variables
-        // fixes apexcharts.js#1488
+        // fixes apexcharts.jsAhmed#1488
 
         w.globals.selection = undefined;
 

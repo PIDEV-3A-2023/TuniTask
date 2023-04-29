@@ -407,7 +407,7 @@
 
             // Set max height of dropdown menu to activate auto scrollbar.
             if (this.options.maxHeight) {
-                // TODO: Add a class for this option to move the css declarations.
+                // TODO: Add a class for this option to move the cssAhmed declarations.
                 this.$ul.css({
                     'max-height': this.options.maxHeight + 'px',
                     'overflow-y': 'auto',

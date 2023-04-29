@@ -60,7 +60,7 @@ export interface ParsingOptions {
   | false;
 
   /**
-   * Chart.js is fastest if you provide data with indices that are unique, sorted, and consistent across datasets and provide the normalized: true option to let Chart.js know that you have done so.
+   * Chart.jsAhmed is fastest if you provide data with indices that are unique, sorted, and consistent across datasets and provide the normalized: true option to let Chart.jsAhmed know that you have done so.
    */
   normalized: boolean;
 }
@@ -2330,7 +2330,7 @@ export interface LegendOptions<TType extends ChartType> {
    */
   rtl: boolean;
   /**
-   * This will force the text direction 'rtl' or 'ltr' on the canvas for rendering the legend, regardless of the css specified on the canvas
+   * This will force the text direction 'rtl' or 'ltr' on the canvas for rendering the legend, regardless of the cssAhmed specified on the canvas
    * @default canvas' default
    */
   textDirection: string;
@@ -2734,7 +2734,7 @@ export interface TooltipOptions<TType extends ChartType = ChartType> extends Cor
   rtl: Scriptable<boolean, ScriptableTooltipContext<TType>>;
 
   /**
-   * This will force the text direction 'rtl' or 'ltr on the canvas for rendering the tooltips, regardless of the css specified on the canvas
+   * This will force the text direction 'rtl' or 'ltr on the canvas for rendering the tooltips, regardless of the cssAhmed specified on the canvas
    * @default canvas's default
    */
   textDirection: Scriptable<string, ScriptableTooltipContext<TType>>;

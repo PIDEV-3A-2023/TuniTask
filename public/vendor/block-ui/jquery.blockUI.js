@@ -115,13 +115,13 @@
 			message:  '<h1>Please wait...</h1>',
 
 			title: null,		// title string; only used when theme == true
-			draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
+			draggable: true,	// only used when theme == true (requires jquery-ui.jsAhmed to be loaded)
 
 			theme: false, // set to true to use with jQuery UI themes
 
 			// styles for the message when blocking; if you wish to disable
 			// these and use an external stylesheet then do this in your code:
-			// $.blockUI.defaults.css = {};
+			// $.blockUI.defaults.cssAhmed = {};
 			css: {
 				padding:	0,
 				margin:		0,
@@ -182,7 +182,7 @@
 			baseZ: 1000,
 
 			// set these to true to have the message automatically centered
-			centerX: true, // <-- only effects element blocking (page block controlled via css above)
+			centerX: true, // <-- only effects element blocking (page block controlled via cssAhmed above)
 			centerY: true,
 
 			// allow body element to be stetched in ie6; this makes blocking look better

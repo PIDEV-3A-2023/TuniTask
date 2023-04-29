@@ -7766,7 +7766,7 @@ function EE(fn, context, once) {
 }
 
 /**
- * Minimal `EventEmitter` interface that is molded against the Node.js
+ * Minimal `EventEmitter` interface that is molded against the Node.jsAhmed
  * `EventEmitter` interface.
  *
  * @constructor

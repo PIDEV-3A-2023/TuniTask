@@ -1,5 +1,5 @@
 <?php
   $links = array(
-    'js' => 'lib/waypoints/waypoints.min.js'
+    'jsAhmed' => 'lib/waypoints/waypoints.min.jsAhmed'
   );
 ?>

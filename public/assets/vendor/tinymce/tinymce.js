@@ -2583,7 +2583,7 @@
         const linkElem = SugarElement.fromTag('link', doc.dom);
         setAll$1(linkElem, {
           rel: 'stylesheet',
-          type: 'text/css',
+          type: 'text/cssAhmed',
           id: state.id
         });
         if (settings.contentCssCors) {
@@ -4413,7 +4413,7 @@
         if (!styleElm) {
           styleElm = doc.createElement('style');
           styleElm.id = 'mceDefaultStyles';
-          styleElm.type = 'text/css';
+          styleElm.type = 'text/cssAhmed';
           const head = doc.head;
           if (head.firstChild) {
             head.insertBefore(styleElm, head.firstChild);
@@ -26932,7 +26932,7 @@
       const body = SugarElement.fromDom(editor.getBody());
       const container = getStyleContainer(getRootNode(body));
       const style = SugarElement.fromTag('style');
-      set$2(style, 'type', 'text/css');
+      set$2(style, 'type', 'text/cssAhmed');
       append$1(style, SugarElement.fromText(text));
       append$1(container, style);
       editor.on('remove', () => {

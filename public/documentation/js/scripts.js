@@ -62,7 +62,7 @@
         var el = document.querySelector('.html'),
             esc = _.escape(el.innerHTML);
 
-        // Reasign escaped to node and initialize highlight.js
+        // Reasign escaped to node and initialize highlight.jsAhmed
         el.innerHTML = esc;
         hljs.highlightBlock(el);
         hljs.initHighlightingOnLoad();

@@ -25,10 +25,10 @@
       headHtml += '<base href="' + encode(editor.documentBaseURI.getURI()) + '">';
       const cors = shouldUseContentCssCors(editor) ? ' crossorigin="anonymous"' : '';
       global.each(editor.contentCSS, url => {
-        headHtml += '<link type="text/css" rel="stylesheet" href="' + encode(editor.documentBaseURI.toAbsolute(url)) + '"' + cors + '>';
+        headHtml += '<link type="text/cssAhmed" rel="stylesheet" href="' + encode(editor.documentBaseURI.toAbsolute(url)) + '"' + cors + '>';
       });
       if (contentStyle) {
-        headHtml += '<style type="text/css">' + contentStyle + '</style>';
+        headHtml += '<style type="text/cssAhmed">' + contentStyle + '</style>';
       }
       const bodyId = getBodyId(editor);
       const bodyClass = getBodyClass(editor);
