@@ -10,7 +10,10 @@
 ###< symfony/framework-bundle ###
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/demande
 
 ###> phpunit/phpunit ###
 /phpunit.xml
@@ -21,6 +24,9 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+<<<<<<< HEAD
 >>>>>>> offre
 =======
 >>>>>>> origin/reclamation
+=======
+>>>>>>> origin/demande

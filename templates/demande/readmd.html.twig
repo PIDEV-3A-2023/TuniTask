@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<head>
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    </head>
+
+<div style="text-align:center;">
+
+{% for type, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ type }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<h1 style="font-size:2em;">Mes Demandes</h1>
+</br>
+<div style="display: flex; align-items: center;">
+<input style="width:20%; margin-left:5%" type="text" id="filter-name" name="name" class="form-control" placeholder="Filter by title">
+<input style="width:20%; margin-left:5%" type="number" id="filter-min-salary" name="min-salary" class="form-control" placeholder="Minimum salary">
+<input style="width:20%; margin-left:5%" type="number" id="filter-max-salary" name="max-salary" class="form-control" placeholder="Maximum salary">
+<select style="width:20% ; margin-left:5% ; margin-right:60px" id="filter-langage" name="langage" class="form-control">
+    <option value="">Filter by language</option>
+    <option value="symfony">symfony</option>
+    <option value="flutter 2">flutter 2</option>
+    <option value="java">java</option>
+    <!-- Add more options for other languages -->
+</select>
+</div>
+</br>
+<!--input type="date" id="filter-delai" name="delai" class="form-control" placeholder="Filter by deadline"-->
+
+<table style="width:100%; border-collapse: collapse;" id="customers-table">
+<thead>
+<tr style="background-color:#f2f2f2; color:#333; font-weight:bold; text-align:center;">
+<th style="border: 1px solid #ddd; padding: 12px;">Id</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Prénom</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Nom</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Titre</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Description</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Salaire</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Délai</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Langage</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Etat</th>
+<th style="border: 1px solid #ddd; padding: 12px;">Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for i in d %}
+<tr style="text-align:center;" data-name="{{ i.titre }}">
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.id }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.firstName }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.lastName }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.titre }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.description }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.salaire }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.delai }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.langage }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">{{ i.etat }}</td>
+<td style="border: 1px solid #ddd; padding: 12px;">
+
+ <a href="{{ path('app_deleteD', {'id': i.id}) }}" class="delete-link" data-id="{{ i.id }}" style="display: inline-block; padding: 6px 12px; background-color: #f44336; color: #fff; border-radius: 3px; text-decoration: none;" onclick="console.log('Clicked!'); event.preventDefault();
+    swal({
+        title: 'Etes vous sûr?',
+        icon: 'warning',
+        buttons: ['Cancel', 'Delete'],
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            window.location.href = '{{ path('app_deleteD', {'id': i.id}) }}';
+        }
+    });">Supprimer</a>
+
+
+<form action="{{ path('app_updateD', {'id': i.id}) }}" method="get" style="display:inline;">
+<button type="submit" style="background-color:#4CAF50; color:#fff; padding:6px 12px; border:none; border-radius:3px; cursor:pointer; margin-left:6px;">Modifier</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+    <br>
+    <a href="{{ path('app_addD') }}" class="button" style="color: blue;">Ajouter Demande</a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+       const filterInput = document.querySelector('#filter-name');
+const filterMinSalaryInput = document.querySelector('#filter-min-salary');
+const filterMaxSalaryInput = document.querySelector('#filter-max-salary');
+const filterLangageInput = document.querySelector('#filter-langage');
+const tableRows = document.querySelectorAll('#customers-table tbody tr');
+
+const filterTable = () => {
+  const filterValue = filterInput.value.toLowerCase();
+  const filterMinSalaryValue = filterMinSalaryInput.value ? parseFloat(filterMinSalaryInput.value) : 0;
+  const filterMaxSalaryValue = filterMaxSalaryInput.value ? parseFloat(filterMaxSalaryInput.value) : Infinity;
+  const filterLangageValue = filterLangageInput.value;
+  
+
+  tableRows.forEach(row => {
+    const name = row.getAttribute('data-name').toLowerCase();
+    const salary = parseFloat(row.querySelector('td:nth-of-type(6)').textContent);
+    const langage = row.querySelector('td:nth-of-type(8)').textContent;
+   
+    let shouldDisplay = true;
+    
+    if (filterValue && name.indexOf(filterValue) === -1) {
+      shouldDisplay = false;
+    }
+    
+    if (salary < filterMinSalaryValue || salary > filterMaxSalaryValue) {
+      shouldDisplay = false;
+    }
+    
+    if (filterLangageValue && langage !== filterLangageValue) {
+      shouldDisplay = false;
+    }
+    
+    
+    if (shouldDisplay) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+};
+
+filterInput.addEventListener('keyup', filterTable);
+filterMinSalaryInput.addEventListener('input', filterTable);
+filterMaxSalaryInput.addEventListener('input', filterTable);
+filterLangageInput.addEventListener('change', filterTable);
+
+
+    </script>
+    <script>
+ 
+</script>
+{% endblock %}
+

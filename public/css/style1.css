@@ -64,7 +64,10 @@
 @import url(./../vendor/aos/css/aos.min.css);
 @import url(./../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(./../vendor/metismenu/css/metisMenu.min.css);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/demande
 .gradient_one {
   background-image: linear-gradient(to right, rgba(186, 1, 181, 0.85) 0%, rgba(103, 25, 255, 0.85) 100%); }
 
@@ -210,6 +213,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+<<<<<<< HEAD
  /********** Anes **********/
 .my-form-class{padding-left: 300px;}
 #h1{padding-left:540px;
@@ -324,6 +328,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     background-color: #524986;
   }
   /********** Anes **********/
+=======
+>>>>>>> origin/demande
 :root {
   --blue: #5e72e4;
   --indigo: #6610f2;
@@ -370,7 +376,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
 body {
+<<<<<<< HEAD
   margin: 0;
+=======
+  margin: 200;
+>>>>>>> origin/demande
   font-family: "Roboto", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -8211,7 +8221,11 @@ a {
         justify-content: center; } }
   .nav-header .brand-title {
     margin-left: 15px;
+<<<<<<< HEAD
     max-width:110px; }
+=======
+    max-width: 75px; }
+>>>>>>> origin/demande
     [data-theme-version="dark"] .nav-header .brand-title {
       background-position: 0 120%; }
 
