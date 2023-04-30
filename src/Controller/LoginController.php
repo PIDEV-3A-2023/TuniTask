@@ -35,6 +35,8 @@ class LoginController extends AbstractController
           if(  $form->isSubmitted()     )
           {
               $email_user=$UsersRepository->findOneBy(['email' => $login->getEmail()]);
+            //  $role=$r->findBy(['idUser' => $email_user]);
+              
               //dump($email_user);
               //dump($UsersRepository->findOneBy(['id' => $email_user->getId()]));
               $password_user=$UsersRepository->findOneBy(['password' => $this->passwordHasher->hashPassword($login->getPassword())]);
@@ -51,7 +53,7 @@ class LoginController extends AbstractController
                    {
                     $request->getSession()->set('user',$email_user);
                     $role=$r->findOneBy(['idUser'=>$email_user]);
-                   
+                    $request->getSession()->set('rolename',$role->getRoleName());
                    if($role->getRoleName()=="Freelancer")
                    {
                     return $this->renderForm('FreelancerA.html.twig', [

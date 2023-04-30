@@ -1,5 +1,10 @@
-{% extends 'basepage.html.twig' %}
-
+{% set massage = "" %}
+{% if app.session.get('rolename')=="Client" %}
+    {% set message = 'basepage.html.twig' %}
+    {% else %}
+    {% set message ='basepagef.html.twig' %}
+{% endif %}
+{% extends message %}
 {% block title %}My Reclamations{% endblock %}
 
 {% block display %}My Reclamations{% endblock %}

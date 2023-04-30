@@ -79,13 +79,28 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="index.html" class="nav-item nav-link active">Accueil</a>
-                        <a href="#" class="nav-item nav-link">Offre</a>
-                        <a href="#.html" class="nav-item nav-link">Demande</a>
-                        <a href="#.html" class="nav-item nav-link">Evenements</a>
-                        <a href="{{ path('app_reclamation_new') }}" class="nav-item nav-link">Reclamation</a>
+                        <a href="{{asset('/')}}" class="nav-item nav-link active">Accueil</a>
+                        <a  href="{{ path('app_readoc')}}" class="nav-item nav-link">Offre</a>
+                        
+                        
+                        <a href="{{ path('app_readmd')}}" class="nav-item nav-link">Demande</a>
+                        <a href="{{ path('app_reclamation_index')}}" class="nav-item nav-link">Reclamation</a>
                         <a href="{{ path('app_reponserec_index') }}" class="nav-item nav-link">Reponse</a>
-                       
+                            &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                         
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                
+         <a href="{{ path('app_user')}}" class="nav-item nav-link">Log out</a>
                 </div>
             </nav>
         </div>

@@ -79,10 +79,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                     <a href="{{asset('/')}}" class="nav-item nav-link active">Accueil</a>
-                   
-                        
-                       &nbsp
+                       <a href="{{asset('/')}}" class="nav-item nav-link active">Accueil</a>
+                        <a  href="{{ path('app_reado')}}" class="nav-item nav-link">Offre</a>
+                        <a href="{{ path('app_readP')}}" class="nav-item nav-link">Proposition</a>
+                        <a href="#" class="nav-item nav-link">quiz</a>
+                       <a href="#" class="nav-item nav-link">Events</a>
+                        <a href="{{ path('app_reclamation_index')}}" class="nav-item nav-link">Reclamation</a>
+                            &nbsp
                        &nbsp
                        &nbsp
                        &nbsp
@@ -96,10 +99,7 @@
                        &nbsp
                        &nbsp
                 
-                  <form class="ms-3 d-flex">
-       <a href="{{asset('/login')}}" class="nav-item nav-link">S'identifier</a>
-        
-        <a href="{{asset('/AddUser')}}" class="nav-item nav-link">S'inscrire</a>
+         <a href="{{ path('app_user')}}" class="nav-item nav-link">Log out</a>
                 </div>
             </nav>
         </div>
@@ -113,7 +113,8 @@
             <h1 class="display-2 text-white mb-4 animated slideInDown">{% block display %}{% endblock %}</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item text-primary" aria-current="page">{% block breadcrumb %}{% endblock %}</li>
                 </ol>
             </nav>
@@ -128,7 +129,6 @@
             {% block content %}{% endblock %}
         </div>
     </div>
-    {% block body %}{% endblock %}
     <!-- Content End -->
 
 
