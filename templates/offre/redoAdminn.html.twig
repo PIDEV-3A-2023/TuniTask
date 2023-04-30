@@ -1,0 +1,48 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <h1 id="h1">La liste des Offres</h1>
+    <div class="content-body">
+        <div class="card-deck">
+            {% for k in result %}
+                <div class="card mb-4">
+                    <img src="{{asset("http://localhost/img/"~ k.srcimage)}}"class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ k.titre }}</h5>
+                        <p class="card-text">Description :{{ k.description }}</p>
+                        <p class="card-text">Salaire : {{ k.salaireh }}dt/h</p>
+                        <p class="card-text">Posté par {{ k.firstName }} {{ k.lastName }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <canvas id="sommeilChart"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var ctx = document.getElementById("sommeilChart").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: {{ labels|json_encode|raw }},
+                    datasets: [{
+                        label: "Salaire",
+                        data: {{ data|json_encode|raw }},
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </div>                   
+{% endblock %}

@@ -10,7 +10,7 @@ use App\Entity\Offre;
 use App\Entity\Users;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\OffreRepository;
-
+use PDO;
 use App\Form\OffreformType;
 use App\Form\EditoffreformType;
 
@@ -24,6 +24,44 @@ class OffreController extends AbstractController
         ]);
     }
 
+#[Route('/readoAdmin', name: 'app_readoAdminn')]
+    public function readoffreAdmin(): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        // Récupération des informations à afficher grâce à une jointure entre les tables
+        $result = $entityManager->getRepository(Offre::class)
+            ->createQueryBuilder('t')
+            ->leftJoin(Users::class, 't2', 'WITH', 't2.id = t.user')
+            ->select('t.idoffre,t.description, t.titre, t.salaireh, t2.firstName, t2.lastName,t2.srcimage')
+            ->getQuery()
+            ->getResult();
+            $dsn = "mysql:host=localhost:3000;dbname=webtask;charset=utf8mb4";
+            $username = "root";
+            $password = "";
+        
+            try {
+                $pdo = new PDO($dsn, $username, $password);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+                $query = "SELECT idoffre, AVG(salaireh) as salaireh  FROM offre GROUP BY idoffre";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+        
+                
+            } catch (PDOException $e) {
+                die('Error:' . $e->getMessage());
+            }
+            $labels = [];
+            $data = [];
+            while ($row =  $stmt->fetch(PDO::FETCH_ASSOC)) {
+              $labels[] = $row['idoffre'];
+              $data[] = $row['salaireh'];
+            }
+        return $this->render('Offre/redoAdminn.html.twig', [
+            'result' => $result,'labels' =>$labels,'data' =>$data,
+        ]);
+    }
     #[Route('/reado', name: 'app_reado')]
     public function readoffre(): Response
     {

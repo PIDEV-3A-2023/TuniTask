@@ -44,11 +44,11 @@ class PropositionController extends AbstractController
 
 
         #[Route('/readProposition', name: 'app_readP')]
-        public function readProposition(): Response
+        public function readProposition(Request $request): Response
         {
             $entityManager = $this->getDoctrine()->getManager();
              //Récupération de l'utilisateur courant
-            $userId = 41; // l'ID de l'utilisateur courant
+            $userId = $request->getSession()->get('user')->getId(); // l'ID de l'utilisateur courant
             $userRepository = $entityManager->getRepository(Users::class);
             $currentUser = $userRepository->find($userId);
             // Récupération des offres de l'utilisateur courant
@@ -98,20 +98,21 @@ class PropositionController extends AbstractController
   public function add_proposition($idDemande,Request $request , DemandeRepository $DemandeRepository , PropositionRepository $PropositionRepository ): Response
    {
        
-   
+   $user=$this->entityManager->getRepository(Users::class)->find($request->getSession()->get('user')->getId()); 
        // Create a new proposition object and associate it with the demand
        $proposition = new Proposition();
        $demande = $this->entityManager->getRepository(Demande::class)->find($idDemande);
        $proposition->setIdDemande($demande);
-       $user= $this->entityManager->getRepository(Users::class)->find(41);
        $proposition->setIdFreelancer($user);
+      
        $form = $this->createForm(AddPropositionType::class,$proposition);
        $form->handleRequest($request);
        if($form->isSubmitted() && $form->isValid())
        {
-
+          
+          
         $demande->setEtat(1); // Assuming 1 means a freelancer has applied
-$this->entityManager->persist($demande);
+        $this->entityManager->persist($demande);
         $this->entityManager->persist($proposition);
         $this->entityManager->flush();
         return $this->redirectToRoute('app_readP', [], Response::HTTP_SEE_OTHER);
@@ -125,6 +126,7 @@ $this->entityManager->persist($demande);
        $email = (new Email())
        ->from('gabsilaroussi99@gmail.com')
        ->to($demande->getIdClient()->getEmail())
+       //->to("abdessalambahri8@gmail.com")
        ->subject('Proposition')
        ->text(sprintf("Hi %s,\n\nUn freelancer nommé %s %s a fait une proposition sur votre demande.\n\nTuniTask", $demande->getIdClient()->getFirstName(), $user->getFirstName(), $user->getLastName() ));
 

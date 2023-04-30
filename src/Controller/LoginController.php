@@ -54,12 +54,12 @@ class LoginController extends AbstractController
                    
                    if($role->getRoleName()=="Freelancer")
                    {
-                    return $this->redirectToRoute('app_admin');}
+                    return $this->renderForm('FreelancerA.html.twig', [
+                   'form' => $form,"test" => null
+                   ]) ;}
                    else  if($role->getRoleName()=="Admin") {
                      
-                   { /*return $this->renderForm('admin_user/index.html.twig', [
-                   'form' => $form,"test" => null
-                   ]) ;*/
+                   { 
                      return $this->redirectToRoute('app_admin');
                 }}
                 else  if($role->getRoleName()=="Client") {
