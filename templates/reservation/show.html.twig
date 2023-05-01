@@ -1,0 +1,62 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Reservation
+{% endblock %}
+
+{% block content %}
+	<div style="margin: 50px;">
+		<h1>Reservation</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>QR Code</th>
+					<td>
+            {% if qrCode %}
+                <img src="{{ qrCode }}" alt="qr-code">
+            {% endif %}
+						{# <img src="{{ path('qr_code', {'text': 'test'}) }}" alt="QR Code"> #}
+					</td>
+				</tr>
+				<tr>
+					<th>Date</th>
+					<td>{{ reservation.date ? reservation.date|date('d-m-Y') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Nombre de places réservées</th>
+					<td>{{ reservation.nbRes }}</td>
+				</tr>
+				<tr>
+					<th>Event</th>
+					<td>
+						<ul>
+							<li>
+								Nom:
+								{{ reservation.event.nom }}
+							</li>
+							<li>
+								Date:
+								{{ reservation.event.date ? reservation.event.date|date('d-m-Y ') : '' }}
+							</li>
+							<li>
+								Lieu:
+								{{ reservation.event.lieu }}
+							</li>
+							<li>
+								Capacité:
+								{{ reservation.event.nbrPlace }}
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="display: block;">
+			<a style="display: block;" href="{{ path('app_reservation_index') }}">Go back to My Reservations</a>
+			<a style="display: block;" href="{{ path('eventList') }}">Go back to Events list</a>
+		</div>
+		<a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">update</a>
+
+		{{ include('reservation/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

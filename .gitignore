@@ -11,9 +11,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/demande
+=======
+>>>>>>> origin/event
 
 ###> phpunit/phpunit ###
 /phpunit.xml
@@ -25,8 +28,11 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> offre
 =======
 >>>>>>> origin/reclamation
 =======
 >>>>>>> origin/demande
+=======
+>>>>>>> origin/event

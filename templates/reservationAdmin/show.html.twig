@@ -1,0 +1,60 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reservation
+{% endblock %}
+
+{% block content %}
+	<div class="col">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Reservation</h4>
+				{# <a href="{{ path('admin_reservation_new') }}" class="badge badge-success">Add</a> #}
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+
+					<table class="table">
+						<tbody>
+							<tr>
+								<th>Date</th>
+								<td>{{ reservation.date ? reservation.date|date('d-m-Y H:i:s') : '' }}</td>
+							</tr>
+							<tr>
+								<th>Nombre de places réservées</th>
+								<td>{{ reservation.nbRes }}</td>
+							</tr>
+							<tr>
+								<th>Event</th>
+								<td>
+									<ul>
+										<li>
+											Nom:
+											{{ reservation.event.nom }}
+										</li>
+										<li>
+											Date:
+											{{ reservation.event.date ? reservation.event.date|date('d-m-Y H:i:s') : '' }}
+										</li>
+										<li>
+											Lieu:
+											{{ reservation.event.lieu }}
+										</li>
+										<li>
+											Capacité:
+											{{ reservation.event.nbrPlace }}
+										</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<a type="button" href="{{ path('admin_reservation_index') }}" class="badge badge-info">Back to list</a>
+
+					{# <a href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}">edit</a> #}
+
+					{# {{ include('reservationAdmin/_delete_form.html.twig') }} #}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

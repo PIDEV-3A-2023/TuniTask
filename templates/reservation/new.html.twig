@@ -1,0 +1,32 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}New Reservation
+{% endblock %}
+
+{% block content %}
+	<div style="display: block; width: 100%; margin: 40px auto;" class="fadeInUp" data-wow-delay="0.1s">
+		<div style="display: block; margin: 40px auto; width: 90%;">
+			<div class="card">
+				<div class="card-header">
+					<h1>Choose the number of places you want to book</h1>
+				</div>
+				<div class="card-body">
+					<div style="display: block; width: 400px;" class="basic-form">
+
+						{{form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+						{{form_label(form.nbRes,'Number of places : ',{'attr':{'class':'form-label'}})}}
+						{{form_widget(form.nbRes,{'attr':{'class':'form-control'}})}}
+						{{ form_errors(form.nbRes,{'attr':{'class':'form-control'}}) }}
+
+						<button style="margin-top: 10px;" type="submit" class="btn btn-primary">Confirm</button>
+
+						{{form_end(form)}}
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a style="margin-left: 80px; margin-right: auto;" href="{{ path('app_reservation_index') }}">Go back to Events List</a>
+	</div>
+{% endblock %}

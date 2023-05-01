@@ -1,0 +1,154 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}Events{% endblock %}
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		#calendrier {
+			width: 80%;
+			margin: auto;
+			height: 500px;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+    <body>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">List Event</h4>
+
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-success ">
+			{{ message }}
+		</div>
+	{% endfor %}
+                <a href="{{ path('newEvent') }}" class="badge badge-success">Add</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Nombre de place</th>
+                            <th>Lieu</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        {% for a in event %}
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="round-img">
+                                    <a href="#"><img width="35" src="{{ asset('/uploads/'~a.image) }}" alt=""></a>
+                                </div>
+                            </td>
+                            <td>  {{ a.nom }}</td>
+                            <td><span>  {{ a.nbrPlace }}</span></td>
+                            <td><span>  {{ a.lieu }}</span></td>
+                            <td><span>  {{ a.date |date('d-m-Y') }}</span></td>
+                            <td><a type="button" href="{{ path('updateEvent', {'id': a.id}) }}" class="badge badge-warning">Update</a></td>
+                            <td><a type="button" href="{{ path('deleteEvent', {'id': a.id}) }}" class="badge badge-danger">Delete</a></td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<div id="calendrier"></div>
+    
+    {% block javascripts %}
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'dayGridMonth',
+locale: 'fr',
+timeZone: 'Europe/Paris',
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+events: {{ data|raw }},
+                editable: true,
+                selectable: true,
+                nowIndicator: true,
+                dayMaxEvents: false,
+                navLinks: true,
+                eventClick: function(info) {
+                    window.location.href = info.event.url;
+                },
+                select: function(info) {
+                    window.location.href = "{{ path('newEvent') }}";
+                },
+})
+calendar.on('eventChange', (e) => {
+let url = `/api/${
+e.event.id
+}/edit`
+console.log(e.event.id)
+let donnees = {
+"id": e.event.id,
+"type": e.event.title,
+"date": e.event.start,
+"cours": e.event.title,
+"title": e.event.title,
+"description": e.event.extendedProps.type,
+"start": e.event.start,
+"end": e.event.start,
+"backgroundColor": e.event.backgroundColor,
+"borderColor": e.event.borderColor,
+"textColor": e.event.textColor,
+"allDay": e.event.allDay
+}
+
+let xhr = new XMLHttpRequest
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+calendar.render()
+}
+	</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('back_office/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('back_office/js/quixnav-init.js') }}"></script>
+    <script src="{{ asset('back_office/js/custom.min.js') }}"></script>
+
+
+    <!-- Vectormap -->
+    <script src="{{ asset('back_office/vendor/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('back_office/vendor/morris/morris.min.js') }}"></script>
+
+
+    <script src="{{ asset('back_office/vendor/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('back_office/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('back_office/vendor/gaugeJS/dist/gauge.min.js') }}"></script>
+
+    <!--  flot-chart js -->
+    <script src="{{ asset('back_office/vendor/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('back_office/vendor/flot/jquery.flot.resize.js') }}"></script>
+
+    <!-- Owl Carousel -->
+    <script src="{{ asset('back_office/vendor/owl-carousel/js/owl.carousel.min.js') }}"></script>
+
+    <!-- Counter Up -->
+    <script src="{{ asset('back_office/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('back_office/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
+    <script src="{{ asset('back_office/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
+
+
+    <script src="{{ asset('back_office/js/dashboard/dashboard-1.js') }}"></script>
+{% endblock %}
+
+    </body>
+{% endblock %}

@@ -12,6 +12,7 @@
     "doctrine/doctrine-bundle": "^2.9",
     "doctrine/doctrine-migrations-bundle": "^3.2",
     "doctrine/orm": "^2.14",
+    "endroid/qr-code-bundle": "*",
     "karser/karser-recaptcha3-bundle": "*",
     "knplabs/knp-paginator-bundle": "^5.9",
     "knpuniversity/oauth2-client-bundle": "*",
@@ -66,7 +67,8 @@
     "allow-plugins": {
       "composer/package-versions-deprecated": true,
       "symfony/flex": true,
-      "symfony/runtime": true
+      "symfony/runtime": true,
+      "endroid/installer": true
     },
     "optimize-autoloader": true,
     "preferred-install": {

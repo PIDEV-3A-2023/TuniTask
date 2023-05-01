@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_reservation_delete', {'id': reservation.id}) }}" onsubmit="return confirm('Are you sure you want to cancel this reservation?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+    <button class="btn">Cancel</button>
+</form>

@@ -1,0 +1,49 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}New Event{% endblock %}
+{% block content %}
+<body>
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Add Event</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+
+                            {{form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+                            {{form_label(form.nom,'Name : ',{'attr':{'class':'form-label'}})}}
+                            {{form_widget(form.nom,{'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.nom,{'attr':{'class':'form-control'}}) }}
+
+                            {{form_label(form.lieu,'Lieu : ',{'attr':{'class':'form-label'}})}}
+                            {{form_widget(form.lieu,{'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.lieu,{'attr':{'class':'form-control'}}) }}
+
+                            {{form_label(form.nbrPlace,'Nombre du place : ',{'attr':{'class':'form-label'}})}}
+                            {{form_widget(form.nbrPlace,{'attr':{'class':'form-control'}})}}
+                            {{ form_errors(form.nbrPlace,{'attr':{'class':'form-control'}}) }}
+
+                            {{form_label(form.date,'Date : ',{'attr':{'class':'form-label'}})}}
+                            {{form_widget(form.date,{'attr':{'class':'form-group'}})}}
+                            {{ form_errors(form.date,{'attr':{'class':'form-control'}}) }}
+
+                            {{form_label(form.image,'Image : ',{'attr':{'class':'form-label'}})}}
+                            {{form_widget(form.image,{'attr':{'class':'form-group'}})}}
+                            {{ form_errors(form.image,{'attr':{'class':'form-control'}}) }}
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+
+
+                            {{form_end(form)}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+</body>
+{% endblock %}
