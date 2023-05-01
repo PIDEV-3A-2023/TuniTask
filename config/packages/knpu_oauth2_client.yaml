@@ -1,0 +1,14 @@
+# config/packages/knpu_oauth2_client.yaml
+knpu_oauth2_client:
+  clients:
+    # the key "facebook_main" can be anything, it
+    # will create a service: "knpu.oauth2.client.facebook_main"
+    google:
+      # must be "google" - it activates that type!
+      type: google
+      # add and set these environment variables in your .env files
+      client_id: "%env(resolve:GOOGLE_CLIENT_ID)%"
+      client_secret: "%env(resolve:GOOGLE_CIENT_SECRET)%"
+      # a route name you'll create
+      redirect_route: connect_google_check
+      redirect_params: {}

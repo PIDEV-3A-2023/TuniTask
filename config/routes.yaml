@@ -1,0 +1,5 @@
+# config/routes.yaml
+
+reservation_qr_code:
+  path: /reservation/{id}/qr-code
+  controller: App\Controller\ReservationController::qrCodeAction
