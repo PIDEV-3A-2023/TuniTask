@@ -82,7 +82,7 @@ class ReservationController extends AbstractController
     public function show(Reservation $reservation, Request $request, QrcodeService $qrcodeService): Response
     {
         $qrCode = null;
-        $qrCode = $qrcodeService->qrcode($reservation->getEvent()->getNom() . ' | ' . $reservation->getEvent()->getDate()->format('Y-m-d'));
+        //$qrCode = $qrcodeService->qrcode($reservation->getEvent()->getNom() . ' | ' . $reservation->getEvent()->getDate()->format('Y-m-d'));
         return $this->render('reservation/show.html.twig', [
             'reservation' => $reservation,
             'qrCode' => $qrCode
