@@ -39,28 +39,23 @@
 <body>
 {% block header %}
 <!-- Topbar Start -->
-<div class="container-fluid bg-primary text-white d-none d-lg-flex">
-    <div class="container py-3">
-        <div class="d-flex align-items-center">
-            <a href="/">
-                <h2 class="text-white fw-bold m-0">TuniTask</h2>
-            </a>
-            <div class="ms-auto d-flex align-items-center">
-                <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</small>
-                <small class="ms-4"><i class="fa fa-envelope me-3"></i>info@example.com</small>
-                <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</small>
-                <div class="ms-3 d-flex">
-                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="#"><i
-                                class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="#"><i
-                                class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href="#"><i
-                                class="fab fa-linkedin-in"></i></a>
+ <div class="aa">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="#">
+                    <h2 class="text-white fw-bold m-0">TuniTask</h2>
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>Av. Fethi Zouhir, Cebalat Ben Ammar 2083</small>
+                    <small class="ms-4"><i class="fa fa-envelope me-3"></i>Aster@gmail.com</small>
+                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>+216 244 10946</small>
+                    <div class="ms-3 d-flex">
+                        <img src="img/logo.png" class="logo1" height="60">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <!-- Topbar End -->
 
 
@@ -77,21 +72,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="{{ path('eventList') }}" class="nav-item nav-link">Events</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
-                            <a href="feature.html" class="dropdown-item">Features</a>
-                            <a href="team.html" class="dropdown-item">Our Team</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="quote.html" class="dropdown-item">Quotation</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="{{asset('/')}}" class="nav-item nav-link active">Accueil</a>
+                        <a  href="{{ path('app_reado')}}" class="nav-item nav-link">Offre</a>
+                        <a href="{{ path('app_readP')}}" class="nav-item nav-link">Proposition</a>
+                        <a href="#" class="nav-item nav-link">quiz</a>
+                       <a href="{{path('eventList')}}" class="nav-item nav-link">Events</a>
+                        <a href="{{ path('app_reclamation_index')}}" class="nav-item nav-link">Reclamation</a>
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                         
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                       &nbsp
+                
+         <a href="{{ path('app_user')}}" class="nav-item nav-link">Log out</a>
+             
+                   
                 </div>
                 <div class="ms-auto d-none d-lg-block">
                     <a href="{{ path('app_reservation_index') }}" class="btn btn-primary rounded-pill py-2 px-3">My Event Reservations</a>

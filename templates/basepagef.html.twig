@@ -79,11 +79,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                       <a href="{{asset('/')}}" class="nav-item nav-link active">Accueil</a>
+                       <a href="#" class="nav-item nav-link active">Accueil</a>
                         <a  href="{{ path('app_reado')}}" class="nav-item nav-link">Offre</a>
                         <a href="{{ path('app_readP')}}" class="nav-item nav-link">Proposition</a>
                         <a href="#" class="nav-item nav-link">quiz</a>
-                       <a href="#" class="nav-item nav-link">Events</a>
+                                <a href="{{path('eventList')}}" class="nav-item nav-link">Events</a>
                         <a href="{{ path('app_reclamation_index')}}" class="nav-item nav-link">Reclamation</a>
                             &nbsp
                        &nbsp
@@ -113,8 +113,7 @@
             <h1 class="display-2 text-white mb-4 animated slideInDown">{% block display %}{% endblock %}</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                 
                     <li class="breadcrumb-item text-primary" aria-current="page">{% block breadcrumb %}{% endblock %}</li>
                 </ol>
             </nav>
@@ -172,12 +171,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Newsletter</h4>
                     <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative w-100">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="Your email">
-                        <button type="button"
-                            class="btn btn-light py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
+               
                 </div>
             </div>
         </div>
