@@ -10,8 +10,8 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-
-
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity
@@ -23,19 +23,23 @@ class Event
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+     #[Groups("events")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
+     #[Groups("events")]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\NotBlank]
     #[Assert\GreaterThan('today')]
+     #[Groups("events")]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
+    #[Groups("events")]
     private ?string $lieu = null;
 
     #[ORM\Column(length: 255)]
@@ -44,19 +48,23 @@ class Event
         type: 'integer',
         message: 'The value {{ value }} is not a valid {{ type }}.',
     )]
+     #[Groups("events")]
     private ?int $nbrPlace = null;
-
+ #[Groups("events")]
 
     /**
      * 
      * @var File
      */
+   
     private $imageFile;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events")]
     private ?string $image = null;
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Reservation::class)]
+      #[Groups("events")]
     private Collection $reservations;
 
     public function __construct()

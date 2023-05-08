@@ -14,11 +14,14 @@ class Demande
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("demandes")]
     private ?int $id = null;
 
    
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message:"Titre is required")]
+    #[Groups("demandes")]
+    #[Groups("demandes")]
     private ?string $titre= null;
 
 
@@ -30,21 +33,25 @@ class Demande
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message:"Salaire is required")]
    #[Assert\Positive(message:"Le salaire '{{ value }}' doit être positif ")]
+   #[Groups("demandes")]
    private ?float $salaire= null;
 
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message:"Delai is required")]
+    #[Groups("demandes")]
     private ?string $delai= null;
 
    
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank(message:"Langage is required")]
+    #[Groups("demandes")]
     private ?string $langage= null;
 
    
 
     #[ORM\Column]
+    #[Groups("demandes")]
     private ?bool $etat= null;
 
    

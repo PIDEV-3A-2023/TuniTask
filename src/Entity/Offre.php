@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use App\Entity\Users;
 use App\Repository\OffreRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: OffreRepository::class)]
 class Offre
@@ -15,31 +15,39 @@ class Offre
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("offres")]
     private ?int $idoffre=null;
 
 
     #[ORM\Column(length: 500)]
+    #[Groups("offres")]
     private ?string $description= null;
     
 
     #[ORM\Column(length: 50)]
+    #[Groups("offres")]
     private ?string $titre= null;
     
     #[ORM\Column(type:"float")]
     #[Gedmo\Rating]
+    #[Groups("offres")]
     private $rating;
     
     #[ORM\Column]
+    #[Groups("offres")]
     private ?float $salaireh= null;
 
     #[ORM\ManyToOne(inversedBy: 'Offre')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups("offres")]
     private ?Users $user = null;
 
     #[ORM\Column]
+    #[Groups("offres")]
     private ?int $count = 1;
 
     #[ORM\Column]
+    #[Groups("offres")]
     private ?float $sumr = null;
 
     public function getIdoffre(): ?int

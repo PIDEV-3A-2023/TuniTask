@@ -1,0 +1,49 @@
+{% extends 'base2.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+{#{% block nav %}#}
+{#{% endblock %}#}
+{% block body %}
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin-top: 120px; padding-bottom: 80px;">
+        <h1>Quizs</h1>
+        <canvas id="quizs"></canvas>
+    </div>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.min.js" integrity="sha512-a2e0uIwCMIWLGgviK5JYVZw/ntSAehzqM6dPjWTUjUsbVmsKZzCjvdzSCWtd2UWC3OiJwwe5xTwSQRGGAN2ZcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let backgroundColors = [];
+        let borderColor = [];
+
+        // Loop through each dataset and generate a random color
+        for (let i = 0; i < {{ quiztitle | length }}; i++) {
+            let color = "#" + Math.floor(Math.random()*16777215).toString(16);
+            backgroundColors.push(color);
+            borderColor.push(color + "FF"); // Add opacity to the border color
+        }
+
+        // Add the dynamically generated colors to the chart options
+        let quizgraph = new Chart(quizs,{
+            type:'pie',
+            data:{
+                labels:{{ quiztitle|raw }},
+                datasets: [{
+                    label: 'quizs',
+                    data: {{ quizscore|raw }},
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColor,
+                    borderWidth: 1,
+
+                }]
+            },
+            options: {
+                maintainAspectRatio: false
+
+            }
+        });
+
+    </script>
+{% endblock %}

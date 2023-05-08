@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Users{% endblock %}
+
+{% block body %}
+    <h1>Create new Users</h1>
+
+    {{ include('user_json/_form.html.twig') }}
+
+    <a href="{{ path('app_user_json_index') }}">back to list</a>
+{% endblock %}

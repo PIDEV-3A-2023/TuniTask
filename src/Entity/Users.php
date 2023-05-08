@@ -6,7 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UsersRepository;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -28,9 +28,11 @@ class Users
     private ?string $email = null;
 
  #[ORM\Column(length: 50)]
+ #[Groups("user")]
     private $firstName;
 
   #[ORM\Column(length: 50)]
+  #[Groups("user")]
     private $lastName;
 #[Assert\NotBlank]
 #[Assert\Date]

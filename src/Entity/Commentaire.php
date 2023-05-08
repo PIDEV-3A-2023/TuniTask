@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Offre;
 use App\Entity\Users;
 use App\Repository\CommentaireRepository;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 #[ORM\Entity(repositoryClass: CommentaireRepository::class)]
@@ -16,9 +16,11 @@ class Commentaire
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+#[Groups("Commentaires")]
     private ?int $idcommentaire=null;
 
     #[ORM\Column(length: 2000)]
+    #[Groups("Commentaires")]
     private ?string $commentaire= null;
 
     
@@ -26,17 +28,21 @@ class Commentaire
 
     #[ORM\ManyToOne(inversedBy: 'Commentaire')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups("Commentaires")]
     private ?Users $user = null;
     
 
     #[ORM\ManyToOne(targetEntity: 'App\Entity\Offre')]
     #[ORM\JoinColumn(referencedColumnName: "idoffre",name: "offre_id")]
+    #[Groups("Commentaires")]
     private ?offre $offre = null;
 
     #[ORM\Column(nullable: false)]
+    #[Groups("Commentaires")]
     private ?int $jaime = null;
 
     #[ORM\Column(nullable: false)]
+    #[Groups("Commentaires")]
     private ?int $djaime = null;
     
 

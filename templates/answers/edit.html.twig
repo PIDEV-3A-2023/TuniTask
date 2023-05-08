@@ -1,0 +1,21 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h1 style="color: #4c0673; font-size: 32px; margin-bottom: 30px; text-align: center;">Edit Answer</h1>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'style': 'width: 800px; height: 300px; margin: 0 auto; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 10px; padding: 20px;'}}) }}
+        {{ form_errors(form) }}
+        <label style="display: block; margin-bottom: 10px;">Answer</label>
+        {{ form_widget(form.answer, {'attr': {'placeholder': 'Enter answer', 'required': 'required', 'style': 'width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; font-size: 16px;'}}) }}
+
+        <div style="display: block;  margin-top: 20px;">
+            <span style="font-size: 16px;">{{ form_label(form.isCorrect) }}</span>
+            {{ form_widget(form.isCorrect, {'attr': {'placeholder': form.isCorrect.vars.value|default(''), 'class': 'form-check-input', 'style': 'width: auto; height: auto; margin-left: 10px;'}}) }}
+        </div>
+        <button style="margin: 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Save</button>
+        {{ form_end(form) }}
+
+        <a href="{{ path('app_question_answers', {'quizId': quizId, 'questionId': questionId}) }}"style="margin: 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Back to Answers</a>
+    </div>
+
+    {% endblock %}

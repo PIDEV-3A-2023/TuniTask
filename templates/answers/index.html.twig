@@ -1,0 +1,51 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <head>
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+        {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+    </head>
+    <div class="content-body">
+    <div style="display:flex;align-items: center;justify-content: center;flex-direction: column">
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">{{ flashMessage }}</div>
+        {% endfor %}
+        <h1 style="text-align: center;margin-bottom: 30px;">Quiz: {{ quiz.quizTitle }}</h1>
+        <h2 style="text-align: center;margin-bottom: 30px;">{{ question.questionText }}</h2>
+
+        <table style="border-collapse: collapse;width: 100%;max-width: 800px;margin: 0 auto;">
+            <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: left;">Answer</th>
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Is It Correct?</th>
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Edit</th>
+                <th style="padding: 12px;border: 1px solid #ddd;text-align: center;">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for answer in answers %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 12px;border: 1px solid #ddd;">{{ answer.answer }}</td>
+                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;">{{ answer.isCorrect ? 'Yes' : 'No' }}</td>
+{#                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;"><a href="#" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold;">Check Answer</a></td>#}
+
+                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;"><a href="{{ path('app_answers_edit', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion, 'answerId': answer.idAnswer}) }}" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold;">Edit</a></td>
+                    <td style="padding: 12px;border: 1px solid #ddd;text-align: center;"><a href="{{ path('app_answers_delete', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion, 'answerId': answer.idAnswer}) }}" style="display: inline-block; padding: 10px 20px; background-color: #ff0000; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold;">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <a href="{{ path('app_question_answers_add', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}"  style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Add answer</a>
+            <a href="{{ path('app_questions', {'quizId': quiz.idQuiz, 'questionId': question.idQuestion}) }}"  style="display: inline-block;margin-left:10px; padding: 10px 20px; background-color: #333; color: #fff; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 20px;">Back to question</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

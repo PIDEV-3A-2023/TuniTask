@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Validator\ContainsBadWords; 
 use App\Entity\Users;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 #[ORM\Entity]
@@ -14,31 +15,38 @@ class Reclamation
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column(type: "integer", nullable: false)]
+     #[Groups("Reclamations")]
     private $id;
 
     #[ORM\Column(type: "string", length: 50, nullable: false)]
     #[Assert\NotBlank()]
+    #[Groups("Reclamations")]
     private $nom;
 
     #[ORM\Column(type: "string", length: 50, nullable: false)]
     #[Assert\NotBlank()]
+    #[Groups("Reclamations")]
     private $prenom;
 
     #[ORM\Column(type: "string", length: 50, nullable: false)]
     #[Assert\NotBlank()]
     #[Assert\Email()]
+#[Groups("Reclamations")]
     private $email;
 
     #[ORM\Column(type: "string", length: 255, nullable: false)]
     #[Assert\NotBlank()]
     #[ContainsBadWords]
+    #[Groups("Reclamations")]
     private $description;
 
     #[ORM\Column(type: "string", nullable: false)]
+    #[Groups("Reclamations")]
     private $etat;
 
     #[ORM\ManyToOne(targetEntity: "Users")]
     #[ORM\JoinColumn(name: "id_user", referencedColumnName: "id")]
+    #[Groups("Reclamations")]
     private  $idUser;
 
     public function getId(): ?int

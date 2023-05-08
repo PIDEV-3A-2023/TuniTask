@@ -1,0 +1,15 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block body %}
+<div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h1>Add a New Question</h1>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_label(form.questionText) }}
+    {{ form_widget(form.questionText) }}
+    <button type="submit">Save</button>
+    {{ form_end(form) }}
+    <a href="{{ path('app_questions', {'quizId': quiz.getIdQuiz()}) }}">Back to Questions</a>
+</div>
+    {% endblock %}
